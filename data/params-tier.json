@@ -1,6 +1,6 @@
 {
   "_note": "闭源模型的「体型」代理指标：输出价格档位 × 厂商命名档位合成的 1–5 档规模。这份档位已经并进 data/models.json 的 params.sizeTier / params.sizeTierBasis，本文件只作为独立索引保留，方便离线核对。",
-  "generatedAt": "2026-10-11T13:44:58.831Z",
+  "generatedAt": "2026-10-12T02:13:19.123Z",
   "tiers": {
     "alibaba/qwen-flash": {
       "basis": "price+naming",
@@ -50,25 +50,17 @@
       "basis": "price+naming",
       "tier": 4
     },
-    "alibaba/qwen3-max-preview": {
-      "basis": "price+naming",
-      "tier": 4
-    },
     "alibaba/qwen3-max-thinking": {
       "basis": "price+naming",
       "tier": 4
     },
     "alibaba/qwen3-vl-instruct": {
       "basis": "price",
-      "tier": 2
+      "tier": 1
     },
     "alibaba/qwen3-vl-plus": {
       "basis": "price+naming",
       "tier": 4
-    },
-    "alibaba/qwen3-vl-thinking": {
-      "basis": "price",
-      "tier": 2
     },
     "alibaba/qwen3.5-flash": {
       "basis": "price+naming",

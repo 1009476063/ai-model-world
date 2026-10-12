@@ -1225,7 +1225,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-11T13:44:58.831Z",
+  "generatedAt": "2026-10-12T02:13:19.123Z",
   "models": [
     {
       "benchmarks": {
@@ -4203,13 +4203,14 @@
         "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "epoch.ai",
         "releaseDatePrecision": "epoch.ai",
+        "retiredAt": "derived",
         "scores": "derived",
         "trainingComputeFlop": "epoch.ai",
         "vendorId": "derived"
       },
       "releaseDate": "2025-07-25",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-12",
       "scores": [
         {
           "attribution": "third-party",
@@ -6058,7 +6059,7 @@
         "webdev_arena_elo": null
       },
       "capabilities": {
-        "promptCaching": true,
+        "promptCaching": false,
         "reasoning": false,
         "structuredOutput": null,
         "toolCall": true
@@ -6088,7 +6089,7 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.2,
+        "cachedInputPerMTok": null,
         "inputPerMTok": 1,
         "outputPerMTok": 5
       },
@@ -6103,7 +6104,6 @@
         "name": "models.dev",
         "openWeights": "models.dev",
         "params.sizeTier": "derived",
-        "pricing.cachedInputPerMTok": "vercel-gateway",
         "pricing.inputPerMTok": "models.dev",
         "pricing.outputPerMTok": "models.dev",
         "releaseDate": "models.dev",
@@ -6484,13 +6484,14 @@
         "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
+        "retiredAt": "derived",
         "scores": "derived",
         "trainingComputeFlop": "epoch.ai",
         "vendorId": "derived"
       },
       "releaseDate": "2025-09-05",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-12",
       "scores": [
         {
           "attribution": "third-party",
@@ -7622,18 +7623,18 @@
         "webdev_arena_elo": null
       },
       "capabilities": {
-        "promptCaching": false,
+        "promptCaching": true,
         "reasoning": null,
         "structuredOutput": null,
         "toolCall": null
       },
       "coding": [],
-      "contextWindow": 131072,
+      "contextWindow": 262144,
       "firstSeenAt": "2026-09-02T09:52:35.668Z",
       "id": "alibaba/qwen3-vl-instruct",
       "knowledgeCutoff": null,
       "license": null,
-      "maxOutput": 129024,
+      "maxOutput": 262144,
       "modalities": {
         "input": [
           "image",
@@ -7648,14 +7649,14 @@
       "params": {
         "activeB": null,
         "confidence": "estimated",
-        "sizeTier": 2,
+        "sizeTier": 1,
         "sizeTierBasis": "price",
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": null,
-        "inputPerMTok": 0.4,
-        "outputPerMTok": 1.6
+        "cachedInputPerMTok": 0.11,
+        "inputPerMTok": 0.2,
+        "outputPerMTok": 0.88
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -7664,6 +7665,7 @@
         "modalities": "vercel-gateway",
         "name": "derived",
         "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "vercel-gateway",
         "pricing.inputPerMTok": "vercel-gateway",
         "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "vercel-gateway",
@@ -7811,11 +7813,12 @@
         "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
+        "retiredAt": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2025-09-23",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-12",
       "scores": [],
       "slug": "alibaba-qwen3-vl-thinking",
       "trainingComputeFlop": null,
@@ -97497,42 +97500,42 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 328 行；去重后 418 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "请求 196 个开源模型，成功 192，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "4041 条（对话类 3124 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "7/7 个分榜，共 325 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
-      "note": "models.json 475 条；api.json 226 provider / 8468 条；benchmarks[] 1090 条，已拦截 AA 血缘 176 条，非编程口径跳过 553 条",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
+      "note": "models.json 475 条；api.json 226 provider / 8466 条；benchmarks[] 1090 条，已拦截 AA 血缘 176 条，非编程口径跳过 553 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
       "note": "458 条；已剔除 artificial_analysis 284 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
@@ -97542,8 +97545,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-11T13:44:58.831Z",
-      "note": "415 条（language 268 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-12T02:13:19.123Z",
+      "note": "408 条（language 261 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
