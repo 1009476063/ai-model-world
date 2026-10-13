@@ -1,7 +1,19 @@
 {
   "_note": "闭源模型的「体型」代理指标：输出价格档位 × 厂商命名档位合成的 1–5 档规模。这份档位已经并进 data/models.json 的 params.sizeTier / params.sizeTierBasis，本文件只作为独立索引保留，方便离线核对。",
-  "generatedAt": "2026-10-13T02:08:15.274Z",
+  "generatedAt": "2026-10-13T13:54:29.978Z",
   "tiers": {
+    "aion-labs/aion-2.0": {
+      "basis": "price",
+      "tier": 2
+    },
+    "aion-labs/aion-3.0": {
+      "basis": "price",
+      "tier": 3
+    },
+    "aion-labs/aion-3.0-mini": {
+      "basis": "price+naming",
+      "tier": 2
+    },
     "alibaba/qwen-flash": {
       "basis": "price+naming",
       "tier": 1
@@ -50,9 +62,17 @@
       "basis": "price+naming",
       "tier": 4
     },
+    "alibaba/qwen3-max-preview": {
+      "basis": "price+naming",
+      "tier": 4
+    },
     "alibaba/qwen3-max-thinking": {
       "basis": "price+naming",
       "tier": 4
+    },
+    "alibaba/qwen3-vl-flash": {
+      "basis": "price+naming",
+      "tier": 1
     },
     "alibaba/qwen3-vl-instruct": {
       "basis": "price",
@@ -330,21 +350,9 @@
       "basis": "price+naming",
       "tier": 2
     },
-    "cohere/command-a": {
-      "basis": "price",
-      "tier": 3
-    },
     "cohere/command-a-plus": {
       "basis": "price+naming",
       "tier": 4
-    },
-    "deepseek/deepseek-chat-v3-0324": {
-      "basis": "price",
-      "tier": 1
-    },
-    "deepseek/deepseek-chat-v3.1": {
-      "basis": "price",
-      "tier": 1
     },
     "deepseek/deepseek-v3.1-terminus": {
       "basis": "price",
@@ -550,12 +558,8 @@
       "basis": "price+naming",
       "tier": 1
     },
-    "inference-net/schematron-v2-small": {
-      "basis": "price+naming",
-      "tier": 1
-    },
-    "inference-net/schematron-v2-turbo": {
-      "basis": "price+naming",
+    "mancer/weaver": {
+      "basis": "price",
       "tier": 1
     },
     "meituan/longcat-2.0": {
@@ -634,6 +638,10 @@
       "basis": "naming",
       "tier": 1
     },
+    "minimax/minimax-text-01": {
+      "basis": "price",
+      "tier": 2
+    },
     "mistral/codestral": {
       "basis": "price",
       "tier": 1
@@ -676,7 +684,7 @@
     },
     "mistral/mistral-medium-3": {
       "basis": "price",
-      "tier": 3
+      "tier": 2
     },
     "mistral/mistral-medium-3-5": {
       "basis": "price",
@@ -694,10 +702,6 @@
       "basis": "price+naming",
       "tier": 1
     },
-    "mistral/mixtral-8x22b-instruct": {
-      "basis": "price",
-      "tier": 2
-    },
     "mistral/pixtral-large-2502": {
       "basis": "price+naming",
       "tier": 4
@@ -705,10 +709,6 @@
     "mixedbread/toast-1": {
       "basis": "price",
       "tier": 1
-    },
-    "moonshotai/kimi-k2": {
-      "basis": "price",
-      "tier": 2
     },
     "moonshotai/kimi-k3-fast": {
       "basis": "price+naming",
@@ -1034,6 +1034,10 @@
       "basis": "price+naming",
       "tier": 2
     },
+    "perceptron/perceptron-mk1": {
+      "basis": "price",
+      "tier": 2
+    },
     "perplexity/sonar": {
       "basis": "price",
       "tier": 1
@@ -1062,13 +1066,13 @@
       "basis": "price",
       "tier": 4
     },
-    "rekaai/reka-edge": {
-      "basis": "price+naming",
-      "tier": 1
+    "relace/relace-apply-3": {
+      "basis": "price",
+      "tier": 2
     },
-    "rekaai/reka-flash-3": {
-      "basis": "price+naming",
-      "tier": 1
+    "relace/relace-search": {
+      "basis": "price",
+      "tier": 2
     },
     "sakana/fugu-max": {
       "basis": "price+naming",
@@ -1154,6 +1158,14 @@
       "basis": "price",
       "tier": 3
     },
+    "xai/grok-4-fast-non-reasoning": {
+      "basis": "price+naming",
+      "tier": 1
+    },
+    "xai/grok-4-fast-reasoning": {
+      "basis": "price+naming",
+      "tier": 1
+    },
     "xai/grok-4.1-fast": {
       "basis": "price+naming",
       "tier": 1
@@ -1220,6 +1232,10 @@
     },
     "xai/grok-build-0.1": {
       "basis": "price",
+      "tier": 2
+    },
+    "xai/grok-code-fast-1": {
+      "basis": "price+naming",
       "tier": 2
     },
     "xai/grok-imagine-video-1.5-lite": {
