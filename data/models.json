@@ -123,7 +123,7 @@
     {
       "id": "arena_image_edit",
       "inEci": false,
-      "models": 15,
+      "models": 16,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -159,7 +159,7 @@
     {
       "id": "arena_text_to_image",
       "inEci": false,
-      "models": 15,
+      "models": 16,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -363,7 +363,7 @@
     {
       "id": "deepswe",
       "inEci": true,
-      "models": 42,
+      "models": 44,
       "randomBaseline": 0,
       "releaseDate": "2026-05-26",
       "scoreCeiling": 100,
@@ -387,7 +387,7 @@
     {
       "id": "ebr_bench",
       "inEci": true,
-      "models": 30,
+      "models": 31,
       "randomBaseline": 0,
       "releaseDate": "2026-07-01",
       "scoreCeiling": 100,
@@ -1071,7 +1071,7 @@
     {
       "id": "swe_marathon",
       "inEci": false,
-      "models": 4,
+      "models": 6,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1083,7 +1083,7 @@
     {
       "id": "terminal_bench",
       "inEci": false,
-      "models": 57,
+      "models": 59,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1225,7 +1225,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-12T14:03:26.917Z",
+  "generatedAt": "2026-10-13T02:08:15.274Z",
   "models": [
     {
       "benchmarks": {
@@ -6016,7 +6016,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.07,
         "inputPerMTok": 0.2,
-        "outputPerMTok": 0.89648
+        "outputPerMTok": 0.89448
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -11672,9 +11672,9 @@
         "totalB": 27.78
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.085,
         "inputPerMTok": 0.4,
-        "outputPerMTok": 2.55
+        "outputPerMTok": 3
       },
       "provenance": {
         "benchmarks.arc_agi_2": "epoch.ai",
@@ -15036,12 +15036,13 @@
         "pricing.outputPerMTok": "litellm",
         "releaseDate": "epoch.ai",
         "releaseDatePrecision": "epoch.ai",
+        "retiredAt": "derived",
         "scores": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2024-03-07",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-13",
       "scores": [
         {
           "attribution": "third-party",
@@ -16984,6 +16985,14 @@
           "unit": "pct"
         },
         {
+          "attribution": "third-party",
+          "league": "ebr_bench",
+          "score": 43.81,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
           "attribution": "vendor-self-reported",
           "league": "frontier_code",
           "score": 46.4,
@@ -17245,12 +17254,13 @@
         "pricing.outputPerMTok": "litellm",
         "releaseDate": "epoch.ai",
         "releaseDatePrecision": "epoch.ai",
+        "retiredAt": "derived",
         "scores": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2025-05-22",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-13",
       "scores": [
         {
           "attribution": "third-party",
@@ -35841,8 +35851,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.22,
-        "outputPerMTok": 0.84
+        "inputPerMTok": 0.24,
+        "outputPerMTok": 0.944
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -36056,7 +36066,7 @@
       "id": "deepseek/deepseek-v4.1-flash-fast",
       "knowledgeCutoff": null,
       "license": null,
-      "maxOutput": 1000000,
+      "maxOutput": 32768,
       "modalities": {
         "input": [
           "image",
@@ -36076,7 +36086,7 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.14,
+        "cachedInputPerMTok": 0.014,
         "inputPerMTok": 0.6,
         "outputPerMTok": 2.4
       },
@@ -36088,16 +36098,15 @@
         "name": "derived",
         "params.sizeTier": "derived",
         "pricing.cachedInputPerMTok": "litellm",
-        "pricing.inputPerMTok": "litellm",
-        "pricing.outputPerMTok": "litellm",
+        "pricing.inputPerMTok": "vercel-gateway",
+        "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
-        "retiredAt": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2026-09-29",
       "releaseDatePrecision": "day",
-      "retiredAt": "2026-10-08",
+      "retiredAt": null,
       "scores": [],
       "slug": "deepseek-deepseek-v4-1-flash-fast",
       "trainingComputeFlop": null,
@@ -44845,8 +44854,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.04,
-        "inputPerMTok": 0.099,
-        "outputPerMTok": 0.2992
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.3
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -45237,7 +45246,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.049,
         "inputPerMTok": 0.1,
         "outputPerMTok": 0.34
       },
@@ -49346,9 +49355,9 @@
         "totalB": 70.55
       },
       "pricing": {
-        "cachedInputPerMTok": 0.11,
-        "inputPerMTok": 0.59,
-        "outputPerMTok": 0.71
+        "cachedInputPerMTok": 0.13,
+        "inputPerMTok": 0.6,
+        "outputPerMTok": 0.724
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -51180,6 +51189,327 @@
       "retiredAt": null,
       "scores": [],
       "slug": "meta-muse-spark-1-3-contributor",
+      "trainingComputeFlop": null,
+      "vendorId": "meta"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-13T02:08:15.274Z",
+      "id": "meta/muse-wonder",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 943718,
+      "modalities": {
+        "input": [
+          "audio",
+          "image",
+          "pdf",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Muse Wonder",
+      "openWeights": null,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 4,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.2,
+        "inputPerMTok": 4,
+        "outputPerMTok": 20
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "openrouter",
+        "maxOutput": "openrouter",
+        "modalities": "openrouter",
+        "name": "derived",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "openrouter",
+        "pricing.inputPerMTok": "openrouter",
+        "pricing.outputPerMTok": "openrouter",
+        "releaseDate": "openrouter",
+        "releaseDatePrecision": "openrouter",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-12",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "meta-muse-wonder",
+      "trainingComputeFlop": null,
+      "vendorId": "meta"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": true,
+        "structuredOutput": true,
+        "toolCall": true
+      },
+      "coding": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 52,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 78.8,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_marathon",
+          "score": 53.1,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        }
+      ],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-13T02:08:15.274Z",
+      "id": "meta/muse-wonder-1.0",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 131072,
+      "modalities": {
+        "input": [
+          "audio",
+          "image",
+          "pdf",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Muse Wonder",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 4,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.2,
+        "inputPerMTok": 4,
+        "outputPerMTok": 20
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "capabilities.reasoning": "models.dev",
+        "capabilities.structuredOutput": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "coding": "derived",
+        "contextWindow": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "models.dev",
+        "pricing.inputPerMTok": "models.dev",
+        "pricing.outputPerMTok": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-12",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 78.8,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_marathon",
+          "score": 53.1,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 52,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        }
+      ],
+      "slug": "meta-muse-wonder-1-0",
+      "trainingComputeFlop": null,
+      "vendorId": "meta"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": null,
+        "reasoning": true,
+        "structuredOutput": null,
+        "toolCall": true
+      },
+      "coding": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 57.1,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 79,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_marathon",
+          "score": 57.5,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        }
+      ],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-13T02:08:15.274Z",
+      "id": "meta/muse-wonder-full",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": null,
+      "modalities": {
+        "input": [
+          "audio",
+          "image",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Muse Wonder Full",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "unknown",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": null,
+        "outputPerMTok": null
+      },
+      "provenance": {
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "coding": "derived",
+        "contextWindow": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-12",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 79,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_marathon",
+          "score": 57.5,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 57.1,
+          "source": "models.dev",
+          "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        }
+      ],
+      "slug": "meta-muse-wonder-full",
       "trainingComputeFlop": null,
       "vendorId": "meta"
     },
@@ -55280,8 +55610,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.33618,
-        "outputPerMTok": 0.44824
+        "inputPerMTok": 0.33543,
+        "outputPerMTok": 0.44724
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -64130,6 +64460,73 @@
       "retiredAt": null,
       "scores": [],
       "slug": "nvidia-llama-3-3-nemotron-super-49b-v1-5",
+      "trainingComputeFlop": null,
+      "vendorId": "nvidia"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": null,
+        "reasoning": false,
+        "structuredOutput": null,
+        "toolCall": false
+      },
+      "coding": [],
+      "contextWindow": 8192,
+      "firstSeenAt": "2026-10-13T02:08:15.274Z",
+      "id": "nvidia/llama-nemotron-embed-1b-v2",
+      "knowledgeCutoff": null,
+      "license": "LicenseRef-NVIDIA",
+      "maxOutput": 2048,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Llama Nemotron Embed 1B v2",
+      "openWeights": true,
+      "params": {
+        "activeB": null,
+        "confidence": "exact",
+        "totalB": 1.24
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": null,
+        "outputPerMTok": null
+      },
+      "provenance": {
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "contextWindow": "models.dev",
+        "license": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "params.totalB": "huggingface",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2025-10-16",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "nvidia-llama-nemotron-embed-1b-v2",
       "trainingComputeFlop": null,
       "vendorId": "nvidia"
     },
@@ -81954,7 +82351,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.02,
         "inputPerMTok": 0.05,
-        "outputPerMTok": 0.19999999999999998
+        "outputPerMTok": 0.2
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -92446,6 +92843,91 @@
         "toolCall": false
       },
       "coding": [],
+      "contextWindow": 16000,
+      "firstSeenAt": "2026-10-13T02:08:15.274Z",
+      "id": "xai/grok-imagine-image",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": null,
+      "modalities": {
+        "input": [
+          "image",
+          "pdf",
+          "text"
+        ],
+        "output": [
+          "image",
+          "pdf"
+        ]
+      },
+      "name": "Grok Imagine Image",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "unknown",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": null,
+        "outputPerMTok": null
+      },
+      "provenance": {
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "contextWindow": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-01-28",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "third-party",
+          "league": "arena_image_edit",
+          "score": 1329,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arena_text_to_image",
+          "score": 1169.7,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        }
+      ],
+      "slug": "xai-grok-imagine-image",
+      "trainingComputeFlop": null,
+      "vendorId": "xai"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": null,
+        "reasoning": false,
+        "structuredOutput": null,
+        "toolCall": false
+      },
+      "coding": [],
       "contextWindow": 8000,
       "firstSeenAt": "2026-08-31T10:07:26.393Z",
       "id": "xai/grok-imagine-image-2.0",
@@ -96772,8 +97254,8 @@
         "name": "derived",
         "params.sizeTier": "derived",
         "pricing.cachedInputPerMTok": "litellm",
-        "pricing.inputPerMTok": "litellm",
-        "pricing.outputPerMTok": "litellm",
+        "pricing.inputPerMTok": "vercel-gateway",
+        "pricing.outputPerMTok": "vercel-gateway",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
         "vendorId": "derived"
@@ -97500,43 +97982,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
       "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 328 行；去重后 418 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
-      "note": "请求 196 个开源模型，成功 192，失败 4",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
+      "note": "请求 197 个开源模型，成功 193，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
-      "note": "4041 条（对话类 3124 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
+      "note": "4068 条（对话类 3139 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
       "note": "7/7 个分榜，共 325 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
-      "note": "models.json 475 条；api.json 226 provider / 8466 条；benchmarks[] 1090 条，已拦截 AA 血缘 176 条，非编程口径跳过 553 条",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
+      "note": "models.json 479 条；api.json 227 provider / 8575 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
-      "note": "458 条；已剔除 artificial_analysis 284 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
+      "note": "459 条；已剔除 artificial_analysis 284 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -97545,8 +98027,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-12T14:03:26.917Z",
-      "note": "408 条（language 261 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-13T02:08:15.274Z",
+      "note": "458 条（language 311 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
