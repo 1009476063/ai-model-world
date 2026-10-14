@@ -27,7 +27,7 @@
     {
       "id": "aime",
       "inEci": true,
-      "models": 201,
+      "models": 202,
       "randomBaseline": 0.1,
       "releaseDate": "2024-12-19",
       "scoreCeiling": 100,
@@ -63,7 +63,7 @@
     {
       "id": "apex_agents",
       "inEci": true,
-      "models": 60,
+      "models": 61,
       "randomBaseline": 0,
       "releaseDate": "2026-01-21",
       "scoreCeiling": 100,
@@ -219,7 +219,7 @@
     {
       "id": "blueprint_bench_2",
       "inEci": false,
-      "models": 35,
+      "models": 36,
       "randomBaseline": 0,
       "releaseDate": "2026-05-04",
       "scoreCeiling": 100,
@@ -315,7 +315,7 @@
     {
       "id": "critpt",
       "inEci": false,
-      "models": 171,
+      "models": 172,
       "randomBaseline": 0,
       "releaseDate": "2025-09-30",
       "scoreCeiling": 100,
@@ -387,7 +387,7 @@
     {
       "id": "ebr_bench",
       "inEci": true,
-      "models": 31,
+      "models": 32,
       "randomBaseline": 0,
       "releaseDate": "2026-07-01",
       "scoreCeiling": 100,
@@ -459,7 +459,7 @@
     {
       "id": "frontier_swe",
       "inEci": true,
-      "models": 20,
+      "models": 21,
       "randomBaseline": 0,
       "releaseDate": "2026-09-02",
       "scoreCeiling": 100,
@@ -531,7 +531,7 @@
     {
       "id": "furniture_assembly",
       "inEci": true,
-      "models": 36,
+      "models": 37,
       "randomBaseline": 30,
       "releaseDate": "2026-09-23",
       "scoreCeiling": 100,
@@ -579,7 +579,7 @@
     {
       "id": "gpqa_diamond",
       "inEci": true,
-      "models": 206,
+      "models": 208,
       "randomBaseline": 25,
       "releaseDate": "2023-11-20",
       "scoreCeiling": 100,
@@ -891,7 +891,7 @@
     {
       "id": "proofbench",
       "inEci": true,
-      "models": 89,
+      "models": 90,
       "randomBaseline": 0,
       "releaseDate": "2026-01-30",
       "scoreCeiling": 100,
@@ -939,7 +939,7 @@
     {
       "id": "simpleqa_verified",
       "inEci": true,
-      "models": 105,
+      "models": 107,
       "randomBaseline": 0,
       "releaseDate": "2025-09-09",
       "scoreCeiling": 100,
@@ -1143,7 +1143,7 @@
     {
       "id": "vending_bench_2",
       "inEci": false,
-      "models": 94,
+      "models": 95,
       "randomBaseline": null,
       "releaseDate": "2025-11-18",
       "scoreCeiling": null,
@@ -1179,7 +1179,7 @@
     {
       "id": "webdev_arena_elo",
       "inEci": false,
-      "models": 134,
+      "models": 135,
       "randomBaseline": null,
       "releaseDate": "2024-12-10",
       "scoreCeiling": null,
@@ -1225,7 +1225,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-13T13:54:29.978Z",
+  "generatedAt": "2026-10-14T01:51:20.930Z",
   "models": [
     {
       "benchmarks": {
@@ -6307,7 +6307,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.07,
         "inputPerMTok": 0.2,
-        "outputPerMTok": 0.89448
+        "outputPerMTok": 0.89504
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -8704,7 +8704,7 @@
         "totalB": 403.4
       },
       "pricing": {
-        "cachedInputPerMTok": 0.225,
+        "cachedInputPerMTok": 0.3,
         "inputPerMTok": 0.6,
         "outputPerMTok": 3.6
       },
@@ -36394,8 +36394,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.24,
-        "outputPerMTok": 0.944
+        "inputPerMTok": 0.246,
+        "outputPerMTok": 0.96
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -36546,6 +36546,14 @@
           "score": 54,
           "source": "epoch.ai",
           "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "simpleqa_verified",
+          "score": 42.9,
+          "source": "epoch.ai",
+          "sourceUrl": null,
           "unit": "pct"
         },
         {
@@ -44502,6 +44510,178 @@
         "arc_agi_2": null,
         "eci": null,
         "fiction_live": null,
+        "gpqa_diamond": 96.4,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": 1679.5
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": true,
+        "structuredOutput": true,
+        "toolCall": true
+      },
+      "coding": [
+        {
+          "attribution": "third-party",
+          "league": "webdev_arena_elo",
+          "score": 1679.5,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "elo"
+        }
+      ],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-14T01:51:20.930Z",
+      "id": "google/gemini-4-argon",
+      "knowledgeCutoff": "2026-03",
+      "license": null,
+      "maxOutput": 65536,
+      "modalities": {
+        "input": [
+          "audio",
+          "image",
+          "pdf",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Gemini 4 Argon",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 3,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.1,
+        "inputPerMTok": 2,
+        "outputPerMTok": 10
+      },
+      "provenance": {
+        "benchmarks.gpqa_diamond": "epoch.ai",
+        "benchmarks.webdev_arena_elo": "epoch.ai",
+        "capabilities.promptCaching": "derived",
+        "capabilities.reasoning": "models.dev",
+        "capabilities.structuredOutput": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "coding": "derived",
+        "contextWindow": "models.dev",
+        "knowledgeCutoff": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "models.dev",
+        "pricing.inputPerMTok": "models.dev",
+        "pricing.outputPerMTok": "models.dev",
+        "releaseDate": "epoch.ai",
+        "releaseDatePrecision": "epoch.ai",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-09-30",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "third-party",
+          "league": "apex_agents",
+          "score": 82.2,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "blueprint_bench_2",
+          "score": 54.45,
+          "source": "epoch.ai",
+          "sourceUrl": "https://andonlabs.com/evals/blueprint-bench-2",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 27.14,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_swe",
+          "score": 54.96,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.frontierswe.com/",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "furniture_assembly",
+          "score": 72.5,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "gpqa_diamond",
+          "score": 96.4,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "proofbench",
+          "score": 99,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "simpleqa_verified",
+          "score": 76,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "vending_bench_2",
+          "score": 13718.16,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "usd"
+        },
+        {
+          "attribution": "third-party",
+          "league": "webdev_arena_elo",
+          "score": 1679.5,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "elo"
+        }
+      ],
+      "slug": "google-gemini-4-argon",
+      "trainingComputeFlop": null,
+      "vendorId": "google"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
         "gpqa_diamond": null,
         "swe_bench_pro": null,
         "swe_bench_vendor": null,
@@ -45799,7 +45979,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.049,
         "inputPerMTok": 0.111,
         "outputPerMTok": 0.38
       },
@@ -47907,9 +48087,9 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.015,
-        "inputPerMTok": 0.075,
-        "outputPerMTok": 0.22
+        "cachedInputPerMTok": 0.06,
+        "inputPerMTok": 0.3,
+        "outputPerMTok": 0.9
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -48356,6 +48536,74 @@
       "slug": "kwaipilot-kat-coder-pro-v2-5",
       "trainingComputeFlop": null,
       "vendorId": "kwaipilot"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 128000,
+      "firstSeenAt": "2026-10-14T01:51:20.930Z",
+      "id": "liquid/lfm-2.5-24b-a2b",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "LFM 2.5 24B A2B",
+      "openWeights": null,
+      "params": {
+        "activeB": 2,
+        "confidence": "estimated",
+        "totalB": 24
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.025,
+        "inputPerMTok": 0.05,
+        "outputPerMTok": 0.7
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "openrouter",
+        "maxOutput": "openrouter",
+        "modalities": "openrouter",
+        "name": "derived",
+        "params.activeB": "derived",
+        "params.totalB": "derived",
+        "pricing.cachedInputPerMTok": "openrouter",
+        "pricing.inputPerMTok": "openrouter",
+        "pricing.outputPerMTok": "openrouter",
+        "releaseDate": "vercel-gateway",
+        "releaseDatePrecision": "vercel-gateway",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-13",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "liquid-lfm-2-5-24b-a2b",
+      "trainingComputeFlop": null,
+      "vendorId": "liquid"
     },
     {
       "benchmarks": {
@@ -52011,6 +52259,14 @@
           "score": 78.8,
           "source": "models.dev",
           "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "ebr_bench",
+          "score": 31.43,
+          "source": "epoch.ai",
+          "sourceUrl": null,
           "unit": "pct"
         },
         {
@@ -56326,8 +56582,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.33543,
-        "outputPerMTok": 0.44724
+        "inputPerMTok": 0.33564,
+        "outputPerMTok": 0.44752
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -58135,11 +58391,11 @@
     },
     {
       "benchmarks": {
-        "aime": null,
+        "aime": 98.33,
         "arc_agi_2": null,
         "eci": null,
         "fiction_live": null,
-        "gpqa_diamond": null,
+        "gpqa_diamond": 88.07,
         "swe_bench_pro": null,
         "swe_bench_vendor": null,
         "swe_bench_verified": null,
@@ -58182,6 +58438,8 @@
         "outputPerMTok": 2.09
       },
       "provenance": {
+        "benchmarks.aime": "epoch.ai",
+        "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "contextWindow": "openrouter",
         "maxOutput": "openrouter",
@@ -58191,8 +58449,8 @@
         "pricing.cachedInputPerMTok": "litellm",
         "pricing.inputPerMTok": "litellm",
         "pricing.outputPerMTok": "litellm",
-        "releaseDate": "openrouter",
-        "releaseDatePrecision": "openrouter",
+        "releaseDate": "epoch.ai",
+        "releaseDatePrecision": "epoch.ai",
         "scores": "derived",
         "vendorId": "derived"
       },
@@ -58200,6 +58458,22 @@
       "releaseDatePrecision": "day",
       "retiredAt": null,
       "scores": [
+        {
+          "attribution": "third-party",
+          "league": "aime",
+          "score": 98.33,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "gpqa_diamond",
+          "score": 88.07,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "pct"
+        },
         {
           "attribution": "third-party",
           "league": "simpleqa_verified",
@@ -63759,7 +64033,7 @@
         "webdev_arena_elo": null
       },
       "capabilities": {
-        "promptCaching": null,
+        "promptCaching": true,
         "reasoning": true,
         "structuredOutput": null,
         "toolCall": true
@@ -63770,7 +64044,7 @@
       "id": "moonshotai/kimi-k2.8-preview",
       "knowledgeCutoff": null,
       "license": null,
-      "maxOutput": null,
+      "maxOutput": 1000000,
       "modalities": {
         "input": [
           "image",
@@ -63785,21 +64059,29 @@
       "openWeights": false,
       "params": {
         "activeB": null,
-        "confidence": "unknown",
+        "confidence": "estimated",
+        "sizeTier": 2,
+        "sizeTierBasis": "price",
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": null,
-        "inputPerMTok": null,
-        "outputPerMTok": null
+        "cachedInputPerMTok": 0.25,
+        "inputPerMTok": 1,
+        "outputPerMTok": 4
       },
       "provenance": {
+        "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
+        "maxOutput": "litellm",
         "modalities": "models.dev",
         "name": "models.dev",
         "openWeights": "models.dev",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "litellm",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
         "releaseDate": "models.dev",
         "releaseDatePrecision": "models.dev",
         "vendorId": "derived"
@@ -99769,7 +100051,7 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.09,
+        "cachedInputPerMTok": 0.075,
         "inputPerMTok": 0.37,
         "outputPerMTok": 1.25
       },
@@ -99780,9 +100062,9 @@
         "modalities": "openrouter",
         "name": "derived",
         "params.sizeTier": "derived",
-        "pricing.cachedInputPerMTok": "openrouter",
-        "pricing.inputPerMTok": "openrouter",
-        "pricing.outputPerMTok": "openrouter",
+        "pricing.cachedInputPerMTok": "litellm",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
         "vendorId": "derived"
@@ -100115,43 +100397,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
-      "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 328 行；去重后 418 个模型实体；合规拦截 1 个文件",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 328 行；去重后 419 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
       "note": "请求 197 个开源模型，成功 193，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
-      "note": "4069 条（对话类 3140 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "note": "4083 条（对话类 3154 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
       "note": "7/7 个分榜，共 325 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
-      "note": "models.json 546 条；api.json 228 provider / 8781 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "note": "models.json 547 条；api.json 228 provider / 8814 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
-      "note": "461 条；已剔除 artificial_analysis 284 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "note": "462 条；已剔除 artificial_analysis 285 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -100160,8 +100442,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-13T13:54:29.978Z",
-      "note": "459 条（language 311 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "note": "464 条（language 313 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
@@ -100415,6 +100697,16 @@
       "motif": "shutter",
       "name": "Kwaipilot",
       "nameZh": "快手"
+    },
+    {
+      "accentColor": "#0f6fff",
+      "continent": "west",
+      "country": "US",
+      "homepage": "https://liquid.ai",
+      "id": "liquid",
+      "motif": "droplet",
+      "name": "Liquid",
+      "nameZh": "Liquid AI"
     },
     {
       "accentColor": "#7c8da6",
