@@ -39,7 +39,7 @@
     {
       "id": "ale_bench",
       "inEci": false,
-      "models": 148,
+      "models": 152,
       "randomBaseline": null,
       "releaseDate": "2025-06-10",
       "scoreCeiling": null,
@@ -63,7 +63,7 @@
     {
       "id": "apex_agents",
       "inEci": true,
-      "models": 61,
+      "models": 62,
       "randomBaseline": 0,
       "releaseDate": "2026-01-21",
       "scoreCeiling": 100,
@@ -75,7 +75,7 @@
     {
       "id": "arc_agi",
       "inEci": true,
-      "models": 113,
+      "models": 115,
       "randomBaseline": 0,
       "releaseDate": "2019-11-05",
       "scoreCeiling": 100,
@@ -87,7 +87,7 @@
     {
       "id": "arc_agi_2",
       "inEci": true,
-      "models": 114,
+      "models": 116,
       "randomBaseline": 0,
       "releaseDate": "2025-03-24",
       "scoreCeiling": 100,
@@ -147,7 +147,7 @@
     {
       "id": "arena_search",
       "inEci": false,
-      "models": 7,
+      "models": 13,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -219,7 +219,7 @@
     {
       "id": "blueprint_bench_2",
       "inEci": false,
-      "models": 36,
+      "models": 38,
       "randomBaseline": 0,
       "releaseDate": "2026-05-04",
       "scoreCeiling": 100,
@@ -315,7 +315,7 @@
     {
       "id": "critpt",
       "inEci": false,
-      "models": 172,
+      "models": 177,
       "randomBaseline": 0,
       "releaseDate": "2025-09-30",
       "scoreCeiling": 100,
@@ -327,7 +327,7 @@
     {
       "id": "cursorbench",
       "inEci": false,
-      "models": 14,
+      "models": 16,
       "randomBaseline": 0,
       "releaseDate": "2026-03-11",
       "scoreCeiling": 100,
@@ -447,7 +447,7 @@
     {
       "id": "frontier_code",
       "inEci": true,
-      "models": 45,
+      "models": 49,
       "randomBaseline": 0,
       "releaseDate": "2026-06-08",
       "scoreCeiling": 100,
@@ -459,7 +459,7 @@
     {
       "id": "frontier_swe",
       "inEci": true,
-      "models": 21,
+      "models": 23,
       "randomBaseline": 0,
       "releaseDate": "2026-09-02",
       "scoreCeiling": 100,
@@ -531,7 +531,7 @@
     {
       "id": "furniture_assembly",
       "inEci": true,
-      "models": 37,
+      "models": 38,
       "randomBaseline": 30,
       "releaseDate": "2026-09-23",
       "scoreCeiling": 100,
@@ -627,7 +627,7 @@
     {
       "id": "hle",
       "inEci": true,
-      "models": 59,
+      "models": 61,
       "randomBaseline": 4.8,
       "releaseDate": "2025-01-23",
       "scoreCeiling": 100,
@@ -891,7 +891,7 @@
     {
       "id": "proofbench",
       "inEci": true,
-      "models": 90,
+      "models": 95,
       "randomBaseline": 0,
       "releaseDate": "2026-01-30",
       "scoreCeiling": 100,
@@ -903,7 +903,7 @@
     {
       "id": "rli",
       "inEci": true,
-      "models": 21,
+      "models": 22,
       "randomBaseline": 0,
       "releaseDate": "2025-10-29",
       "scoreCeiling": 100,
@@ -963,7 +963,7 @@
     {
       "id": "surface_evolver_bench",
       "inEci": true,
-      "models": 32,
+      "models": 33,
       "randomBaseline": 0,
       "releaseDate": "2026-06-19",
       "scoreCeiling": 100,
@@ -1143,7 +1143,7 @@
     {
       "id": "vending_bench_2",
       "inEci": false,
-      "models": 95,
+      "models": 99,
       "randomBaseline": null,
       "releaseDate": "2025-11-18",
       "scoreCeiling": null,
@@ -1225,7 +1225,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-14T01:51:20.930Z",
+  "generatedAt": "2026-10-14T13:45:17.239Z",
   "models": [
     {
       "benchmarks": {
@@ -10281,7 +10281,7 @@
         {
           "attribution": "third-party",
           "league": "terminal_bench_2_0",
-          "score": 23.03,
+          "score": 24.63,
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
@@ -10446,7 +10446,7 @@
         {
           "attribution": "third-party",
           "league": "terminal_bench_2_0",
-          "score": 23.03,
+          "score": 24.63,
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
@@ -12641,6 +12641,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1261.1,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
           "league": "chess_puzzles",
           "score": 29,
           "source": "epoch.ai",
@@ -12916,6 +12924,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1261.1,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
           "league": "chess_puzzles",
           "score": 40,
           "source": "epoch.ai",
@@ -13180,6 +13196,14 @@
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1261.1,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
         },
         {
           "attribution": "third-party",
@@ -15987,7 +16011,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1230.2,
+          "score": 1229.1,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -16267,7 +16291,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 15.53,
+          "score": 15.59,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -16466,6 +16490,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1245.8,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
         },
         {
           "attribution": "third-party",
@@ -17373,11 +17405,19 @@
           "unit": "pct"
         },
         {
-          "attribution": "vendor-self-reported",
+          "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 48.4,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "frontier_code",
-          "score": 46.4,
-          "source": "models.dev",
-          "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
+          "score": 46.36,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
           "unit": "pct"
         }
       ],
@@ -17448,6 +17488,38 @@
         },
         {
           "attribution": "third-party",
+          "league": "apex_agents",
+          "score": 56.1,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "blueprint_bench_2",
+          "score": 32.97,
+          "source": "epoch.ai",
+          "sourceUrl": "https://andonlabs.com/evals/blueprint-bench-2",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 22.57,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 48.4,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "ebr_bench",
           "score": 43.81,
           "source": "epoch.ai",
@@ -17455,11 +17527,19 @@
           "unit": "pct"
         },
         {
-          "attribution": "vendor-self-reported",
+          "attribution": "third-party",
           "league": "frontier_code",
-          "score": 46.4,
-          "source": "models.dev",
-          "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
+          "score": 46.36,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_swe",
+          "score": 43.77,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.frontierswe.com/",
           "unit": "pct"
         },
         {
@@ -17496,6 +17576,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "hle",
+          "score": 30.12,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "livebench_agentic_coding",
           "score": 51.36,
           "source": "livebench",
@@ -17520,6 +17608,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "proofbench",
+          "score": 89,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "simpleqa_verified",
           "score": 23.8,
           "source": "epoch.ai",
@@ -17533,6 +17629,14 @@
           "source": "models.dev",
           "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "vending_bench_2",
+          "score": 3602.46,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "usd"
         }
       ],
       "slug": "anthropic-claude-haiku-5-5",
@@ -19476,7 +19580,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 6.52,
+          "score": 6.51,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -19978,7 +20082,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 6.52,
+          "score": 6.51,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -20758,7 +20862,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1233.3,
+          "score": 1230.1,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -21260,7 +21364,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1204.3,
+          "score": 1204.1,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -21840,6 +21944,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1241.6,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
           "league": "balrog",
           "score": 63.4,
           "source": "epoch.ai",
@@ -22292,6 +22404,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "arena_search",
+          "score": 1212.8,
+          "source": "lmarena",
+          "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
           "league": "blueprint_bench_2",
           "score": 51.19,
           "source": "epoch.ai",
@@ -22440,6 +22560,14 @@
           "score": 100,
           "source": "epoch.ai",
           "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "rli",
+          "score": 21.25,
+          "source": "epoch.ai",
+          "sourceUrl": null,
           "unit": "pct"
         },
         {
@@ -25225,6 +25353,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "blueprint_bench_2",
+          "score": 39.26,
+          "source": "epoch.ai",
+          "sourceUrl": "https://andonlabs.com/evals/blueprint-bench-2",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "critpt",
           "score": 31.43,
           "source": "epoch.ai",
@@ -25305,6 +25441,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "hle",
+          "score": 46.12,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "livebench_agentic_coding",
           "score": 56.31,
           "source": "livebench",
@@ -25353,6 +25497,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "vending_bench_2",
+          "score": 11165.28,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "usd"
+        },
+        {
+          "attribution": "third-party",
           "league": "webdev_arena_elo",
           "score": 1786.26,
           "source": "epoch.ai",
@@ -25362,7 +25514,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 20,
+          "score": 19.94,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -36313,7 +36465,7 @@
     {
       "benchmarks": {
         "aime": 98.33,
-        "arc_agi_2": null,
+        "arc_agi_2": 72.92,
         "eci": 154.9,
         "fiction_live": null,
         "gpqa_diamond": 89.84,
@@ -36351,6 +36503,14 @@
           "score": 64,
           "source": "models.dev",
           "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 43.87,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
           "unit": "pct"
         },
         {
@@ -36394,11 +36554,12 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.246,
-        "outputPerMTok": 0.96
+        "inputPerMTok": 0.24,
+        "outputPerMTok": 0.944
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
+        "benchmarks.arc_agi_2": "epoch.ai",
         "benchmarks.eci": "epoch.ai",
         "benchmarks.gpqa_diamond": "epoch.ai",
         "benchmarks.webdev_arena_elo": "epoch.ai",
@@ -36454,6 +36615,22 @@
         },
         {
           "attribution": "third-party",
+          "league": "arc_agi",
+          "score": 94.5,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi_2",
+          "score": 72.92,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "critpt",
           "score": 14.29,
           "source": "epoch.ai",
@@ -36483,6 +36660,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "index"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 43.87,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
         },
         {
           "attribution": "third-party",
@@ -44525,6 +44710,22 @@
       "coding": [
         {
           "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 52.9,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 47.55,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "webdev_arena_elo",
           "score": 1679.5,
           "source": "epoch.ai",
@@ -44594,7 +44795,7 @@
         {
           "attribution": "third-party",
           "league": "apex_agents",
-          "score": 82.2,
+          "score": 82.4,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -44613,6 +44814,22 @@
           "score": 27.14,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 52.9,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 47.55,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
           "unit": "pct"
         },
         {
@@ -45979,7 +46196,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.049,
+        "cachedInputPerMTok": 0.05,
         "inputPerMTok": 0.111,
         "outputPerMTok": 0.38
       },
@@ -51785,6 +52002,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1688.35,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
           "league": "webdev_arena_elo",
           "score": 1651.94,
           "source": "epoch.ai",
@@ -51861,6 +52086,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1688.35,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
           "league": "apex_agents",
           "score": 57.8,
           "source": "epoch.ai",
@@ -51914,6 +52147,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "index"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_swe",
+          "score": 25.8,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.frontierswe.com/",
+          "unit": "pct"
         },
         {
           "attribution": "third-party",
@@ -52143,12 +52384,38 @@
         "pricing.outputPerMTok": "openrouter",
         "releaseDate": "openrouter",
         "releaseDatePrecision": "openrouter",
+        "scores": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2026-10-12",
       "releaseDatePrecision": "day",
       "retiredAt": null,
-      "scores": [],
+      "scores": [
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 28.29,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "proofbench",
+          "score": 84,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "vending_bench_2",
+          "score": 9432.18,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "usd"
+        }
+      ],
       "slug": "meta-muse-wonder",
       "trainingComputeFlop": null,
       "vendorId": "meta"
@@ -52254,6 +52521,14 @@
       "retiredAt": null,
       "scores": [
         {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 28.29,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
           "attribution": "vendor-self-reported",
           "league": "deepswe",
           "score": 78.8,
@@ -52267,6 +52542,14 @@
           "score": 31.43,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "proofbench",
+          "score": 84,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
           "unit": "pct"
         },
         {
@@ -52284,6 +52567,14 @@
           "source": "models.dev",
           "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "vending_bench_2",
+          "score": 9432.18,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "usd"
         }
       ],
       "slug": "meta-muse-wonder-1-0",
@@ -58313,6 +58604,22 @@
           "source": "livebench",
           "sourceUrl": "https://livebench.ai/#/?release=2026-06-25",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 39.43,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1213.15,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
         }
       ],
       "contextWindow": 1048576,
@@ -58370,6 +58677,30 @@
       "scores": [
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1213.15,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 10.57,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 39.43,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "livebench_agentic_coding",
           "score": 57.17,
           "source": "livebench",
@@ -58382,6 +58713,14 @@
           "score": 77.16,
           "source": "livebench",
           "sourceUrl": "https://livebench.ai/#/?release=2026-06-25",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "proofbench",
+          "score": 10,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
           "unit": "pct"
         }
       ],
@@ -58407,7 +58746,24 @@
         "structuredOutput": null,
         "toolCall": null
       },
-      "coding": [],
+      "coding": [
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 39.43,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1213.15,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        }
+      ],
       "contextWindow": 1048576,
       "firstSeenAt": "2026-10-07T02:03:24.986Z",
       "id": "mistral/mistral-large-4-0",
@@ -58441,6 +58797,7 @@
         "benchmarks.aime": "epoch.ai",
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
+        "coding": "derived",
         "contextWindow": "openrouter",
         "maxOutput": "openrouter",
         "modalities": "openrouter",
@@ -58468,6 +58825,38 @@
         },
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 1213.15,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 10.57,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontier_code",
+          "score": 39.43,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "furniture_assembly",
+          "score": 20.83,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "gpqa_diamond",
           "score": 88.07,
           "source": "epoch.ai",
@@ -58476,10 +58865,26 @@
         },
         {
           "attribution": "third-party",
+          "league": "proofbench",
+          "score": 10,
+          "source": "epoch.ai",
+          "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "simpleqa_verified",
           "score": 20,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "surface_evolver_bench",
+          "score": 28.13,
+          "source": "epoch.ai",
+          "sourceUrl": "https://yhenon.github.io/surface-evolver-llm-eval/",
           "unit": "pct"
         }
       ],
@@ -82166,6 +82571,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 2743.75,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
           "league": "webdev_arena_elo",
           "score": 1758.72,
           "source": "epoch.ai",
@@ -82240,6 +82653,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 2743.75,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
         },
         {
           "attribution": "third-party",
@@ -82388,7 +82809,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 35.47,
+          "score": 38.25,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -83216,7 +83637,7 @@
         "totalB": 114.66
       },
       "pricing": {
-        "cachedInputPerMTok": 0.0462,
+        "cachedInputPerMTok": 0.032,
         "inputPerMTok": 0.15,
         "outputPerMTok": 0.6
       },
@@ -92787,7 +93208,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1204.1,
+          "score": 1204.8,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -92868,7 +93289,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1204.1,
+          "score": 1204.8,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -93693,7 +94114,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1164.8,
+          "score": 1165.8,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -94041,7 +94462,7 @@
         {
           "attribution": "third-party",
           "league": "arena_search",
-          "score": 1212.6,
+          "score": 1215.9,
           "source": "lmarena",
           "sourceUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
           "unit": "elo"
@@ -94666,7 +95087,7 @@
     {
       "benchmarks": {
         "aime": 98.06,
-        "arc_agi_2": null,
+        "arc_agi_2": 61.39,
         "eci": 153.53,
         "fiction_live": null,
         "gpqa_diamond": 92.74,
@@ -94771,6 +95192,7 @@
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
+        "benchmarks.arc_agi_2": "epoch.ai",
         "benchmarks.eci": "epoch.ai",
         "benchmarks.gpqa_diamond": "epoch.ai",
         "benchmarks.webdev_arena_elo": "epoch.ai",
@@ -94812,6 +95234,22 @@
           "score": 54.6,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi",
+          "score": 90.17,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi_2",
+          "score": 61.39,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
         },
         {
@@ -100397,43 +100835,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
-      "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 328 行；去重后 419 个模型实体；合规拦截 1 个文件",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
+      "note": "ZIP 89 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 78 个；训练算力 329 行；去重后 419 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
       "note": "请求 197 个开源模型，成功 193，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
       "note": "4083 条（对话类 3154 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
-      "note": "7/7 个分榜，共 325 条 Arena 分",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
+      "note": "7/7 个分榜，共 333 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
-      "note": "models.json 547 条；api.json 228 provider / 8814 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
+      "note": "models.json 547 条；api.json 229 provider / 8831 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
-      "note": "462 条；已剔除 artificial_analysis 285 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
+      "note": "462 条；已剔除 artificial_analysis 284 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -100442,7 +100880,7 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-14T01:51:20.930Z",
+      "fetchedAt": "2026-10-14T13:45:17.239Z",
       "note": "464 条（language 313 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
