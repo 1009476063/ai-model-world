@@ -363,7 +363,7 @@
     {
       "id": "deepswe",
       "inEci": true,
-      "models": 44,
+      "models": 45,
       "randomBaseline": 0,
       "releaseDate": "2026-05-26",
       "scoreCeiling": 100,
@@ -387,7 +387,7 @@
     {
       "id": "ebr_bench",
       "inEci": true,
-      "models": 32,
+      "models": 33,
       "randomBaseline": 0,
       "releaseDate": "2026-07-01",
       "scoreCeiling": 100,
@@ -507,7 +507,7 @@
     {
       "id": "frontiermath_tier_4_v2",
       "inEci": true,
-      "models": 81,
+      "models": 83,
       "randomBaseline": 0,
       "releaseDate": "2026-06-12",
       "scoreCeiling": 100,
@@ -519,7 +519,7 @@
     {
       "id": "frontiermath_tiers_1_3_v2",
       "inEci": true,
-      "models": 109,
+      "models": 111,
       "randomBaseline": 0,
       "releaseDate": "2026-06-12",
       "scoreCeiling": 100,
@@ -531,7 +531,7 @@
     {
       "id": "furniture_assembly",
       "inEci": true,
-      "models": 38,
+      "models": 39,
       "randomBaseline": 30,
       "releaseDate": "2026-09-23",
       "scoreCeiling": 100,
@@ -795,7 +795,7 @@
     {
       "id": "mystery_game_puzzles",
       "inEci": true,
-      "models": 102,
+      "models": 103,
       "randomBaseline": 9.22,
       "releaseDate": "2026-07-30",
       "scoreCeiling": 100,
@@ -1011,7 +1011,7 @@
     {
       "id": "swe_atlas_codebase_qna",
       "inEci": false,
-      "models": 12,
+      "models": 13,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1119,7 +1119,7 @@
     {
       "id": "terminal_bench",
       "inEci": false,
-      "models": 59,
+      "models": 60,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1261,7 +1261,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-15T13:46:44.741Z",
+  "generatedAt": "2026-10-16T01:52:02.674Z",
   "models": [
     {
       "benchmarks": {
@@ -6343,7 +6343,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.07,
         "inputPerMTok": 0.2,
-        "outputPerMTok": 0.8956
+        "outputPerMTok": 0.89664
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -7133,7 +7133,7 @@
         "webdev_arena_elo": null
       },
       "capabilities": {
-        "promptCaching": true,
+        "promptCaching": false,
         "reasoning": false,
         "structuredOutput": null,
         "toolCall": true
@@ -7178,7 +7178,7 @@
         "totalB": 81.32
       },
       "pricing": {
-        "cachedInputPerMTok": 0.07,
+        "cachedInputPerMTok": null,
         "inputPerMTok": 0.5,
         "outputPerMTok": 2
       },
@@ -7196,7 +7196,6 @@
         "openWeights": "models.dev",
         "params.activeB": "derived",
         "params.totalB": "huggingface",
-        "pricing.cachedInputPerMTok": "openrouter",
         "pricing.inputPerMTok": "models.dev",
         "pricing.outputPerMTok": "models.dev",
         "releaseDate": "models.dev",
@@ -7486,7 +7485,7 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.11,
-        "inputPerMTok": 0.287,
+        "inputPerMTok": 0.21,
         "outputPerMTok": 1.5
       },
       "provenance": {
@@ -8052,14 +8051,14 @@
       "params": {
         "activeB": null,
         "confidence": "estimated",
-        "sizeTier": 1,
+        "sizeTier": 2,
         "sizeTierBasis": "price",
         "totalB": null
       },
       "pricing": {
         "cachedInputPerMTok": 0.11,
-        "inputPerMTok": 0.2,
-        "outputPerMTok": 0.88
+        "inputPerMTok": 0.26,
+        "outputPerMTok": 1.15
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -8069,8 +8068,8 @@
         "name": "derived",
         "params.sizeTier": "derived",
         "pricing.cachedInputPerMTok": "vercel-gateway",
-        "pricing.inputPerMTok": "vercel-gateway",
-        "pricing.outputPerMTok": "vercel-gateway",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
         "releaseDate": "vercel-gateway",
         "releaseDatePrecision": "vercel-gateway",
         "vendorId": "derived"
@@ -22725,6 +22724,77 @@
     },
     {
       "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 1000000,
+      "firstSeenAt": "2026-10-16T01:52:02.674Z",
+      "id": "anthropic/claude-opus-5.5-fast",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 128000,
+      "modalities": {
+        "input": [
+          "image",
+          "pdf",
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Claude Opus 5.5 Fast",
+      "openWeights": null,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 4,
+        "sizeTierBasis": "price+naming",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.4,
+        "inputPerMTok": 8,
+        "outputPerMTok": 40
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "vercel-gateway",
+        "maxOutput": "vercel-gateway",
+        "modalities": "vercel-gateway",
+        "name": "derived",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "litellm",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
+        "releaseDate": "vercel-gateway",
+        "releaseDatePrecision": "vercel-gateway",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-09-22",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "anthropic-claude-opus-5-5-fast",
+      "trainingComputeFlop": null,
+      "vendorId": "anthropic"
+    },
+    {
+      "benchmarks": {
         "aime": 71.11,
         "arc_agi_2": 1.27,
         "eci": 141.67,
@@ -22815,12 +22885,13 @@
         "pricing.outputPerMTok": "litellm",
         "releaseDate": "epoch.ai",
         "releaseDatePrecision": "epoch.ai",
+        "retiredAt": "derived",
         "scores": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2025-05-22",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-16",
       "scores": [
         {
           "attribution": "third-party",
@@ -29906,7 +29977,7 @@
         "totalB": 35.95
       },
       "pricing": {
-        "cachedInputPerMTok": 0.03,
+        "cachedInputPerMTok": 0.01,
         "inputPerMTok": 0.1,
         "outputPerMTok": 0.4
       },
@@ -30004,7 +30075,7 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.02,
-        "inputPerMTok": 0.28,
+        "inputPerMTok": 0.2574,
         "outputPerMTok": 0.6
       },
       "provenance": {
@@ -36694,8 +36765,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.23184,
-        "outputPerMTok": 0.944
+        "inputPerMTok": 0.24,
+        "outputPerMTok": 0.96
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -44992,6 +45063,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "ebr_bench",
+          "score": 64.76,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "eci",
           "score": 164.56,
           "source": "epoch.ai",
@@ -46485,7 +46564,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.049,
         "inputPerMTok": 0.111,
         "outputPerMTok": 0.38
       },
@@ -52640,6 +52719,133 @@
       },
       "capabilities": {
         "promptCaching": true,
+        "reasoning": true,
+        "structuredOutput": true,
+        "toolCall": true
+      },
+      "coding": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 76.4,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 60,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_atlas_codebase_qna",
+          "score": 58,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        }
+      ],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-16T01:52:02.674Z",
+      "id": "meta/muse-spark-open",
+      "knowledgeCutoff": "2026-01-04",
+      "license": null,
+      "maxOutput": 131072,
+      "modalities": {
+        "input": [
+          "audio",
+          "image",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Muse Spark Open",
+      "openWeights": true,
+      "params": {
+        "activeB": null,
+        "confidence": "exact",
+        "totalB": 821.91
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.15,
+        "inputPerMTok": 1.25,
+        "outputPerMTok": 4.25
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "capabilities.reasoning": "models.dev",
+        "capabilities.structuredOutput": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "coding": "derived",
+        "contextWindow": "models.dev",
+        "knowledgeCutoff": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "params.totalB": "huggingface",
+        "pricing.cachedInputPerMTok": "models.dev",
+        "pricing.inputPerMTok": "models.dev",
+        "pricing.outputPerMTok": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-15",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 60,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_atlas_codebase_qna",
+          "score": 58,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 76.4,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "unit": "pct"
+        }
+      ],
+      "slug": "meta-muse-spark-open",
+      "trainingComputeFlop": null,
+      "vendorId": "meta"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
         "reasoning": null,
         "structuredOutput": null,
         "toolCall": null
@@ -52854,6 +53060,38 @@
           "attribution": "third-party",
           "league": "ebr_bench",
           "score": 31.43,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontiermath_tier_4_v2",
+          "score": 70.73,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontiermath_tiers_1_3_v2",
+          "score": 82.11,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "furniture_assembly",
+          "score": 54.17,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "mystery_game_puzzles",
+          "score": 51,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -57187,8 +57425,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.33585,
-        "outputPerMTok": 0.4478
+        "inputPerMTok": 0.33624,
+        "outputPerMTok": 0.44832
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -59168,6 +59406,22 @@
           "score": 39.43,
           "source": "epoch.ai",
           "sourceUrl": "https://cognition.com/frontiercode",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontiermath_tier_4_v2",
+          "score": 26.83,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "frontiermath_tiers_1_3_v2",
+          "score": 58.6,
+          "source": "epoch.ai",
+          "sourceUrl": null,
           "unit": "pct"
         },
         {
@@ -67373,6 +67627,77 @@
         }
       ],
       "slug": "nvidia-nemotron-3-5-lightning",
+      "trainingComputeFlop": null,
+      "vendorId": "nvidia"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-16T01:52:02.674Z",
+      "id": "nvidia/nemotron-3.5-super-vl",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 235929,
+      "modalities": {
+        "input": [
+          "image",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Nemotron 3.5 Super VL",
+      "openWeights": null,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 1,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.02,
+        "inputPerMTok": 0.15,
+        "outputPerMTok": 0.5
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "openrouter",
+        "maxOutput": "openrouter",
+        "modalities": "openrouter",
+        "name": "derived",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "openrouter",
+        "pricing.inputPerMTok": "openrouter",
+        "pricing.outputPerMTok": "openrouter",
+        "releaseDate": "vercel-gateway",
+        "releaseDatePrecision": "vercel-gateway",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-15",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "nvidia-nemotron-3-5-super-vl",
       "trainingComputeFlop": null,
       "vendorId": "nvidia"
     },
@@ -101364,43 +101689,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
       "note": "ZIP 92 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 81 个；训练算力 329 行；去重后 421 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
-      "note": "请求 197 个开源模型，成功 193，失败 4",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
+      "note": "请求 198 个开源模型，成功 194，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
-      "note": "4124 条（对话类 3156 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
+      "note": "4189 条（对话类 3208 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
       "note": "7/7 个分榜，共 333 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
-      "note": "models.json 549 条；api.json 230 provider / 8873 条；benchmarks[] 1116 条，已拦截 AA 血缘 178 条，非编程口径跳过 571 条",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
+      "note": "models.json 550 条；api.json 230 provider / 8885 条；benchmarks[] 1136 条，已拦截 AA 血缘 181 条，非编程口径跳过 585 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
-      "note": "461 条；已剔除 artificial_analysis 285 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
+      "note": "465 条；已剔除 artificial_analysis 287 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -101409,8 +101734,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-15T13:46:44.741Z",
-      "note": "465 条（language 313 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-16T01:52:02.674Z",
+      "note": "470 条（language 315 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
