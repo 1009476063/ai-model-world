@@ -33,11 +33,17 @@ export function VendorCrest({
     '+': 'rgb(0 0 0 / 0.55)',
   };
 
-  const cells: { x: number; y: number; fill: string }[] = [];
+  // 每种颜色一条 path，同一行连续的同色格子合成一段。逐格一个 <rect> 时一枚家徽约 4 KB，
+  // 时间线页有六百多枚，整页 HTML 超过了 B 站 Toy 入口文件 1 MB 的上限。
+  const paths = new Map<string, string>();
   grid.forEach((row, y) => {
-    for (let x = 0; x < row.length; x++) {
-      const fill = colors[row[x]];
-      if (fill) cells.push({ x, y, fill });
+    for (let x = 0; x < row.length; ) {
+      const ch = row[x];
+      let end = x + 1;
+      while (end < row.length && row[end] === ch) end++;
+      const fill = colors[ch];
+      if (fill) paths.set(fill, `${paths.get(fill) ?? ''}M${x} ${y}h${end - x}v1h-${end - x}z`);
+      x = end;
     }
   });
 
@@ -52,8 +58,8 @@ export function VendorCrest({
       aria-label={title}
     >
       {title && <title>{title}</title>}
-      {cells.map((c, i) => (
-        <rect key={i} x={c.x} y={c.y} width={1} height={1} fill={c.fill} />
+      {[...paths].map(([fill, d]) => (
+        <path key={fill} d={d} fill={fill} />
       ))}
     </svg>
   );

@@ -47,6 +47,12 @@
  * 是错的）。所以还要在捕获阶段拦住点击，自己把 URL 算对再跳，绕开客户端路由。
  * 全局搜索用的是 `router.push`，拦不到点击，所以 `history.pushState` 也一并接管。
  *
+ * ## 5. 大页面的内嵌数据挪到外部文件
+ *
+ * 2026-10-14 起平台拒收解压后超过 1 MB 的 `index.html`（「请将内联的脚本、样式或图片拆成独立文件」）。
+ * 页面里最大的一块是 Next 用来水合的 `self.__next_f.push(...)` 内联数据，首页约 1.3 MB。
+ * 超过 512 KB 的页面把它整体挪进同目录的 `*.flight.js`；打完包仍有 HTML 超过 1 MB 就直接报错。
+ *
  * ---
  *
  * 发布前必须跑 `npm run toy:verify`，它会把包挂到与线上同构的版本化路径下，
@@ -104,6 +110,35 @@ var push=history.pushState.bind(history);history.pushState=function(s,t,url){if(
 var f=window.fetch;window.fetch=function(i){var u=typeof i==="string"?i:i&&i.url;if(typeof u==="string"&&u.indexOf(B)===0)return Promise.resolve(new Response("",{status:404}));return f.apply(this,arguments)}})()</script>`;
 }
 
+/** 平台对 HTML 解压后大小的上限 */
+const HTML_LIMIT = 1024 * 1024;
+/** 超过这个大小的页面才把内嵌数据挪出去，小页面保持原样，免得平白多出几百个文件 */
+const INLINE_BUDGET = 512 * 1024;
+
+const FLIGHT_SCRIPT = /<script>(\(?self\.__next_f[\s\S]*?)<\/script>/g;
+
+/**
+ * 把 `self.__next_f.push(...)` 这批内联脚本按原顺序合并成同目录下的一个外部文件，
+ * 在第一段的位置换成一个同步 `<script src>`。同步脚本会阻塞解析、按文档顺序执行，
+ * 所以与原来逐段内联执行的时序一致。src 相对包根写，由页面里的 `<base>` 统一解析。
+ */
+function externalizeFlight(html: string, rel: string): { html: string; js: string; file: string } | null {
+  const parts: string[] = [];
+  let first = -1;
+  const stripped = html.replace(FLIGHT_SCRIPT, (_m, body: string, offset: number) => {
+    if (first < 0) first = offset;
+    parts.push(body);
+    return first === offset ? '\u0000FLIGHT\u0000' : '';
+  });
+  if (parts.length === 0) return null;
+  const file = rel.replace(/\.html$/, '.flight.js');
+  return {
+    html: stripped.replace('\u0000FLIGHT\u0000', `<script src="${file}"></script>`),
+    js: `${parts.join(';\n')};\n`,
+    file,
+  };
+}
+
 function walk(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
@@ -133,6 +168,7 @@ function main(): void {
   let css = 0;
   let js = 0;
   let links = 0;
+  let flights = 0;
 
   for (const f of files) {
     if (f.endsWith('.txt')) continue;
@@ -156,6 +192,14 @@ function main(): void {
       const up = depth === 0 ? './' : '../'.repeat(depth);
       text = text.replace('<head>', `<head><base href="${up}"/>${boot}`);
       text = text.replace('</head>', `${shim(BASE)}</head>`);
+      if (Buffer.byteLength(text) > INLINE_BUDGET) {
+        const out = externalizeFlight(text, rel);
+        if (out) {
+          writeFileSync(join(OUT, out.file), out.js);
+          text = out.html;
+          flights += 1;
+        }
+      }
       html += 1;
     } else if (f.endsWith('.css')) {
       if (!text.includes(BASE)) continue;
@@ -180,6 +224,11 @@ function main(): void {
   const total = kept.reduce((n, f) => n + statSync(f).size, 0);
   console.log(`删除预取负载 ${dropped} 个（${(droppedBytes / 1048576).toFixed(0)} MB）`);
   console.log(`剥前缀：${html} 个 HTML（补 ${links} 条目录链接）、${js} 个 JS、${css} 个 CSS`);
+  console.log(`内嵌数据外置：${flights} 个页面`);
+  const over = kept.filter((f) => f.endsWith('.html') && statSync(f).size > HTML_LIMIT);
+  if (over.length > 0) {
+    throw new Error(`这些 HTML 仍超过平台 1 MB 上限：${over.map((f) => f.slice(OUT.length + 1)).join('、')}`);
+  }
   console.log(`产出 ${OUT}：${kept.length} 个文件，${(total / 1048576).toFixed(0)} MB，内容指纹 ${fingerprint}`);
 }
 

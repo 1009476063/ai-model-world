@@ -34,6 +34,9 @@ function Bar({
   const h = compact ? 7 : 9;
   const gap = 2;
   const total = SEGMENTS * (w + gap) - gap;
+  // 每格一个 <rect> 时首页光这些格子就有两百多 KB，合成 path 是为了守住 B 站 Toy 入口文件 1 MB 的上限
+  const cells = (from: number, to: number) =>
+    Array.from({ length: to - from }, (_, k) => `M${(from + k) * (w + gap)} 0h${w}v${h}h-${w}z`).join('');
 
   if (fill == null) {
     return (
@@ -45,18 +48,7 @@ function Bar({
         className="shrink-0"
         aria-hidden
       >
-        {Array.from({ length: SEGMENTS }, (_, i) => (
-          <rect
-            key={i}
-            x={i * (w + gap)}
-            y={0}
-            width={w}
-            height={h}
-            fill="none"
-            stroke="rgb(255 255 255 / 0.16)"
-            strokeWidth={1}
-          />
-        ))}
+        <path d={cells(0, SEGMENTS)} fill="none" stroke="rgb(255 255 255 / 0.16)" strokeWidth={1} />
       </svg>
     );
   }
@@ -74,16 +66,8 @@ function Bar({
       className="shrink-0"
       aria-hidden
     >
-      {Array.from({ length: SEGMENTS }, (_, i) => (
-        <rect
-          key={i}
-          x={i * (w + gap)}
-          y={0}
-          width={w}
-          height={h}
-          fill={i < lit ? color : 'rgb(255 255 255 / 0.08)'}
-        />
-      ))}
+      <path d={cells(0, lit)} fill={color} />
+      {lit < SEGMENTS && <path d={cells(lit, SEGMENTS)} fill="rgb(255 255 255 / 0.08)" />}
     </svg>
   );
 }
