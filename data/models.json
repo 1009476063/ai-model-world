@@ -363,7 +363,7 @@
     {
       "id": "deepswe",
       "inEci": true,
-      "models": 45,
+      "models": 46,
       "randomBaseline": 0,
       "releaseDate": "2026-05-26",
       "scoreCeiling": 100,
@@ -675,7 +675,7 @@
     {
       "id": "livecodebench",
       "inEci": false,
-      "models": 7,
+      "models": 8,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1011,7 +1011,7 @@
     {
       "id": "swe_atlas_codebase_qna",
       "inEci": false,
-      "models": 13,
+      "models": 14,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1047,7 +1047,7 @@
     {
       "id": "swe_bench_multilingual",
       "inEci": false,
-      "models": 15,
+      "models": 16,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1071,7 +1071,7 @@
     {
       "id": "swe_bench_pro",
       "inEci": false,
-      "models": 57,
+      "models": 58,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1083,7 +1083,7 @@
     {
       "id": "swe_bench_vendor",
       "inEci": false,
-      "models": 41,
+      "models": 42,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1119,7 +1119,7 @@
     {
       "id": "terminal_bench",
       "inEci": false,
-      "models": 60,
+      "models": 61,
       "randomBaseline": null,
       "releaseDate": null,
       "scoreCeiling": null,
@@ -1261,7 +1261,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-16T13:45:50.392Z",
+  "generatedAt": "2026-10-17T01:51:21.182Z",
   "models": [
     {
       "benchmarks": {
@@ -6271,7 +6271,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.07,
         "inputPerMTok": 0.2,
-        "outputPerMTok": 0.89664
+        "outputPerMTok": 0.90024
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -36493,8 +36493,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.24,
-        "outputPerMTok": 0.96
+        "inputPerMTok": 0.246,
+        "outputPerMTok": 1
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -46231,7 +46231,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.049,
         "inputPerMTok": 0.111,
         "outputPerMTok": 0.38
       },
@@ -57020,8 +57020,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.33624,
-        "outputPerMTok": 0.44832
+        "inputPerMTok": 0.33759,
+        "outputPerMTok": 0.45012
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -67238,9 +67238,9 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.02,
-        "inputPerMTok": 0.15,
-        "outputPerMTok": 0.5
+        "cachedInputPerMTok": 0.08,
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.4
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -81699,7 +81699,7 @@
         {
           "attribution": "third-party",
           "league": "chess_puzzles",
-          "score": 74,
+          "score": 76,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -87371,6 +87371,266 @@
       "slug": "quiverai-arrow-2-telos",
       "trainingComputeFlop": null,
       "vendorId": "quiverai"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": false,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-17T01:51:21.182Z",
+      "id": "reflection/beam",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Beam",
+      "openWeights": null,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 1,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": 0.25,
+        "outputPerMTok": 1
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "vercel-gateway",
+        "maxOutput": "vercel-gateway",
+        "modalities": "vercel-gateway",
+        "name": "derived",
+        "params.sizeTier": "derived",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
+        "releaseDate": "vercel-gateway",
+        "releaseDatePrecision": "vercel-gateway",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-16",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "reflection-beam",
+      "trainingComputeFlop": null,
+      "vendorId": "reflection"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": 76.5,
+        "swe_bench_vendor": 81.6,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": true,
+        "structuredOutput": true,
+        "toolCall": true
+      },
+      "coding": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_vendor",
+          "score": 81.6,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_pro",
+          "score": 76.5,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 80.1,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_multilingual",
+          "score": 78.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 43.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_atlas_codebase_qna",
+          "score": 31.8,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "livecodebench",
+          "score": 88.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        }
+      ],
+      "contextWindow": 1048576,
+      "firstSeenAt": "2026-10-17T01:51:21.182Z",
+      "id": "reflection/beam-1.0-501b-a23b",
+      "knowledgeCutoff": "2026-06-30",
+      "license": "Apache-2.0",
+      "maxOutput": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Beam 1.0 501B A23B",
+      "openWeights": true,
+      "params": {
+        "activeB": 23,
+        "confidence": "exact",
+        "totalB": 501.2
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.04,
+        "inputPerMTok": 0.4,
+        "outputPerMTok": 1.2
+      },
+      "provenance": {
+        "benchmarks.swe_bench_pro": "models.dev",
+        "benchmarks.swe_bench_vendor": "models.dev",
+        "capabilities.promptCaching": "derived",
+        "capabilities.reasoning": "models.dev",
+        "capabilities.structuredOutput": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "coding": "derived",
+        "contextWindow": "models.dev",
+        "knowledgeCutoff": "models.dev",
+        "license": "huggingface",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "params.activeB": "derived",
+        "params.totalB": "huggingface",
+        "pricing.cachedInputPerMTok": "litellm",
+        "pricing.inputPerMTok": "litellm",
+        "pricing.outputPerMTok": "litellm",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "scores": "derived",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-05",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [
+        {
+          "attribution": "vendor-self-reported",
+          "league": "deepswe",
+          "score": 43.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "livecodebench",
+          "score": 88.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_atlas_codebase_qna",
+          "score": 31.8,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_multilingual",
+          "score": 78.3,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_pro",
+          "score": 76.5,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "swe_bench_vendor",
+          "score": 81.6,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        },
+        {
+          "attribution": "vendor-self-reported",
+          "league": "terminal_bench",
+          "score": 80.1,
+          "source": "models.dev",
+          "sourceUrl": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+          "unit": "pct"
+        }
+      ],
+      "slug": "reflection-beam-1-0-501b-a23b",
+      "trainingComputeFlop": null,
+      "vendorId": "reflection"
     },
     {
       "benchmarks": {
@@ -101172,43 +101432,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
       "note": "ZIP 92 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 81 个；训练算力 329 行；去重后 422 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
-      "note": "请求 198 个开源模型，成功 194，失败 4",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
+      "note": "请求 199 个开源模型，成功 195，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
-      "note": "4189 条（对话类 3208 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
+      "note": "4200 条（对话类 3211 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
       "note": "7/7 个分榜，共 333 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
-      "note": "models.json 551 条；api.json 230 provider / 8897 条；benchmarks[] 1136 条，已拦截 AA 血缘 181 条，非编程口径跳过 585 条",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
+      "note": "models.json 552 条；api.json 232 provider / 8985 条；benchmarks[] 1159 条，已拦截 AA 血缘 183 条，非编程口径跳过 598 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
-      "note": "465 条；已剔除 artificial_analysis 287 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
+      "note": "468 条；已剔除 artificial_analysis 288 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -101217,8 +101477,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-16T13:45:50.392Z",
-      "note": "469 条（language 315 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-17T01:51:21.182Z",
+      "note": "474 条（language 318 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
@@ -101692,6 +101952,16 @@
       "motif": "wanderer",
       "name": "Quiverai",
       "nameZh": "Quiverai"
+    },
+    {
+      "accentColor": "#7c8da6",
+      "continent": "west",
+      "country": "ZZ",
+      "homepage": "https://developers.reflection.ai",
+      "id": "reflection",
+      "motif": "wanderer",
+      "name": "Reflection",
+      "nameZh": "Reflection"
     },
     {
       "accentColor": "#5b5bd6",
