@@ -1261,7 +1261,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-19T01:56:35.268Z",
+  "generatedAt": "2026-10-19T13:51:02.844Z",
   "models": [
     {
       "benchmarks": {
@@ -8271,7 +8271,7 @@
         "webdev_arena_elo": 1357.38
       },
       "capabilities": {
-        "promptCaching": false,
+        "promptCaching": true,
         "reasoning": true,
         "structuredOutput": true,
         "toolCall": true
@@ -8327,7 +8327,7 @@
         "totalB": 27.78
       },
       "pricing": {
-        "cachedInputPerMTok": null,
+        "cachedInputPerMTok": 0.27,
         "inputPerMTok": 0.3,
         "outputPerMTok": 2.4
       },
@@ -8346,6 +8346,7 @@
         "name": "models.dev",
         "openWeights": "models.dev",
         "params.totalB": "huggingface",
+        "pricing.cachedInputPerMTok": "openrouter",
         "pricing.inputPerMTok": "models.dev",
         "pricing.outputPerMTok": "models.dev",
         "releaseDate": "models.dev",
@@ -17266,7 +17267,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -17347,7 +17348,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -17565,7 +17565,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -17602,7 +17602,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -31009,7 +31008,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.2,
         "inputPerMTok": 0.7,
-        "outputPerMTok": 2.5
+        "outputPerMTok": 2.4
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -31274,8 +31273,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.35,
-        "inputPerMTok": 0.66,
-        "outputPerMTok": 2.5
+        "inputPerMTok": 0.574,
+        "outputPerMTok": 2.294
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -46696,7 +46695,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.0375,
+        "cachedInputPerMTok": 0.05,
         "inputPerMTok": 0.1,
         "outputPerMTok": 0.34
       },
@@ -51064,7 +51063,7 @@
           "unit": "index"
         }
       ],
-      "contextWindow": 1048576,
+      "contextWindow": 524288,
       "firstSeenAt": "2026-08-31T10:07:26.393Z",
       "id": "meta/llama-4-maverick",
       "knowledgeCutoff": null,
@@ -53788,8 +53787,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.2465,
-        "inputPerMTok": 0.62,
-        "outputPerMTok": 0.62
+        "inputPerMTok": 0.493,
+        "outputPerMTok": 0.493
       },
       "provenance": {
         "benchmarks.gpqa_diamond": "epoch.ai",
@@ -55845,6 +55844,77 @@
         }
       ],
       "slug": "minimax-minimax-m3",
+      "trainingComputeFlop": null,
+      "vendorId": "minimax"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": true,
+        "structuredOutput": null,
+        "toolCall": true
+      },
+      "coding": [],
+      "contextWindow": 1000000,
+      "firstSeenAt": "2026-10-19T13:51:02.844Z",
+      "id": "minimax/minimax-m3.1-flash",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 512000,
+      "modalities": {
+        "input": [
+          "image",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "MiniMax-M3.1-Flash",
+      "openWeights": true,
+      "params": {
+        "activeB": null,
+        "confidence": "unknown",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.015,
+        "inputPerMTok": 0.15,
+        "outputPerMTok": 0.6
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "contextWindow": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "pricing.cachedInputPerMTok": "models.dev",
+        "pricing.inputPerMTok": "models.dev",
+        "pricing.outputPerMTok": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-19",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "minimax-minimax-m3-1-flash",
       "trainingComputeFlop": null,
       "vendorId": "minimax"
     },
@@ -89171,8 +89241,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.65,
-        "outputPerMTok": 0.75
+        "inputPerMTok": 0.89401,
+        "outputPerMTok": 1.03155
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -101900,43 +101970,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
       "note": "ZIP 92 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 81 个；训练算力 329 行；去重后 422 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
       "note": "请求 201 个开源模型，成功 197，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
-      "note": "4219 条（对话类 3226 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "note": "4221 条（对话类 3227 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
       "note": "7/7 个分榜，共 333 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
-      "note": "models.json 554 条；api.json 232 provider / 9054 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "note": "models.json 555 条；api.json 232 provider / 9061 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
-      "note": "471 条；已剔除 artificial_analysis 289 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "note": "469 条；已剔除 artificial_analysis 288 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -101945,8 +102015,8 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-19T01:56:35.268Z",
-      "note": "476 条（language 320 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "note": "477 条（language 321 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
