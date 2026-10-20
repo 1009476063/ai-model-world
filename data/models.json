@@ -39,7 +39,7 @@
     {
       "id": "ale_bench",
       "inEci": false,
-      "models": 153,
+      "models": 154,
       "randomBaseline": null,
       "releaseDate": "2025-06-10",
       "scoreCeiling": null,
@@ -63,7 +63,7 @@
     {
       "id": "apex_agents",
       "inEci": true,
-      "models": 63,
+      "models": 64,
       "randomBaseline": 0,
       "releaseDate": "2026-01-21",
       "scoreCeiling": 100,
@@ -75,7 +75,7 @@
     {
       "id": "arc_agi",
       "inEci": true,
-      "models": 116,
+      "models": 118,
       "randomBaseline": 0,
       "releaseDate": "2019-11-05",
       "scoreCeiling": 100,
@@ -87,7 +87,7 @@
     {
       "id": "arc_agi_2",
       "inEci": true,
-      "models": 117,
+      "models": 119,
       "randomBaseline": 0,
       "releaseDate": "2025-03-24",
       "scoreCeiling": 100,
@@ -315,7 +315,7 @@
     {
       "id": "critpt",
       "inEci": false,
-      "models": 178,
+      "models": 179,
       "randomBaseline": 0,
       "releaseDate": "2025-09-30",
       "scoreCeiling": 100,
@@ -327,7 +327,7 @@
     {
       "id": "cursorbench",
       "inEci": false,
-      "models": 16,
+      "models": 17,
       "randomBaseline": 0,
       "releaseDate": "2026-03-11",
       "scoreCeiling": 100,
@@ -375,7 +375,7 @@
     {
       "id": "dtbench",
       "inEci": true,
-      "models": 211,
+      "models": 219,
       "randomBaseline": 40,
       "releaseDate": "2026-08-12",
       "scoreCeiling": 100,
@@ -711,7 +711,7 @@
     {
       "id": "lmca",
       "inEci": true,
-      "models": 195,
+      "models": 203,
       "randomBaseline": 0,
       "releaseDate": "2026-08-12",
       "scoreCeiling": 85,
@@ -1239,7 +1239,7 @@
     {
       "id": "weirdml_v3",
       "inEci": false,
-      "models": 19,
+      "models": 29,
       "randomBaseline": 0,
       "releaseDate": "2026-09-18",
       "scoreCeiling": 100,
@@ -1261,7 +1261,7 @@
       "unit": "pct"
     }
   ],
-  "generatedAt": "2026-10-19T13:51:02.844Z",
+  "generatedAt": "2026-10-20T01:52:26.705Z",
   "models": [
     {
       "benchmarks": {
@@ -6271,7 +6271,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.07,
         "inputPerMTok": 0.2,
-        "outputPerMTok": 0.90024
+        "outputPerMTok": 0.898
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -8587,7 +8587,7 @@
         "webdev_arena_elo": null
       },
       "capabilities": {
-        "promptCaching": true,
+        "promptCaching": false,
         "reasoning": true,
         "structuredOutput": true,
         "toolCall": true
@@ -8635,7 +8635,7 @@
         "totalB": 403.4
       },
       "pricing": {
-        "cachedInputPerMTok": 0.3,
+        "cachedInputPerMTok": null,
         "inputPerMTok": 0.6,
         "outputPerMTok": 3.6
       },
@@ -8657,7 +8657,6 @@
         "openWeights": "models.dev",
         "params.activeB": "derived",
         "params.totalB": "huggingface",
-        "pricing.cachedInputPerMTok": "openrouter",
         "pricing.inputPerMTok": "models.dev",
         "pricing.outputPerMTok": "models.dev",
         "releaseDate": "epoch.ai",
@@ -11299,7 +11298,7 @@
       "id": "alibaba/qwen3.7-max",
       "knowledgeCutoff": null,
       "license": null,
-      "maxOutput": 65536,
+      "maxOutput": 131072,
       "modalities": {
         "input": [
           "text"
@@ -17255,7 +17254,7 @@
     {
       "benchmarks": {
         "aime": 98.89,
-        "arc_agi_2": null,
+        "arc_agi_2": 61.25,
         "eci": 158.98,
         "fiction_live": null,
         "gpqa_diamond": 89.65,
@@ -17344,6 +17343,7 @@
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
+        "benchmarks.arc_agi_2": "epoch.ai",
         "benchmarks.eci": "epoch.ai",
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
@@ -17387,6 +17387,22 @@
         },
         {
           "attribution": "third-party",
+          "league": "arc_agi",
+          "score": 89,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi_2",
+          "score": 61.25,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "blueprint_bench_2",
           "score": 32.97,
           "source": "epoch.ai",
@@ -17415,6 +17431,14 @@
           "score": 48.4,
           "source": "epoch.ai",
           "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "dtbench",
+          "score": 94.99,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
           "unit": "pct"
         },
         {
@@ -17507,6 +17531,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "lmca",
+          "score": 51.06,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "mystery_game_puzzles",
           "score": 30,
           "source": "epoch.ai",
@@ -17544,6 +17576,14 @@
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "usd"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 11.7,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "anthropic-claude-haiku-5-5",
@@ -25379,6 +25419,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "dtbench",
+          "score": 97.33,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "eci",
           "score": 164.45,
           "source": "epoch.ai",
@@ -25463,6 +25511,14 @@
           "score": 91.37,
           "source": "livebench",
           "sourceUrl": "https://livebench.ai/#/?release=2026-06-25",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "lmca",
+          "score": 68.26,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
           "unit": "pct"
         },
         {
@@ -29890,7 +29946,7 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.02,
-        "inputPerMTok": 0.28,
+        "inputPerMTok": 0.2574,
         "outputPerMTok": 0.6
       },
       "provenance": {
@@ -34921,7 +34977,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.028,
         "inputPerMTok": 0.14,
-        "outputPerMTok": 0.28
+        "outputPerMTok": 0.284
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -36493,7 +36549,7 @@
       "pricing": {
         "cachedInputPerMTok": 0.006,
         "inputPerMTok": 0.23184,
-        "outputPerMTok": 0.944
+        "outputPerMTok": 0.96
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -36816,8 +36872,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": 0.006,
-        "inputPerMTok": 0.2,
-        "outputPerMTok": 0.6
+        "inputPerMTok": 0.3,
+        "outputPerMTok": 1.2
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
@@ -37577,7 +37633,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -37630,7 +37686,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -37783,7 +37838,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -37822,7 +37877,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -37943,7 +37997,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -38027,7 +38081,6 @@
         "benchmarks.fiction_live": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -38354,7 +38407,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -38420,7 +38473,6 @@
         "benchmarks.fiction_live": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -38598,7 +38650,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -38717,7 +38769,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -39079,7 +39130,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -39189,7 +39240,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -40437,7 +40487,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -40572,7 +40622,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -41080,7 +41129,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -41199,7 +41248,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -41686,7 +41734,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -41746,7 +41794,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -41892,7 +41939,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -41929,7 +41976,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -41986,7 +42032,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -42062,7 +42108,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -42224,7 +42269,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -42263,7 +42308,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -42373,7 +42417,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -42531,7 +42575,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -42580,7 +42623,7 @@
         {
           "attribution": "third-party",
           "league": "apex_agents",
-          "score": 35.3,
+          "score": 35.1,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -42957,7 +43000,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -43006,7 +43049,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -43064,7 +43106,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -43175,7 +43217,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -43489,7 +43530,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -43591,7 +43632,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -43945,7 +43985,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -44063,7 +44103,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -44329,7 +44368,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -44430,7 +44469,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -44672,7 +44710,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -44781,7 +44819,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -45066,7 +45103,7 @@
     {
       "benchmarks": {
         "aime": 100,
-        "arc_agi_2": null,
+        "arc_agi_2": 91.25,
         "eci": 164.56,
         "fiction_live": null,
         "gpqa_diamond": 96.4,
@@ -45078,7 +45115,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -45097,6 +45134,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://cognition.com/frontiercode",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 2100.1,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
         },
         {
           "attribution": "third-party",
@@ -45141,12 +45186,12 @@
       },
       "provenance": {
         "benchmarks.aime": "epoch.ai",
+        "benchmarks.arc_agi_2": "epoch.ai",
         "benchmarks.eci": "epoch.ai",
         "benchmarks.gpqa_diamond": "epoch.ai",
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -45178,10 +45223,34 @@
         },
         {
           "attribution": "third-party",
+          "league": "ale_bench",
+          "score": 2100.1,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
+          "unit": "index"
+        },
+        {
+          "attribution": "third-party",
           "league": "apex_agents",
           "score": 82.4,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi",
+          "score": 98.5,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "arc_agi_2",
+          "score": 91.25,
+          "source": "epoch.ai",
+          "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "pct"
         },
         {
@@ -45214,6 +45283,14 @@
           "score": 52.9,
           "source": "epoch.ai",
           "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "dtbench",
+          "score": 97.6,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
           "unit": "pct"
         },
         {
@@ -45282,6 +45359,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "lmca",
+          "score": 63.69,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "mystery_game_puzzles",
           "score": 64,
           "source": "epoch.ai",
@@ -45319,6 +45404,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://epoch.ai/benchmarks",
           "unit": "elo"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 20.22,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "google-gemini-4-argon",
@@ -45480,7 +45573,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -45519,7 +45612,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -45558,7 +45650,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -45597,7 +45689,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -45636,7 +45727,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -45674,7 +45765,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -45920,7 +46010,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -45958,7 +46048,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -46006,7 +46095,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -46042,7 +46131,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -46486,7 +46574,7 @@
         "totalB": 4.3
       },
       "pricing": {
-        "cachedInputPerMTok": 0.055016,
+        "cachedInputPerMTok": 0.02,
         "inputPerMTok": 0.05,
         "outputPerMTok": 0.1
       },
@@ -46578,7 +46666,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -46612,7 +46700,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "license": "huggingface",
@@ -46651,7 +46738,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -46695,7 +46782,7 @@
         "totalB": 25.81
       },
       "pricing": {
-        "cachedInputPerMTok": 0.05,
+        "cachedInputPerMTok": 0.0425,
         "inputPerMTok": 0.1,
         "outputPerMTok": 0.34
       },
@@ -46706,7 +46793,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -46821,7 +46907,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -46892,7 +46978,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -47046,7 +47131,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -47081,7 +47166,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "license": "huggingface",
@@ -47120,7 +47204,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -47155,7 +47239,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "license": "huggingface",
@@ -47194,7 +47277,7 @@
       "capabilities": {
         "promptCaching": null,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -47228,7 +47311,6 @@
       },
       "provenance": {
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -47262,7 +47344,7 @@
       "capabilities": {
         "promptCaching": null,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -47298,7 +47380,6 @@
       },
       "provenance": {
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -48186,6 +48267,75 @@
       "retiredAt": "2026-09-16",
       "scores": [],
       "slug": "inception-mercury-2-5-preview",
+      "trainingComputeFlop": null,
+      "vendorId": "inception"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": true,
+        "reasoning": null,
+        "structuredOutput": null,
+        "toolCall": null
+      },
+      "coding": [],
+      "contextWindow": 1000000,
+      "firstSeenAt": "2026-10-20T01:52:26.705Z",
+      "id": "inception/mercury-3",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Mercury 3",
+      "openWeights": null,
+      "params": {
+        "activeB": null,
+        "confidence": "estimated",
+        "sizeTier": 1,
+        "sizeTierBasis": "price",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": 0.01,
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.35
+      },
+      "provenance": {
+        "capabilities.promptCaching": "derived",
+        "contextWindow": "openrouter",
+        "maxOutput": "openrouter",
+        "modalities": "openrouter",
+        "name": "derived",
+        "params.sizeTier": "derived",
+        "pricing.cachedInputPerMTok": "openrouter",
+        "pricing.inputPerMTok": "openrouter",
+        "pricing.outputPerMTok": "openrouter",
+        "releaseDate": "openrouter",
+        "releaseDatePrecision": "openrouter",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-10-16",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "inception-mercury-3",
       "trainingComputeFlop": null,
       "vendorId": "inception"
     },
@@ -51665,7 +51815,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -51726,7 +51876,6 @@
         "benchmarks.swe_bench_vendor": "models.dev",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -51801,7 +51950,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -51891,7 +52040,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -52076,7 +52224,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -52166,7 +52314,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -52190,7 +52337,7 @@
         {
           "attribution": "third-party",
           "league": "apex_agents",
-          "score": 36.4,
+          "score": 45.4,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -52415,7 +52562,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -52522,7 +52669,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -52562,7 +52708,7 @@
         {
           "attribution": "third-party",
           "league": "apex_agents",
-          "score": 57.8,
+          "score": 58.6,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -52706,7 +52852,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 6.95,
+          "score": 6.65,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -52803,7 +52949,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -52864,7 +53010,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -52886,6 +53031,22 @@
       "releaseDatePrecision": "day",
       "retiredAt": null,
       "scores": [
+        {
+          "attribution": "third-party",
+          "league": "apex_agents",
+          "score": 33.4,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "critpt",
+          "score": 14.86,
+          "source": "epoch.ai",
+          "sourceUrl": null,
+          "unit": "pct"
+        },
         {
           "attribution": "vendor-self-reported",
           "league": "deepswe",
@@ -52995,6 +53156,22 @@
         },
         {
           "attribution": "third-party",
+          "league": "dtbench",
+          "score": 95.2,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "lmca",
+          "score": 56.84,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "proofbench",
           "score": 84,
           "source": "epoch.ai",
@@ -53008,6 +53185,14 @@
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "usd"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 15.19,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "meta-muse-wonder",
@@ -53029,7 +53214,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -53047,6 +53232,14 @@
           "score": 78.8,
           "source": "models.dev",
           "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 50.4,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
           "unit": "pct"
         },
         {
@@ -53094,7 +53287,6 @@
         "benchmarks.aime": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -53132,11 +53324,27 @@
           "unit": "pct"
         },
         {
+          "attribution": "third-party",
+          "league": "cursorbench",
+          "score": 50.4,
+          "source": "epoch.ai",
+          "sourceUrl": "https://cursor.com/cursorbench",
+          "unit": "pct"
+        },
+        {
           "attribution": "vendor-self-reported",
           "league": "deepswe",
           "score": 78.8,
           "source": "models.dev",
           "sourceUrl": "https://research.meta.ai/static/muse-wonder-model-card",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "dtbench",
+          "score": 95.2,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
           "unit": "pct"
         },
         {
@@ -53169,6 +53377,14 @@
           "score": 54.17,
           "source": "epoch.ai",
           "sourceUrl": null,
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "lmca",
+          "score": 56.84,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
           "unit": "pct"
         },
         {
@@ -53210,6 +53426,14 @@
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "usd"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 15.19,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "meta-muse-wonder-1-0",
@@ -57555,8 +57779,8 @@
       },
       "pricing": {
         "cachedInputPerMTok": null,
-        "inputPerMTok": 0.33759,
-        "outputPerMTok": 0.45012
+        "inputPerMTok": 0.33675,
+        "outputPerMTok": 0.449
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -59376,6 +59600,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "dtbench",
+          "score": 88.24,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "eci",
           "score": 146.9,
           "source": "epoch.ai",
@@ -59408,10 +59640,26 @@
         },
         {
           "attribution": "third-party",
+          "league": "lmca",
+          "score": 35.79,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "proofbench",
           "score": 10,
           "source": "epoch.ai",
           "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 4.45,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
         }
       ],
@@ -59540,6 +59788,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "dtbench",
+          "score": 88.24,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "frontier_code",
           "score": 39.43,
           "source": "epoch.ai",
@@ -59580,6 +59836,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "lmca",
+          "score": 35.79,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "mystery_game_puzzles",
           "score": 17,
           "source": "epoch.ai",
@@ -59608,6 +59872,14 @@
           "score": 28.13,
           "source": "epoch.ai",
           "sourceUrl": "https://yhenon.github.io/surface-evolver-llm-eval/",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 4.45,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
         }
       ],
@@ -65366,7 +65638,7 @@
         {
           "attribution": "third-party",
           "league": "apex_agents",
-          "score": 50.6,
+          "score": 47.8,
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
@@ -65614,7 +65886,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 7.27,
+          "score": 7.54,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -67773,9 +68045,9 @@
         "totalB": null
       },
       "pricing": {
-        "cachedInputPerMTok": 0.08,
-        "inputPerMTok": 0.1,
-        "outputPerMTok": 0.4
+        "cachedInputPerMTok": 0.02,
+        "inputPerMTok": 0.15,
+        "outputPerMTok": 0.5
       },
       "provenance": {
         "capabilities.promptCaching": "derived",
@@ -68349,7 +68621,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -68387,7 +68659,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -69121,7 +69392,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -69159,7 +69430,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -69320,7 +69590,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -69359,7 +69629,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -69657,7 +69926,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -69733,7 +70002,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -69967,7 +70235,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -70026,7 +70294,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -70220,7 +70487,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -70278,7 +70545,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -70448,7 +70714,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -70507,7 +70773,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -70797,7 +71062,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -70855,7 +71120,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -71144,7 +71408,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -71202,7 +71466,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -71492,7 +71755,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -71558,7 +71821,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -71856,7 +72118,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -71906,7 +72168,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -72419,7 +72680,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -72544,7 +72805,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -72915,7 +73175,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [
@@ -73031,7 +73291,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -73394,7 +73653,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -73455,7 +73714,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -73529,7 +73787,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -73567,7 +73825,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -73606,7 +73863,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -73644,7 +73901,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -73682,7 +73938,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -73773,7 +74029,6 @@
         "benchmarks.swe_bench_verified": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -74055,7 +74310,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -74129,7 +74384,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -74355,7 +74609,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -74418,7 +74672,6 @@
         "benchmarks.eci": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -74571,7 +74824,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -74670,7 +74923,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -74952,7 +75204,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -75035,7 +75287,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -75301,7 +75552,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -75379,7 +75630,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -75461,7 +75711,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -75530,7 +75780,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -75620,7 +75869,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -75690,7 +75939,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -76109,7 +76357,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -76225,7 +76473,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -76547,6 +76794,14 @@
           "attribution": "third-party",
           "league": "weirdml",
           "score": 72.19,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 5.01,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -76959,6 +77214,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 5.01,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "openai-gpt-5-2-chat",
@@ -76980,7 +77243,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -77071,7 +77334,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -77372,6 +77634,14 @@
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 5.01,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "openai-gpt-5-2-chat-latest",
@@ -77393,7 +77663,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -77481,7 +77751,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -77571,7 +77840,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -77609,7 +77878,6 @@
         "benchmarks.eci": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -77705,7 +77973,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -77741,7 +78009,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -77780,7 +78047,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -77893,7 +78160,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -78039,7 +78305,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -78076,7 +78342,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -78115,7 +78380,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -78280,7 +78545,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -78690,7 +78954,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": false
       },
       "coding": [],
@@ -78728,7 +78992,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -78766,7 +79029,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -78865,7 +79128,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -79107,7 +79369,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -79189,7 +79451,6 @@
         "benchmarks.swe_bench_pro": "models.dev",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -79407,7 +79668,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -79446,7 +79707,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -79599,7 +79859,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -79764,7 +80024,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -80190,7 +80449,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -80230,7 +80489,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -80327,7 +80585,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -80368,7 +80626,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -80521,7 +80778,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -80557,7 +80814,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -80596,7 +80852,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -80696,7 +80952,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -81049,7 +81304,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -81165,7 +81420,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -81608,7 +81862,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -81708,7 +81962,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -82053,7 +82306,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -82152,7 +82405,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -82483,7 +82735,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -82520,7 +82772,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -82629,7 +82880,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -82704,7 +82955,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -83017,7 +83267,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -83092,7 +83342,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -83421,7 +83670,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -83504,7 +83753,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -83584,6 +83832,14 @@
         },
         {
           "attribution": "third-party",
+          "league": "dtbench",
+          "score": 96.53,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/dtbench",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
           "league": "ebr_bench",
           "score": 54.29,
           "source": "epoch.ai",
@@ -83652,6 +83908,14 @@
           "score": 80.74,
           "source": "livebench",
           "sourceUrl": "https://livebench.ai/#/?release=2026-06-25",
+          "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "lmca",
+          "score": 62.78,
+          "source": "epoch.ai",
+          "sourceUrl": "https://conceptualreasoning.ai/lmca",
           "unit": "pct"
         },
         {
@@ -84466,7 +84730,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -84551,7 +84815,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -84754,7 +85017,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -84807,7 +85070,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -84922,7 +85184,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -84955,7 +85217,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "license": "huggingface",
@@ -84993,7 +85254,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -85026,7 +85287,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "license": "huggingface",
@@ -85065,7 +85325,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -85103,7 +85363,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -85207,7 +85466,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -85254,7 +85513,6 @@
         "benchmarks.eci": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -85360,7 +85618,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -85396,7 +85654,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "knowledgeCutoff": "models.dev",
@@ -85460,7 +85717,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -85508,7 +85765,6 @@
         "benchmarks.eci": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -85696,7 +85952,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -85753,7 +86009,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -85987,7 +86242,7 @@
       "capabilities": {
         "promptCaching": false,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -86035,7 +86290,6 @@
         "benchmarks.fiction_live": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -86148,7 +86402,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -86222,7 +86476,6 @@
         "benchmarks.gpqa_diamond": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -91704,6 +91957,14 @@
           "source": "epoch.ai",
           "sourceUrl": null,
           "unit": "pct"
+        },
+        {
+          "attribution": "third-party",
+          "league": "weirdml_v3",
+          "score": 3.9,
+          "source": "epoch.ai",
+          "sourceUrl": "https://htihle.github.io/weirdml.html",
+          "unit": "pct"
         }
       ],
       "slug": "thinkingmachines-inkling",
@@ -92941,7 +93202,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -92996,7 +93257,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -93053,7 +93313,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -93120,7 +93380,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -93241,7 +93500,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -93311,7 +93570,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -93497,7 +93755,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -93551,7 +93809,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -93944,7 +94201,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": false,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [],
@@ -93981,7 +94238,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "contextWindow": "models.dev",
         "maxOutput": "models.dev",
@@ -94019,7 +94275,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -94086,7 +94342,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -95143,7 +95398,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -95217,7 +95472,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -95410,7 +95664,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -95533,7 +95787,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -95846,7 +96099,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -95952,7 +96205,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -96242,7 +96494,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -96341,7 +96593,6 @@
         "benchmarks.webdev_arena_elo": "epoch.ai",
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -96534,7 +96785,7 @@
         {
           "attribution": "third-party",
           "league": "proofbench",
-          "score": 34,
+          "score": 26,
           "source": "epoch.ai",
           "sourceUrl": "https://www.vals.ai/benchmarks/proof_bench",
           "unit": "pct"
@@ -96574,7 +96825,7 @@
         {
           "attribution": "third-party",
           "league": "weirdml_v3",
-          "score": 8.62,
+          "score": 8.45,
           "source": "epoch.ai",
           "sourceUrl": "https://htihle.github.io/weirdml.html",
           "unit": "pct"
@@ -96599,7 +96850,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": true,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -96653,7 +96904,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -96726,7 +96976,7 @@
       "capabilities": {
         "promptCaching": true,
         "reasoning": true,
-        "structuredOutput": false,
+        "structuredOutput": null,
         "toolCall": true
       },
       "coding": [
@@ -96778,7 +97028,6 @@
       "provenance": {
         "capabilities.promptCaching": "derived",
         "capabilities.reasoning": "models.dev",
-        "capabilities.structuredOutput": "models.dev",
         "capabilities.toolCall": "models.dev",
         "coding": "derived",
         "contextWindow": "models.dev",
@@ -96848,12 +97097,10 @@
       "modalities": {
         "input": [
           "image",
-          "pdf",
           "text"
         ],
         "output": [
-          "image",
-          "pdf"
+          "image"
         ]
       },
       "name": "Grok Imagine Image",
@@ -96924,7 +97171,7 @@
         "toolCall": false
       },
       "coding": [],
-      "contextWindow": 8000,
+      "contextWindow": 64000,
       "firstSeenAt": "2026-08-31T10:07:26.393Z",
       "id": "xai/grok-imagine-image-2.0",
       "knowledgeCutoff": null,
@@ -97098,9 +97345,9 @@
       "maxOutput": null,
       "modalities": {
         "input": [
+          "audio",
           "image",
-          "text",
-          "video"
+          "text"
         ],
         "output": [
           "video"
@@ -97243,6 +97490,71 @@
       },
       "coding": [],
       "contextWindow": 15000,
+      "firstSeenAt": "2026-10-20T01:52:26.705Z",
+      "id": "xai/grok-tts",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": 15000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "name": "Grok TTS",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "unknown",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": null,
+        "outputPerMTok": null
+      },
+      "provenance": {
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "contextWindow": "models.dev",
+        "maxOutput": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-03-16",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "xai-grok-tts",
+      "trainingComputeFlop": null,
+      "vendorId": "xai"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": null,
+        "reasoning": false,
+        "structuredOutput": null,
+        "toolCall": false
+      },
+      "coding": [],
+      "contextWindow": 15000,
       "firstSeenAt": "2026-09-20T03:52:50.171Z",
       "id": "xai/grok-voice-stt-1.0",
       "knowledgeCutoff": null,
@@ -97278,13 +97590,77 @@
         "openWeights": "models.dev",
         "releaseDate": "models.dev",
         "releaseDatePrecision": "models.dev",
+        "retiredAt": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2026-08-04",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-20",
       "scores": [],
       "slug": "xai-grok-voice-stt-1-0",
+      "trainingComputeFlop": null,
+      "vendorId": "xai"
+    },
+    {
+      "benchmarks": {
+        "aime": null,
+        "arc_agi_2": null,
+        "eci": null,
+        "fiction_live": null,
+        "gpqa_diamond": null,
+        "swe_bench_pro": null,
+        "swe_bench_vendor": null,
+        "swe_bench_verified": null,
+        "webdev_arena_elo": null
+      },
+      "capabilities": {
+        "promptCaching": null,
+        "reasoning": false,
+        "structuredOutput": null,
+        "toolCall": false
+      },
+      "coding": [],
+      "contextWindow": null,
+      "firstSeenAt": "2026-10-20T01:52:26.705Z",
+      "id": "xai/grok-voice-transcribe-2.0",
+      "knowledgeCutoff": null,
+      "license": null,
+      "maxOutput": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "name": "Grok Voice Transcribe 2.0",
+      "openWeights": false,
+      "params": {
+        "activeB": null,
+        "confidence": "unknown",
+        "totalB": null
+      },
+      "pricing": {
+        "cachedInputPerMTok": null,
+        "inputPerMTok": null,
+        "outputPerMTok": null
+      },
+      "provenance": {
+        "capabilities.reasoning": "models.dev",
+        "capabilities.toolCall": "models.dev",
+        "modalities": "models.dev",
+        "name": "models.dev",
+        "openWeights": "models.dev",
+        "releaseDate": "models.dev",
+        "releaseDatePrecision": "models.dev",
+        "vendorId": "derived"
+      },
+      "releaseDate": "2026-09-17",
+      "releaseDatePrecision": "day",
+      "retiredAt": null,
+      "scores": [],
+      "slug": "xai-grok-voice-transcribe-2-0",
       "trainingComputeFlop": null,
       "vendorId": "xai"
     },
@@ -97343,11 +97719,12 @@
         "openWeights": "models.dev",
         "releaseDate": "models.dev",
         "releaseDatePrecision": "models.dev",
+        "retiredAt": "derived",
         "vendorId": "derived"
       },
       "releaseDate": "2026-07-31",
       "releaseDatePrecision": "day",
-      "retiredAt": null,
+      "retiredAt": "2026-10-20",
       "scores": [],
       "slug": "xai-grok-voice-tts-1-0",
       "trainingComputeFlop": null,
@@ -101970,43 +102347,43 @@
   ],
   "sources": {
     "derived": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
       "ok": true
     },
     "epoch.ai": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "ZIP 92 个条目；取到 7/7 个指标；编程赛制 9 个；全榜单 81 个；训练算力 329 行；去重后 422 个模型实体；合规拦截 1 个文件",
       "ok": true
     },
     "huggingface": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "请求 201 个开源模型，成功 197，失败 4",
       "ok": true
     },
     "litellm": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
-      "note": "4221 条（对话类 3227 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
+      "note": "4224 条（对话类 3229 条）；用作新模型的第三方佐证，以及 models.dev 缺项时的定价/上下文兜底",
       "ok": true
     },
     "livebench": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "Apache-2.0 / DATASHEET 明文「no copyrights on the data」。采用 6 个同期 release（2026-06-25, 2026-01-08, 2025-12-23, 2025-11-25, 2025-05-30, 2025-04-25）；跳过题目集换代前的 5 个（2024-06-24, 2024-07-26, 2024-08-31, 2024-11-25, 2025-04-02）——实测跨这个断点同一模型的 Coding 分中位差 27.6 分，不可同池。",
       "ok": true
     },
     "lmarena": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "7/7 个分榜，共 333 条 Arena 分",
       "ok": true
     },
     "models.dev": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
-      "note": "models.json 555 条；api.json 232 provider / 9061 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
+      "note": "models.json 555 条；api.json 232 provider / 9092 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
       "ok": true
     },
     "openrouter": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
-      "note": "469 条；已剔除 artificial_analysis 288 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
+      "note": "470 条；已剔除 artificial_analysis 289 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -102015,7 +102392,7 @@
       "ok": true
     },
     "vercel-gateway": {
-      "fetchedAt": "2026-10-19T13:51:02.844Z",
+      "fetchedAt": "2026-10-20T01:52:26.705Z",
       "note": "477 条（language 321 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
