@@ -68,7 +68,7 @@
         "perplexity/sonar-pro-search",
         "poolside/laguna-s-2.1",
         "sakana/fugu-ultra-v2",
-        "sarvam/sarvam-30b",
+        "sarvam/sarvam-105b",
         "sdaia/allam-2-7b",
         "swiss-ai/apertus-70b",
         "tencent/hy-mt2-plus",
@@ -116,7 +116,7 @@
     "pendingDiscoveries": 91,
     "promotedDiscoveries": 92,
     "quickPromotedDiscoveries": 22,
-    "releaseDateOutliersDropped": 23,
+    "releaseDateOutliersDropped": 20,
     "resurrected": 0,
     "retiredThisRun": 31,
     "retiredTotal": 31,
@@ -189,8 +189,8 @@
       "total": 678
     },
     "capabilities.structuredOutput": {
-      "filled": 148,
-      "pct": 21.8,
+      "filled": 1,
+      "pct": 0.1,
       "total": 678
     },
     "capabilities.toolCall": {
@@ -229,13 +229,13 @@
       "total": 678
     },
     "knowledgeCutoff": {
-      "filled": 282,
-      "pct": 41.6,
+      "filled": 288,
+      "pct": 42.5,
       "total": 678
     },
     "license": {
-      "filled": 162,
-      "pct": 23.9,
+      "filled": 164,
+      "pct": 24.2,
       "total": 678
     },
     "maxOutput": {
@@ -269,23 +269,23 @@
       "total": 678
     },
     "params.confidence!=unknown": {
-      "filled": 611,
-      "pct": 90.1,
+      "filled": 614,
+      "pct": 90.6,
       "total": 678
     },
     "params.sizeTier": {
-      "filled": 344,
-      "pct": 50.7,
+      "filled": 345,
+      "pct": 50.9,
       "total": 678
     },
     "params.totalB": {
-      "filled": 267,
-      "pct": 39.4,
+      "filled": 269,
+      "pct": 39.7,
       "total": 678
     },
     "pricing.cachedInputPerMTok": {
-      "filled": 418,
-      "pct": 61.7,
+      "filled": 419,
+      "pct": 61.8,
       "total": 678
     },
     "pricing.inputPerMTok": {
@@ -304,8 +304,8 @@
       "total": 678
     },
     "releaseDatePrecision.day": {
-      "filled": 669,
-      "pct": 98.7,
+      "filled": 676,
+      "pct": 99.7,
       "total": 678
     },
     "scores.三条以上榜单": {
@@ -1947,7 +1947,7 @@
         "vercel-gateway": 35
       },
       "pricing.cachedInputPerMTok": {
-        "litellm": 46,
+        "litellm": 47,
         "openrouter": 31,
         "vercel-gateway": 10
       },
@@ -1964,7 +1964,7 @@
     },
     "liveModels": 647
   },
-  "generatedAt": "2026-10-20T01:52:26.705Z",
+  "generatedAt": "2026-10-20T13:47:05.682Z",
   "livebench": {
     "_note": "LiveBench 官方榜（Apache-2.0，本轮调研里许可证最干净的一份）。release 清单优先从上游仓库的 LIVE_BENCH_RELEASES 常量解析，解析失败才用内置兜底清单——写死清单意味着新 release 不会被自动发现，与「发布后无人维护」的承诺相悖。releasesSkipped 里是题目集换代之前的 release，跨那个断点分数不可比（中位差 27.6 分）。",
     "matchedModels": 129,
@@ -2049,7 +2049,178 @@
       "zhipuai/glm-5.3-prime"
     ]
   },
-  "releaseDateConflicts": [],
+  "releaseDateConflicts": [
+    {
+      "from": "2025-07-01",
+      "id": "ai21/jamba-large",
+      "to": "2025-07-03"
+    },
+    {
+      "from": "2026-01-01",
+      "id": "ai21/jamba-mini",
+      "to": "2026-01-08"
+    },
+    {
+      "from": "2026-02-23",
+      "id": "aion-labs/aion-2.0",
+      "to": "2025-12-21"
+    },
+    {
+      "from": "2026-07-07",
+      "id": "aion-labs/aion-3.0",
+      "to": "2026-05-05"
+    },
+    {
+      "from": "2026-07-07",
+      "id": "aion-labs/aion-3.0-mini",
+      "to": "2026-05-14"
+    },
+    {
+      "from": "2024-09-01",
+      "id": "alibaba/qwen2-5-vl-72b-instruct",
+      "to": "2025-01-26"
+    },
+    {
+      "from": "2025-04-01",
+      "id": "alibaba/qwen3-235b-a22b",
+      "to": "2025-04-28"
+    },
+    {
+      "from": "2025-04-01",
+      "id": "alibaba/qwen3-32b",
+      "to": "2025-04-28"
+    },
+    {
+      "from": "2025-04-01",
+      "id": "alibaba/qwen3-coder-30b-a3b-instruct",
+      "to": "2025-07-31"
+    },
+    {
+      "from": "2025-04-01",
+      "id": "alibaba/qwen3-coder-480b-a35b-instruct",
+      "to": "2025-07-22"
+    },
+    {
+      "from": "2024-12-02",
+      "id": "cohere/command-r7b-12-2024",
+      "to": "2024-12-13"
+    },
+    {
+      "from": "2026-08-31",
+      "id": "ibm/granite-4.2-8b",
+      "to": "2026-08-25"
+    },
+    {
+      "from": "2026-09-12",
+      "id": "inference-net/schematron-v2-small",
+      "to": "2026-04-16"
+    },
+    {
+      "from": "2026-09-12",
+      "id": "inference-net/schematron-v2-turbo",
+      "to": "2026-04-16"
+    },
+    {
+      "from": "2024-12-11",
+      "id": "microsoft/phi-4-mini",
+      "to": "2025-02-26"
+    },
+    {
+      "from": "2024-11-19",
+      "id": "mistral/mistral-large-2407",
+      "to": "2024-07-24"
+    },
+    {
+      "from": "2025-08-13",
+      "id": "mistral/mistral-medium-3.1",
+      "to": "2025-08-12"
+    },
+    {
+      "from": "2024-07-01",
+      "id": "mistral/mistral-nemo",
+      "to": "2024-07-18"
+    },
+    {
+      "from": "2024-09-01",
+      "id": "mistral/pixtral-12b",
+      "to": "2024-09-11"
+    },
+    {
+      "from": "2026-01-01",
+      "id": "moonshotai/kimi-k2.5",
+      "to": "2026-01-26"
+    },
+    {
+      "from": "2025-04-07",
+      "id": "nvidia/llama-3.3-nemotron-super-49b-v1",
+      "to": "2025-03-18"
+    },
+    {
+      "from": "2026-02-10",
+      "id": "nvidia/llama-nemotron-embed-vl-1b-v2",
+      "to": "2025-12-18"
+    },
+    {
+      "from": "2026-03-31",
+      "id": "nvidia/llama-nemotron-rerank-vl-1b-v2",
+      "to": "2025-12-18"
+    },
+    {
+      "from": "2026-04-16",
+      "id": "nvidia/nemotron-3-content-safety",
+      "to": "2026-03-16"
+    },
+    {
+      "from": "2026-06-04",
+      "id": "nvidia/nemotron-3.5-content-safety",
+      "to": "2026-06-02"
+    },
+    {
+      "from": "2026-03-24",
+      "id": "nvidia/nemotron-cascade-2-30b-a3b",
+      "to": "2026-03-19"
+    },
+    {
+      "from": "2026-03-20",
+      "id": "rekaai/reka-edge",
+      "to": "2026-03-11"
+    },
+    {
+      "from": "2025-03-12",
+      "id": "rekaai/reka-flash-3",
+      "to": "2025-03-10"
+    },
+    {
+      "from": "2025-09-01",
+      "id": "sarvam/sarvam-105b",
+      "to": "2026-02-18"
+    },
+    {
+      "from": "2026-08-20",
+      "id": "tencent/hy-mt2-1.8b",
+      "to": "2026-05-21"
+    },
+    {
+      "from": "2026-08-20",
+      "id": "tencent/hy-mt2-30b-a3b",
+      "to": "2026-05-21"
+    },
+    {
+      "from": "2026-08-19",
+      "id": "tencent/hy-mt2-7b",
+      "to": "2026-05-21"
+    },
+    {
+      "from": "2026-01-01",
+      "id": "upstage/solar-pro3",
+      "to": "2026-01-26"
+    },
+    {
+      "from": "2026-01-19",
+      "id": "zhipuai/glm-image",
+      "to": "2026-01-14"
+    }
+  ],
   "sources": {
     "derived": {
       "note": "管线内推导的字段（规模档位、缓存能力、退役判定）",
@@ -2060,7 +2231,7 @@
       "ok": true
     },
     "huggingface": {
-      "note": "请求 201 个开源模型，成功 197，失败 4",
+      "note": "请求 203 个开源模型，成功 199，失败 4",
       "ok": true
     },
     "litellm": {
@@ -2076,11 +2247,11 @@
       "ok": true
     },
     "models.dev": {
-      "note": "models.json 555 条；api.json 232 provider / 9092 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
+      "note": "models.json 555 条；api.json 231 provider / 9075 条；benchmarks[] 1171 条，已拦截 AA 血缘 183 条，非编程口径跳过 607 条",
       "ok": true
     },
     "openrouter": {
-      "note": "470 条；已剔除 artificial_analysis 289 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "note": "468 条；已剔除 artificial_analysis 287 处（AA ToS 合规）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     },
     "override": {
@@ -2198,5 +2369,7 @@
     "withFlop": 87
   },
   "vendorRegistrySource": "src/data/vendor-registry.ts",
-  "warnings": []
+  "warnings": [
+    "34 个已存在模型的发布日期发生变化，已记入 data/sync-report.json 待审"
+  ]
 }
