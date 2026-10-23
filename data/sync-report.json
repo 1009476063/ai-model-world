@@ -114,7 +114,7 @@
     "epochParamStrippedMatches": 4,
     "fromModelsDev": 602,
     "models": 719,
-    "pendingDiscoveries": 93,
+    "pendingDiscoveries": 90,
     "promotedDiscoveries": 85,
     "quickPromotedDiscoveries": 22,
     "releaseDateOutliersDropped": 21,
@@ -285,8 +285,8 @@
       "total": 719
     },
     "pricing.cachedInputPerMTok": {
-      "filled": 425,
-      "pct": 59.1,
+      "filled": 427,
+      "pct": 59.4,
       "total": 719
     },
     "pricing.inputPerMTok": {
@@ -1948,7 +1948,7 @@
       },
       "pricing.cachedInputPerMTok": {
         "litellm": 47,
-        "openrouter": 33,
+        "openrouter": 31,
         "vercel-gateway": 10
       },
       "pricing.inputPerMTok": {
@@ -1964,7 +1964,7 @@
     },
     "liveModels": 687
   },
-  "generatedAt": "2026-10-23T01:55:04.115Z",
+  "generatedAt": "2026-10-23T13:46:38.821Z",
   "livebench": {
     "_note": "LiveBench 官方榜（Apache-2.0，本轮调研里许可证最干净的一份）。release 清单优先从上游仓库的 LIVE_BENCH_RELEASES 常量解析，解析失败才用内置兜底清单——写死清单意味着新 release 不会被自动发现，与「发布后无人维护」的承诺相悖。releasesSkipped 里是题目集换代之前的 release，跨那个断点分数不可比（中位差 27.6 分）。",
     "matchedModels": 131,
@@ -2076,7 +2076,7 @@
       "ok": true
     },
     "models.dev": {
-      "note": "models.json 602 条；api.json 230 provider / 8849 条；benchmarks[] 1173 条，已拦截 AA 血缘 183 条，非编程口径跳过 609 条",
+      "note": "models.json 602 条；api.json 230 provider / 8847 条；benchmarks[] 1173 条，已拦截 AA 血缘 183 条，非编程口径跳过 609 条",
       "ok": true
     },
     "openrouter": {
@@ -2088,7 +2088,7 @@
       "ok": true
     },
     "vercel-gateway": {
-      "note": "484 条（language 321 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
+      "note": "478 条（language 316 条）；用于新模型发现、发布日期投票，以及 models.dev 缺项时的定价/上下文/模态兜底",
       "ok": true
     }
   },
