@@ -1,0 +1,73 @@
+name: Deploy static site
+
+# Cloudflare Pages watches main and builds independently. This workflow owns GitHub Pages.
+# It also validates the exact static artifact that both hosting platforms serve.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Set GitHub Pages base path
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: echo "NEXT_BASE_PATH=/${REPOSITORY_NAME}" >> "$GITHUB_ENV"
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate static export
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: |
+          test -s out/index.html
+          test -s out/404.html
+          test -s out/search-index.json
+          test -d out/sprites
+          test "$(find out/sprites -type f -name '*.png' | wc -l | tr -d ' ')" -gt 0
+          grep -Fq "/${REPOSITORY_NAME}/_next/" out/index.html
+          grep -Fq "/${REPOSITORY_NAME}/sprites/" out/index.html
+          if grep -Eq 'href="/_next/|src="/_next/|url\(/sprites/' out/index.html; then
+            echo "::error::Found root-absolute Next.js assets in a GitHub Pages build"
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
