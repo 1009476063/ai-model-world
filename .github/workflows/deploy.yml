@@ -5,6 +5,9 @@ name: Deploy static site
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["同步模型数据"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -18,11 +21,16 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          # GITHUB_TOKEN 产生的数据提交不会再触发 push 工作流，因此由 workflow_run 接管。
+          # 同步运行会先检出旧提交、再提交新数据，所以这里必须取默认分支的最新快照。
+          ref: ${{ github.event_name == 'workflow_run' && github.event.repository.default_branch || github.sha }}
 
       - uses: actions/setup-node@v7
         with:
