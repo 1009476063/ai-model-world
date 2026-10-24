@@ -1,11 +1,14 @@
+import { canonicalVendorId, profileFor, VENDOR_REGISTRY } from '@/data/vendor-registry';
+import { buildChampions } from './champions';
 import type { ModelKind } from './kind';
 import { kindOf } from './kind';
-import type { ModelRecord, Vendor } from './types';
+import type { ModelRecord, Vendor, WorldSnapshot } from './types';
 
 /**
- * The Universe prototype deliberately reads the production snapshot rather than
- * inventing demo data. It narrows to five representative vendors so the visual
- * language can be reviewed before all 719 models are rendered.
+ * The Universe view reads the production snapshot rather than inventing demo data.
+ * Every vendor is a system and every model remains addressable. The map shows a
+ * bounded visual layer, while catalog, ranking, search and comparison routes use
+ * the complete snapshot.
  */
 export const UNIVERSE_VENDOR_IDS = ['openai', 'anthropic', 'google', 'deepseek', 'alibaba'] as const;
 
@@ -14,11 +17,16 @@ export interface UniverseVendor {
   name: string;
   nameZh: string;
   accentColor: string;
+  homepage: string | null;
   continent: Vendor['continent'];
   motif: string;
   starName: string;
   coordinates: string;
   totalModels: number;
+  aliveModels: number;
+  /** Full family for catalog and vendor routes. */
+  models: UniverseModel[];
+  /** A legible selection for the overview map. */
   representativeModels: UniverseModel[];
 }
 
@@ -38,6 +46,19 @@ export interface UniverseModel {
   body: 'planet' | 'dwarf' | 'gas-giant' | 'ice-giant' | 'pulsar';
   ring: 'none' | 'single' | 'double' | 'broken';
   capabilities: string[];
+  releaseDate: string | null;
+  openWeights: boolean | null;
+  maxOutput: number | null;
+  inputPrice: number | null;
+  cachedPrice: number | null;
+  license: string | null;
+  knowledgeCutoff: string | null;
+  reasoning: boolean | null;
+  toolCall: boolean | null;
+  promptCaching: boolean | null;
+  inputs: string[];
+  outputs: string[];
+  eciRank: number | null;
 }
 
 export interface UniverseStar {
@@ -50,6 +71,7 @@ export interface UniverseStar {
   y: number;
   radius: number;
   count: number;
+  lead: boolean;
 }
 
 export interface UniverseData {
@@ -57,6 +79,16 @@ export interface UniverseData {
   vendors: UniverseVendor[];
   models: UniverseModel[];
   stars: UniverseStar[];
+}
+
+export interface UniverseChampion {
+  key: 'smart' | 'code' | 'value' | 'cheap' | 'memory' | 'newest' | 'east' | 'open';
+  label: string;
+  model: UniverseModel;
+  vendor: UniverseVendor;
+  figure: string;
+  detail: string;
+  rank: number | null;
 }
 
 const STAR_NAMES: Record<string, string> = {
@@ -75,7 +107,7 @@ const COORDINATES: Record<string, string> = {
   alibaba: 'E 02 / 51',
 };
 
-/** Fixed positions keep the map legible and give each family a memorable place. */
+/** Anchors keep the five lead systems memorable. Other systems occupy a wider belt. */
 const STAR_POSITIONS: Record<string, { x: number; y: number }> = {
   openai: { x: 22, y: 28 },
   anthropic: { x: 42, y: 20 },
@@ -83,6 +115,35 @@ const STAR_POSITIONS: Record<string, { x: number; y: number }> = {
   deepseek: { x: 37, y: 72 },
   alibaba: { x: 70, y: 70 },
 };
+
+const LEAD_VENDORS = new Set<string>(UNIVERSE_VENDOR_IDS);
+
+function systemPosition(id: string, index: number, total: number): { x: number; y: number } {
+  const anchored = STAR_POSITIONS[id];
+  if (anchored) return anchored;
+  const angle = (index / Math.max(1, total)) * Math.PI * 2 - Math.PI / 2;
+  const ring = index % 2 === 0 ? 0.88 : 0.67;
+  return {
+    x: 50 + Math.cos(angle) * 38 * ring,
+    y: 50 + Math.sin(angle) * 36 * ring,
+  };
+}
+
+function starNameOf(id: string, vendor: Vendor): string {
+  const known = STAR_NAMES[id];
+  if (known) return known;
+  const seed = [...vendor.name].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const stems = ['Aster', 'Nova', 'Vela', 'Orion', 'Lyra', 'Nexus', 'Halo', 'Atlas'];
+  const tails = ['Field', 'Drift', 'Reach', 'Bloom', 'Veil', 'Arc'];
+  return `${stems[seed % stems.length]} ${tails[Math.floor(seed / 7) % tails.length]}`;
+}
+
+function coordinatesOf(id: string, vendor: Vendor, index: number): string {
+  const known = COORDINATES[id];
+  if (known) return known;
+  const sector = vendor.continent === 'east' ? 'E' : 'W';
+  return `${sector} ${String((index % 12) + 1).padStart(2, '0')} / ${String(43 + (index % 55)).padStart(2, '0')}`;
+}
 
 const BODY_BY_KIND: Record<UniverseModel['kind'], UniverseModel['body']> = {
   text: 'planet',
@@ -104,7 +165,7 @@ const RING_BY_KIND: Record<UniverseModel['kind'], UniverseModel['ring']> = {
   unknown: 'none',
 };
 
-function representative(models: ModelRecord[]): ModelRecord[] {
+function representative(models: ModelRecord[], limit: number): ModelRecord[] {
   const alive = models.filter((model) => !model.retiredAt);
   const scored = alive
     .filter((model) => model.benchmarks.eci != null)
@@ -127,9 +188,92 @@ function representative(models: ModelRecord[]): ModelRecord[] {
     if (seen.has(key)) continue;
     seen.add(key);
     selected.push(model);
-    if (selected.length === 7) break;
+    if (selected.length === limit) break;
   }
   return selected;
+}
+
+/**
+ * Overview statistics are computed from the same production records as the old
+ * plaza. Keeping the data decisions here means the Universe does not acquire a
+ * second, subtly different definition of "best" or "cheapest".
+ */
+export function buildUniverseChampions(
+  snapshot: WorldSnapshot,
+  data: UniverseData,
+): UniverseChampion[] {
+  const champions = buildChampions(
+    snapshot.models,
+    snapshot.vendors,
+    new Date(snapshot.generatedAt),
+    (vendorId) => canonicalVendorId(vendorId) in VENDOR_REGISTRY,
+  );
+  const modelBySlug = new Map(data.models.map((model) => [model.slug, model]));
+  const vendorById = new Map(data.vendors.map((vendor) => [vendor.id, vendor]));
+  const labels: Record<UniverseChampion['key'], string> = {
+    smart: '最聪明',
+    code: '最会编程',
+    value: '性价比最高',
+    cheap: '最便宜',
+    memory: '记性最好',
+    newest: '最新发布',
+    east: '国内最强',
+    open: '开源最强',
+  };
+
+  return champions.flatMap((champion) => {
+    const model = modelBySlug.get(champion.model.slug);
+    const vendor = vendorById.get(champion.model.vendorId);
+    if (!model || !vendor) return [];
+    return [{
+      key: champion.key,
+      label: labels[champion.key],
+      model,
+      vendor,
+      figure: champion.figure,
+      detail: champion.detail,
+      rank: champion.rank,
+    }];
+  });
+}
+
+export interface UniverseKindGroup {
+  kind: ModelKind;
+  count: number;
+  representatives: UniverseModel[];
+}
+
+const KIND_LABELS: Record<ModelKind, string> = {
+  text: '文本',
+  vision: '视觉',
+  omni: '全模态',
+  'image-gen': '图像生成',
+  'video-gen': '视频生成',
+  speech: '语音',
+};
+
+export function kindLabelOf(kind: ModelKind | 'unknown'): string {
+  return kind === 'unknown' ? '未知' : KIND_LABELS[kind];
+}
+
+export function buildUniverseKindGroups(data: UniverseData): UniverseKindGroup[] {
+  const alive = data.models.filter((model) => !model.retired);
+  return (Object.keys(KIND_LABELS) as ModelKind[]).flatMap((kind) => {
+    const pool = alive
+      .filter((model) => model.kind === kind)
+      .sort(
+        (a, b) =>
+          (b.eci ?? -1) - (a.eci ?? -1) ||
+          (b.releaseDate ?? '').localeCompare(a.releaseDate ?? '') ||
+          a.name.localeCompare(b.name),
+      );
+    if (pool.length === 0) return [];
+    return [{
+      kind,
+      count: pool.length,
+      representatives: pool.slice(0, 3),
+    }];
+  });
 }
 
 function influenceOf(model: ModelRecord, maxContext: number): 1 | 2 | 3 | 4 | 5 {
@@ -152,12 +296,55 @@ function capabilitiesOf(model: ModelRecord): string[] {
   return result.slice(0, 3);
 }
 
-export function buildUniverseData(vendors: Vendor[], models: ModelRecord[]): UniverseData {
-  const vendorMap = new Map(vendors.map((vendor) => [vendor.id, vendor]));
-  const allowed = new Set<string>(UNIVERSE_VENDOR_IDS);
-  const scopedModels = models.filter((model) => allowed.has(model.vendorId));
-  const maxContext = Math.max(1, ...scopedModels.map((model) => model.contextWindow ?? 0));
-  const scored = scopedModels
+function leanUniverseModel(
+  model: ModelRecord,
+  index: number,
+  maxContext: number,
+  percentile: (value: number | null) => number | null,
+  eciRank: number | null,
+): UniverseModel {
+  const kind = kindOf(model) ?? 'unknown';
+  return {
+    slug: model.slug,
+    name: model.name,
+    vendorId: model.vendorId,
+    kind,
+    eci: model.benchmarks.eci,
+    eciPercentile: percentile(model.benchmarks.eci),
+    influence: influenceOf(model, maxContext),
+    price: model.pricing.outputPerMTok,
+    contextWindow: model.contextWindow,
+    retired: model.retiredAt != null,
+    orbit: 22 + (index % 3) * 13,
+    angle: (index * 51 + (model.vendorId.length * 23) % 90) % 360,
+    body: BODY_BY_KIND[kind],
+    ring: RING_BY_KIND[kind],
+    capabilities: capabilitiesOf(model),
+    releaseDate: model.releaseDate,
+    openWeights: model.openWeights,
+    maxOutput: model.maxOutput,
+    inputPrice: model.pricing.inputPerMTok,
+    cachedPrice: model.pricing.cachedInputPerMTok,
+    license: model.license,
+    knowledgeCutoff: model.knowledgeCutoff,
+    reasoning: model.capabilities.reasoning,
+    toolCall: model.capabilities.toolCall,
+    promptCaching: model.capabilities.promptCaching,
+    inputs: model.modalities.input,
+    outputs: model.modalities.output,
+    eciRank,
+  };
+}
+
+export function buildUniverseData(snapshot: WorldSnapshot): UniverseData {
+  const vendorMap = new Map(snapshot.vendors.map((vendor) => [vendor.id, vendor]));
+  const usedVendorIds = [...new Set(snapshot.models.map((model) => model.vendorId))];
+  const modelCountByVendor = new Map<string, number>();
+  for (const model of snapshot.models) {
+    modelCountByVendor.set(model.vendorId, (modelCountByVendor.get(model.vendorId) ?? 0) + 1);
+  }
+  const maxContext = Math.max(1, ...snapshot.models.map((model) => model.contextWindow ?? 0));
+  const scored = snapshot.models
     .map((model) => model.benchmarks.eci)
     .filter((value): value is number => value != null)
     .sort((a, b) => a - b);
@@ -172,52 +359,69 @@ export function buildUniverseData(vendors: Vendor[], models: ModelRecord[]): Uni
     }
     return Math.round((lo / scored.length) * 100);
   };
+  const ranked = snapshot.models
+    .filter((model) => !model.retiredAt && model.benchmarks.eci != null)
+    .sort((a, b) => b.benchmarks.eci! - a.benchmarks.eci!);
+  const rankOf = new Map(ranked.map((model, index) => [model.id, index + 1]));
 
   const universeModels: UniverseModel[] = [];
   const universeVendors: UniverseVendor[] = [];
 
-  for (const id of UNIVERSE_VENDOR_IDS) {
-    const vendor = vendorMap.get(id);
-    if (!vendor) continue;
-    const vendorModels = scopedModels.filter((model) => model.vendorId === id);
-    const selected = representative(vendorModels);
-    const modelsForVendor: UniverseModel[] = selected.map((model, index) => {
-      const kind = kindOf(model) ?? 'unknown';
-      return {
-        slug: model.slug,
-        name: model.name,
-        vendorId: model.vendorId,
-        kind,
-        eci: model.benchmarks.eci,
-        eciPercentile: percentile(model.benchmarks.eci),
-        influence: influenceOf(model, maxContext),
-        price: model.pricing.outputPerMTok,
-        contextWindow: model.contextWindow,
-        retired: model.retiredAt != null,
-        orbit: 22 + (index % 3) * 13,
-        angle: (index * 51 + (id.length * 23) % 90) % 360,
-        body: BODY_BY_KIND[kind],
-        ring: RING_BY_KIND[kind],
-        capabilities: capabilitiesOf(model),
-      };
-    });
-    universeModels.push(...modelsForVendor);
+  // Keep the established five systems first; every other observed family follows
+  // in descending family size so the overview has a clear primary/secondary tier.
+  const orderedVendorIds = usedVendorIds.sort((a, b) => {
+    const leadA = LEAD_VENDORS.has(a) ? UNIVERSE_VENDOR_IDS.indexOf(a as typeof UNIVERSE_VENDOR_IDS[number]) : 99;
+    const leadB = LEAD_VENDORS.has(b) ? UNIVERSE_VENDOR_IDS.indexOf(b as typeof UNIVERSE_VENDOR_IDS[number]) : 99;
+    const countA = modelCountByVendor.get(a) ?? 0;
+    const countB = modelCountByVendor.get(b) ?? 0;
+    return leadA - leadB || countB - countA || a.localeCompare(b);
+  });
+
+  for (const id of orderedVendorIds) {
+    const vendor = vendorMap.get(id) ?? {
+      id,
+      name: profileFor(id).nameZh,
+      nameZh: profileFor(id).nameZh,
+      country: profileFor(id).country,
+      continent: 'west' as const,
+      motif: profileFor(id).motif,
+      accentColor: profileFor(id).accentColor,
+      homepage: profileFor(id).homepage,
+    };
+    const vendorModels = snapshot.models
+      .filter((model) => model.vendorId === id)
+      .sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? '') || a.name.localeCompare(b.name));
+    const selected = representative(vendorModels, LEAD_VENDORS.has(id) ? 7 : 4);
+    const selectedSet = new Set(selected.map((model) => model.id));
+    const allForVendor = [
+      ...selected,
+      ...vendorModels.filter((model) => !selectedSet.has(model.id)),
+    ].map((model, index) =>
+      leanUniverseModel(model, index, maxContext, percentile, rankOf.get(model.id) ?? null),
+    );
+    const modelsForVendor = allForVendor.filter((model) =>
+      selected.some((selectedModel) => selectedModel.slug === model.slug),
+    );
+    universeModels.push(...allForVendor);
     universeVendors.push({
       id: vendor.id,
       name: vendor.name,
       nameZh: vendor.nameZh,
       accentColor: vendor.accentColor,
+      homepage: profileFor(id).homepage,
       continent: vendor.continent,
       motif: vendor.motif,
-      starName: STAR_NAMES[id] ?? `${vendor.name} Expanse`,
-      coordinates: COORDINATES[id] ?? 'U 00 / 00',
+      starName: starNameOf(id, vendor),
+      coordinates: coordinatesOf(id, vendor, universeVendors.length),
       totalModels: vendorModels.length,
+      aliveModels: vendorModels.filter((model) => !model.retiredAt).length,
+      models: allForVendor,
       representativeModels: modelsForVendor,
     });
   }
 
-  const stars: UniverseStar[] = universeVendors.map((vendor) => {
-    const position = STAR_POSITIONS[vendor.id] ?? { x: 50, y: 50 };
+  const stars: UniverseStar[] = universeVendors.map((vendor, index) => {
+    const position = systemPosition(vendor.id, index, universeVendors.length);
     return {
       id: vendor.id,
       name: vendor.name,
@@ -228,11 +432,12 @@ export function buildUniverseData(vendors: Vendor[], models: ModelRecord[]): Uni
       y: position.y,
       radius: 42 + Math.min(18, vendor.totalModels * 0.18),
       count: vendor.totalModels,
+      lead: LEAD_VENDORS.has(vendor.id),
     };
   });
 
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt: snapshot.generatedAt,
     vendors: universeVendors,
     models: universeModels,
     stars,

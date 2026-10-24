@@ -34,7 +34,15 @@ function snapshot(): string | null {
  * 是真链接而不是按钮加 `router.push`——作为 B 站 Toy 发布时，站内跳转全靠
  * 打包脚本注入的点击兜底改写地址，`router.push` 绕过了它就会落到 404。
  */
-export function CompareButton({ slug, className }: { slug: string; className: string }) {
+export function CompareButton({
+  slug,
+  className,
+  compareBase = '/compare/',
+}: {
+  slug: string;
+  className: string;
+  compareBase?: string;
+}) {
   const raw = useSyncExternalStore(subscribe, snapshot, () => null);
   const others = useMemo(
     () => parsePicked(raw).filter((s) => s !== slug).slice(-(MAX_PICK - 1)),
@@ -42,7 +50,7 @@ export function CompareButton({ slug, className }: { slug: string; className: st
   );
 
   return (
-    <Link href={`/compare/?m=${[...others, slug].join(',')}`} className={className}>
+    <Link href={`${compareBase}?m=${[...others, slug].join(',')}`} className={className}>
       <VsIcon />
       {others.length > 0 ? `和已选的 ${others.length} 个对比` : '加入对比'}
     </Link>

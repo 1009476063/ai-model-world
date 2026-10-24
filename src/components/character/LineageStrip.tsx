@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Lineage } from '@/lib/lineage';
 import type { ModelKind } from '@/lib/kind';
 import { getDict, type Lang } from '@/lib/i18n';
+import { modelHref, vendorHref, WORLD_ROUTES, type SiteRoutes } from '@/lib/routes';
 
 /**
  * 同系列历代的时间轴。左旧右新，当前这一代高亮。
@@ -24,12 +25,14 @@ export function LineageStrip({
   vendorId,
   vendorName,
   lang,
+  routes = WORLD_ROUTES,
 }: {
   lineage: Lineage;
   kind: ModelKind | null;
   vendorId: string;
   vendorName: string;
   lang: Lang;
+  routes?: SiteRoutes;
 }) {
   const dict = getDict(lang);
   const kindLabel = kind ? dict.kind.label[kind] : dict.kind.unknown;
@@ -49,7 +52,7 @@ export function LineageStrip({
           {windowed
             ? `共 ${lineage.total} 个 · 这里是相邻的 ${lineage.entries.length} 个 · `
             : `共 ${lineage.total} 个 · `}
-          <Link href={`/vendor/${vendorId}/`} className="hover:text-[var(--color-gold)]">
+          <Link href={vendorHref(routes, vendorId)} className="hover:text-[var(--color-gold)]">
             {vendorName}的全部模型 →
           </Link>
         </span>
@@ -76,7 +79,7 @@ export function LineageStrip({
                   </span>
                 )}
                 <Link
-                  href={`/model/${m.slug}/`}
+                  href={modelHref(routes, m.slug)}
                   aria-current={current ? 'page' : undefined}
                   className="flex w-full flex-col gap-1 border-2 px-2 py-1.5 hover:border-[var(--color-gold)] sm:w-[124px]"
                   style={{

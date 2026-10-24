@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { DEFAULT_LANG, getDict } from '@/lib/i18n';
 import { outbound } from '@/lib/outbound';
+import { UNIVERSE_ROUTES } from '@/lib/routes';
 
 /** 数据源署名。CC-BY 4.0 要求每个展示页都能找到出处，所以放在全站布局里而不是某一页。 */
 const DATA_SOURCES = [
@@ -125,7 +126,7 @@ export function SiteFooter({ variant = 'world' }: { variant?: 'world' | 'univers
           <a href={REPO.href} target="_blank" rel="noopener noreferrer">
             {REPO.name} <small>MIT</small>
           </a>
-          <Link href="/credits/">素材署名</Link>
+          <Link href={UNIVERSE_ROUTES.credits}>数据与素材署名</Link>
         </div>
       </footer>
     );

@@ -47,14 +47,24 @@ function DocIcon() {
  * 「每个数字有出处」和「零人工维护」两条底线。做成深链接后，新模型无需任何同步
  * 就自带入口，读者点出去看的是原始出处。
  */
-export function ReviewLinks({ modelName, slug, lang }: { modelName: string; slug: string; lang: Lang }) {
+export function ReviewLinks({
+  modelName,
+  slug,
+  lang,
+  compareBase,
+}: {
+  modelName: string;
+  slug: string;
+  lang: Lang;
+  compareBase?: string;
+}) {
   const dict = getDict(lang);
   const cls =
     'pixel-button flex items-center gap-1.5 px-2 py-0.5 text-[12px] leading-tight text-[var(--color-ink)] hover:bg-[var(--color-gold)]';
   return (
     <div className="mt-3 flex flex-wrap gap-2">
       {/* 站内的动作排在两个出站链接前面 */}
-      <CompareButton slug={slug} className={cls} />
+      <CompareButton slug={slug} className={cls} compareBase={compareBase} />
       <a
         href={bilibiliSearch(modelName)}
         target="_blank"

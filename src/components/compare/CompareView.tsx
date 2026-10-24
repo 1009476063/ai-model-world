@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { AbilityBars } from '@/components/character/AbilityBars';
 import { VendorCrest } from '@/components/character/VendorCrest';
+import { UniverseOrb } from '@/components/universe/UniverseOrb';
 import { useUrlQuery } from '@/components/leaderboard/useUrlQuery';
 import { APTITUDES, type AptitudeRow } from '@/lib/aptitude';
 import { getDict, DEFAULT_LANG } from '@/lib/i18n';
 import type { Modality } from '@/lib/types';
+import type { UniverseModel } from '@/lib/universe';
 import {
   cutoffMonth,
   cutoffText,
@@ -24,6 +26,7 @@ import {
 import { ModelPicker } from './ModelPicker';
 import { MAX_PICK, writePicked } from './storage';
 import type { CmpModel, CompareData } from './types';
+import { modelHref, WORLD_ROUTES, type SiteRoutes } from '@/lib/routes';
 
 /**
  * 模型对比页的交互层。
@@ -128,6 +131,25 @@ function Sprite({ m, base, accent }: { m: CmpModel; base: string; accent: string
       ) : (
         <div className="relative mb-1" style={{ width: cell * 0.36, height: cell * 0.78, background: accent }} />
       )}
+    </div>
+  );
+}
+
+function Celestial({
+  model,
+  accent,
+  size,
+}: {
+  model: UniverseModel;
+  accent: string;
+  size: number;
+}) {
+  return (
+    <div
+      className="relative flex items-center justify-center"
+      style={{ width: 96, height: 96 }}
+    >
+      <UniverseOrb model={model} accent={accent} size={size} selected />
     </div>
   );
 }
@@ -248,12 +270,14 @@ function ScoresBlock({
   accents,
   scope,
   setScope,
+  routes,
 }: {
   rows: H2HRow[];
   picked: CmpModel[];
   accents: string[];
   scope: 'auto' | 'common' | 'all';
   setScope: (s: 'common' | 'all') => void;
+  routes: SiteRoutes;
 }) {
   const n = picked.length;
   const common = rows.filter(isContested);
@@ -314,7 +338,7 @@ function ScoresBlock({
               <RowLabel title={row.bench.blurb}>
                 {row.bench.track ? (
                   <Link
-                    href={`/leaderboard/?track=${encodeURIComponent(row.bench.track)}`}
+                    href={`${routes.leaderboard}?track=${encodeURIComponent(row.bench.track)}`}
                     className="text-[var(--color-parchment-dim)] hover:text-[var(--color-gold)]"
                   >
                     {row.bench.label}
@@ -374,7 +398,19 @@ function ScoresBlock({
 
 // ─── 主组件 ──────────────────────────────────────────────────────
 
-export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBase: string }) {
+export function CompareView({
+  dataUrl,
+  spriteBase,
+  universeModels,
+  routes = WORLD_ROUTES,
+  universe = false,
+}: {
+  dataUrl: string;
+  spriteBase: string;
+  universeModels?: Record<string, UniverseModel>;
+  routes?: SiteRoutes;
+  universe?: boolean;
+}) {
   const [params, update] = useUrlQuery();
   const [data, setData] = useState<CompareData | null>(null);
   const [failed, setFailed] = useState(false);
@@ -435,13 +471,31 @@ export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBa
   // 跑分是对比页的主角：有足够多的共同项、或者跑分行本身就不少时都排在规格前面
   const scoresFirst = score.contested >= MIN_CONTESTED || rows.length >= 6;
   const specs = <SpecsBlock picked={picked} />;
-  const scores = <ScoresBlock rows={rows} picked={picked} accents={accents} scope={scope} setScope={setScope} />;
+  const scores = (
+    <ScoresBlock
+      rows={rows}
+      picked={picked}
+      accents={accents}
+      scope={scope}
+      setScope={setScope}
+      routes={routes}
+    />
+  );
 
   return (
-    <div className="mx-auto" style={{ maxWidth: n > 0 ? 200 + n * 380 : undefined }}>
-      <div className="mb-5 mt-4 flex flex-wrap items-end justify-between gap-3">
-        <h1 className="pixel-outline text-2xl sm:text-3xl">模型对比</h1>
-        <ModelPicker data={data} picked={slugs} onPick={(s) => setSlugs([...slugs, s])} disabled={n >= MAX_PICK} />
+    <div
+      className={`universe-compare ${universe ? 'is-universe' : ''} mx-auto`}
+      style={{ maxWidth: n > 0 ? 200 + n * 380 : undefined }}
+    >
+      <div className={`mb-5 mt-4 flex flex-wrap items-end justify-between gap-3 ${universe ? 'universe-compare-toolbar' : ''}`}>
+        {!universe && <h1 className="pixel-outline text-2xl sm:text-3xl">模型对比</h1>}
+        <ModelPicker
+          data={data}
+          picked={slugs}
+          onPick={(s) => setSlugs([...slugs, s])}
+          disabled={n >= MAX_PICK}
+          universe={universe}
+        />
       </div>
 
       {n === 0 && (
@@ -477,7 +531,7 @@ export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBa
               return (
                 <div
                   key={m.slug}
-                  className="pixel-panel-dark relative flex flex-col items-center px-3 pb-4 pt-3 text-center"
+                  className="universe-compare-card pixel-panel-dark relative flex flex-col items-center px-3 pb-4 pt-3 text-center"
                   style={{ borderTop: `4px solid ${accents[i]}` }}
                 >
                   <button
@@ -489,9 +543,17 @@ export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBa
                   >
                     ×
                   </button>
-                  <Sprite m={m} base={spriteBase} accent={accents[i]} />
+                  {universe && universeModels?.[m.slug] ? (
+                    <Celestial
+                      model={universeModels[m.slug]}
+                      accent={accents[i]}
+                      size={m.scale >= 1 ? 84 : 72}
+                    />
+                  ) : (
+                    <Sprite m={m} base={spriteBase} accent={accents[i]} />
+                  )}
                   <Link
-                    href={`/model/${m.slug}/`}
+                    href={modelHref(routes, m.slug)}
                     className="pixel-outline mt-1 text-[17px] leading-snug hover:text-[var(--color-gold)] sm:text-[20px]"
                   >
                     {m.name}

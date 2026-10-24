@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import { UniverseNav } from '@/components/universe/UniverseNav';
+import { UniverseOverview } from '@/components/universe/UniverseOverview';
 import { UniverseStarMap } from '@/components/universe/UniverseStarMap';
-import { buildUniverseData } from '@/lib/universe';
+import {
+  buildUniverseChampions,
+  buildUniverseData,
+  buildUniverseKindGroups,
+} from '@/lib/universe';
 import { loadSnapshot } from '@/lib/snapshot';
+import { vendorHref, UNIVERSE_ROUTES } from '@/lib/routes';
 import './universe.css';
 
 export default function UniversePage() {
   const snapshot = loadSnapshot();
-  const data = buildUniverseData(snapshot.vendors, snapshot.models);
+  const data = buildUniverseData(snapshot);
+  const champions = buildUniverseChampions(snapshot, data);
+  const kinds = buildUniverseKindGroups(data);
   const date = new Date(snapshot.generatedAt);
 
   return (
@@ -15,7 +23,7 @@ export default function UniversePage() {
       <UniverseNav />
       <section className="universe-hero">
         <div className="universe-hero-copy">
-          <p className="universe-kicker">AI MODEL OBSERVATORY · SAMPLE FIELD</p>
+          <p className="universe-kicker">AI MODEL OBSERVATORY · COMPLETE FIELD</p>
           <h1>在星图里，<br />看见模型格局。</h1>
           <p className="universe-hero-desc">
             把厂商看作星系，把模型看作天体。亮度来自 ECI，大小来自综合影响力，环系记录能力类型。
@@ -23,7 +31,7 @@ export default function UniversePage() {
           <div className="universe-hero-meta">
             <span>{date.getUTCFullYear()}.{String(date.getUTCMonth() + 1).padStart(2, '0')}.{String(date.getUTCDate()).padStart(2, '0')}</span>
             <span>{data.vendors.length} 个星系</span>
-            <span>{data.models.length} 个代表天体</span>
+            <span>{data.models.length} 个天体档案</span>
           </div>
         </div>
         <div className="universe-hero-orbit" aria-hidden>
@@ -34,6 +42,8 @@ export default function UniversePage() {
           <span className="orbit-label orbit-label-two">E / 02</span>
         </div>
       </section>
+
+      <UniverseOverview champions={champions} kinds={kinds} />
 
       <section className="universe-map-section" aria-labelledby="universe-map-title">
         <div className="universe-section-head">
@@ -52,11 +62,11 @@ export default function UniversePage() {
             <p className="universe-kicker">OBSERVED SYSTEMS</p>
             <h2 id="universe-vendor-title">厂商星系</h2>
           </div>
-          <p>先看五个代表星系，确认视觉语法后再扩展到全部厂商。</p>
+          <p>五家主星系保持固定坐标，其余厂商组成外围观测带。</p>
         </div>
         <div className="universe-vendor-list">
           {data.vendors.map((vendor, index) => (
-            <Link key={vendor.id} href={`/universe/vendor/${vendor.id}/`} className="universe-vendor-row">
+            <Link key={vendor.id} href={vendorHref(UNIVERSE_ROUTES, vendor.id)} className="universe-vendor-row">
               <span className="universe-vendor-index">{String(index + 1).padStart(2, '0')}</span>
               <span className="universe-vendor-swatch" style={{ background: vendor.accentColor }} />
               <span className="universe-vendor-name">
@@ -64,7 +74,7 @@ export default function UniversePage() {
                 <small>{vendor.nameZh} · {vendor.starName}</small>
               </span>
               <span className="universe-vendor-coords">{vendor.coordinates}</span>
-              <span className="universe-vendor-count">{vendor.totalModels} 个模型</span>
+              <span className="universe-vendor-count">{vendor.aliveModels} 在役 / {vendor.totalModels} 模型</span>
               <span className="universe-vendor-arrow">↗</span>
             </Link>
           ))}
@@ -83,7 +93,8 @@ export default function UniversePage() {
 
       <footer className="universe-footer">
         <span>大模型世界 · Universe Prototype</span>
-        <span>真实快照 · 程序化天体 · 无外部图片依赖</span>
+        <span>真实快照 · 全部厂商 · 程序化天体</span>
+        <Link href={UNIVERSE_ROUTES.credits}>数据与素材署名</Link>
         <Link href="/">返回旧版广场</Link>
       </footer>
     </main>

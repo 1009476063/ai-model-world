@@ -45,21 +45,63 @@ jobs:
         run: echo "NEXT_BASE_PATH=/${REPOSITORY_NAME}" >> "$GITHUB_ENV"
 
       - name: Build
-        run: npm run build
+        env:
+          NEXT_DIST_DIR: .next-pages
+        run: |
+          set -euo pipefail
+          npm run build
+          test -s .next-pages/index.html
+          test -s .next-pages/universe/index.html
+          test -d .next-pages/_next
+          if [ -e out ]; then
+            mv out "out.before-${GITHUB_RUN_ID}"
+          fi
+          mv .next-pages out
+
+      - name: Verify Universe data coverage
+        run: npm run verify:universe
 
       - name: Validate static export
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: |
+          set -euo pipefail
           test -s out/index.html
           test -s out/404.html
           test -s out/search-index.json
+          test -s out/compare-data.json
           test -d out/sprites
           test "$(find out/sprites -type f -name '*.png' | wc -l | tr -d ' ')" -gt 0
+
+          for page in \
+            out/universe/index.html \
+            out/universe/leaderboard/index.html \
+            out/universe/models/index.html \
+            out/universe/compare/index.html \
+            out/universe/chronicle/index.html \
+            out/universe/credits/index.html
+          do
+            test -s "$page" || {
+              echo "::error::Missing static page: $page"
+              exit 1
+            }
+          done
+
+          model_page="$(find out/universe/model -mindepth 2 -maxdepth 2 -name index.html -print -quit)"
+          vendor_page="$(find out/universe/vendor -mindepth 2 -maxdepth 2 -name index.html -print -quit)"
+          test -n "$model_page"
+          test -n "$vendor_page"
+          test -s "$model_page"
+          test -s "$vendor_page"
+
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/index.html
+          grep -Fq "/${REPOSITORY_NAME}/_next/" out/universe/index.html
           grep -Fq "/${REPOSITORY_NAME}/sprites/" out/index.html
-          if grep -Eq 'href="/_next/|src="/_next/|url\(/sprites/' out/index.html; then
-            echo "::error::Found root-absolute Next.js assets in a GitHub Pages build"
+
+          if grep -Eq 'href="/_next/|src="/_next/|url\(/sprites/' \
+            out/index.html out/universe/index.html out/universe/models/index.html
+          then
+            echo "::error::Found root-absolute assets in a GitHub Pages build"
             exit 1
           fi
 

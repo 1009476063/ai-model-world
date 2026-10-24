@@ -65,7 +65,7 @@ export function Chip({
       aria-pressed={pressed}
       title={title}
       onClick={onClick}
-      className="border-2 border-[var(--color-ink)] px-2 py-0.5 text-[13px] leading-5"
+      className="universe-legacy-chip border-2 border-[var(--color-ink)] px-2 py-0.5 text-[13px] leading-5"
       style={{
         background: pressed ? 'var(--color-gold)' : 'rgb(0 0 0 / 0.35)',
         color: pressed ? 'var(--color-ink)' : 'var(--color-parchment)',
@@ -138,7 +138,7 @@ export function ModelFilters({ value, onChange, vendors, models, matched }: Mode
   const active = isFilterActive(value);
 
   return (
-    <div className="pixel-panel-dark flex flex-wrap items-center gap-x-4 gap-y-2 px-3 py-2">
+    <div className="universe-legacy-panel pixel-panel-dark flex flex-wrap items-center gap-x-4 gap-y-2 px-3 py-2">
       <label className="flex items-center gap-1.5">
         <span className="text-[13px] text-[var(--color-ghost)]">搜索</span>
         <input
@@ -211,7 +211,7 @@ export function ModelFilters({ value, onChange, vendors, models, matched }: Mode
             ▼
           </span>
         </summary>
-        <div className="pixel-panel-dark absolute left-0 top-full z-20 mt-1 max-h-72 w-64 overflow-y-auto p-2">
+        <div className="universe-legacy-panel pixel-panel-dark absolute left-0 top-full z-20 mt-1 max-h-72 w-64 overflow-y-auto p-2">
           {vendorGroups.map((g) => (
             <div key={g.label} className="mb-2 last:mb-0">
               <div className="mb-1 text-[13px] text-[var(--color-ghost)]">{g.label}</div>

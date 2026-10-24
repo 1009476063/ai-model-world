@@ -8,6 +8,7 @@ import { filterFromParams, filterToParams, makePredicate, EMPTY_FILTER, type Fil
 import { ModelFilters } from './ModelFilters';
 import type { ExplorerData, LeanEntry, LeanTrack } from './types';
 import { useUrlQuery } from './useUrlQuery';
+import { modelHref, WORLD_ROUTES, type SiteRoutes } from '@/lib/routes';
 
 /**
  * 排行榜的交互层。
@@ -37,7 +38,15 @@ function barFraction(track: LeanTrack, values: number[], v: number): number {
   return track.higherIsBetter ? (x - min) / (max - min) : (max - x) / (max - min);
 }
 
-export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
+export function LeaderboardExplorer({
+  data,
+  routes = WORLD_ROUTES,
+  universe = false,
+}: {
+  data: ExplorerData;
+  routes?: SiteRoutes;
+  universe?: boolean;
+}) {
   const [params, update] = useUrlQuery();
 
   const filter = useMemo(() => (params ? filterFromParams(params) : EMPTY_FILTER), [params]);
@@ -88,14 +97,14 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
 
   if (!track) {
     return (
-      <div className="pixel-panel-dark p-6 text-[14px] text-[var(--color-parchment)]">
+      <div className={`pixel-panel-dark p-6 text-[14px] text-[var(--color-parchment)] ${universe ? 'universe-legacy-panel' : ''}`}>
         快照里还没有任何够 5 个模型的榜单，暂时开不了榜。
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
+    <div className={`universe-explorer ${universe ? 'is-universe' : ''} flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6`}>
       {/* 赛道切换：桌面端左侧竖排，移动端折成下拉 */}
       <nav
         aria-label="赛道"
@@ -106,7 +115,7 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
             value={track.id}
             onChange={(e) => setTrack(e.target.value)}
             aria-label="选择赛道"
-            className="w-full border-3 border-[var(--color-ink)] bg-[var(--color-parchment)] px-2 py-1.5 text-[14px] text-[var(--color-ink)]"
+            className="universe-legacy-control w-full border-3 border-[var(--color-ink)] bg-[var(--color-parchment)] px-2 py-1.5 text-[14px] text-[var(--color-ink)]"
           >
             {grouped.map((g) => (
               <optgroup key={g.category} label={g.category}>
@@ -133,7 +142,7 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
                         type="button"
                         aria-pressed={on}
                         onClick={() => setTrack(t.id)}
-                        className="pixel-button flex w-full items-center justify-between gap-2 px-2.5 py-1 text-left text-[13px] leading-5 text-[var(--color-ink)]"
+                        className="universe-legacy-control pixel-button flex w-full items-center justify-between gap-2 px-2.5 py-1 text-left text-[13px] leading-5 text-[var(--color-ink)]"
                       >
                         <span className="truncate">{t.label}</span>
                         <span className="font-pixel shrink-0 text-[12px] opacity-60">{t.entries.length}</span>
@@ -195,7 +204,7 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
           matched={eligible}
         />
 
-        <ol className="pixel-panel-dark mt-3 divide-y divide-white/10 px-3 py-1 sm:px-4">
+        <ol className="universe-leaderboard-list universe-legacy-panel pixel-panel-dark mt-3 divide-y divide-white/10 px-3 py-1 sm:px-4">
           {shown.length === 0 && (
             <li className="py-6 text-center text-[14px] text-[var(--color-ghost)]">
               当前筛选条件下没有模型在这条赛道上有成绩。未参赛不等于做不到——本站不会用估算值填空。
@@ -207,6 +216,7 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
               rank={i + 1}
               entry={e}
               data={data}
+              routes={routes}
               fraction={barFraction(track, values, e.v)}
               accent={readableOnDark(vendorMap.get(data.models[e.m].vendor)?.accent ?? '#8a8a8a', 0.3)}
             />
@@ -218,7 +228,7 @@ export function LeaderboardExplorer({ data }: { data: ExplorerData }) {
             <button
               type="button"
               onClick={() => update({ all: showAll ? null : '1' })}
-              className="pixel-button px-4 py-1.5 text-[13px] text-[var(--color-ink)]"
+              className="universe-legacy-control pixel-button px-4 py-1.5 text-[13px] text-[var(--color-ink)]"
             >
               {showAll ? `只看前 ${DEFAULT_LIMIT} 名` : `展开全部 ${entries.length} 位`}
             </button>
@@ -233,12 +243,14 @@ function Row({
   rank,
   entry,
   data,
+  routes,
   fraction,
   accent,
 }: {
   rank: number;
   entry: LeanEntry;
   data: ExplorerData;
+  routes: SiteRoutes;
   fraction: number;
   accent: string;
 }) {
@@ -248,7 +260,7 @@ function Row({
   const medal = MEDAL[rank];
 
   return (
-    <li className="flex items-center gap-2 py-1.5 sm:gap-3">
+    <li className="universe-leaderboard-row flex items-center gap-2 py-1.5 sm:gap-3">
       <span
         className="font-pixel w-7 shrink-0 text-right text-[14px] leading-none"
         style={{ color: medal ?? 'var(--color-ghost)' }}
@@ -264,7 +276,7 @@ function Row({
       />
       <div className="min-w-0 flex-1">
         <Link
-          href={`/model/${model.slug}/`}
+          href={modelHref(routes, model.slug)}
           className="block truncate text-[14px] leading-5 text-[var(--color-parchment)] hover:text-[var(--color-gold)]"
           style={medal && rank === 1 ? { color: 'var(--color-gold)' } : undefined}
         >

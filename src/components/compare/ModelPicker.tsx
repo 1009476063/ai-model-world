@@ -24,11 +24,13 @@ export function ModelPicker({
   picked,
   onPick,
   disabled,
+  universe = false,
 }: {
   data: CompareData;
   picked: string[];
   onPick: (slug: string) => void;
   disabled: boolean;
+  universe?: boolean;
 }) {
   const [q, setQ] = useState('');
   const [open, setOpen] = useState(false);
@@ -104,13 +106,13 @@ export function ModelPicker({
             setOpen(false);
           }
         }}
-        className="w-full border-3 border-[var(--color-ink)] bg-[var(--color-parchment)] px-2.5 py-1.5 text-[14px] text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/50 disabled:opacity-60"
+        className={`w-full border-3 border-[var(--color-ink)] bg-[var(--color-parchment)] px-2.5 py-1.5 text-[14px] text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/50 disabled:opacity-60 ${universe ? 'universe-legacy-control' : ''}`}
       />
       {open && results.length > 0 && (
         <ul
           role="listbox"
           aria-label="匹配的模型"
-          className="pixel-panel-dark absolute left-0 right-0 top-full z-30 mt-1 max-h-96 overflow-y-auto py-1"
+          className={`pixel-panel-dark absolute left-0 right-0 top-full z-30 mt-1 max-h-96 overflow-y-auto py-1 ${universe ? 'universe-legacy-panel' : ''}`}
         >
           {results.map((m, i) => {
             const v = data.vendors[m.vendor];
@@ -138,7 +140,7 @@ export function ModelPicker({
         </ul>
       )}
       {open && fold(q) && results.length === 0 && (
-        <div className="pixel-panel-dark absolute left-0 right-0 top-full z-30 mt-1 px-3 py-2 text-[13px] text-[var(--color-ghost)]">
+        <div className={`pixel-panel-dark absolute left-0 right-0 top-full z-30 mt-1 px-3 py-2 text-[13px] text-[var(--color-ghost)] ${universe ? 'universe-legacy-panel' : ''}`}>
           没有匹配的模型
         </div>
       )}

@@ -12,6 +12,7 @@ import {
   trackIdFor,
   type ScorePools,
 } from '@/lib/scores';
+import { WORLD_ROUTES, type SiteRoutes } from '@/lib/routes';
 
 /**
  * 详情页的「全部成绩」：把一个模型在编程以外的每个榜单上的成绩按分类列出来，
@@ -36,7 +37,15 @@ function poolsFor(models: ModelRecord[]): ScorePools {
   return pools;
 }
 
-export function ScoreLedger({ model, models }: { model: ModelRecord; models: ModelRecord[] }) {
+export function ScoreLedger({
+  model,
+  models,
+  routes = WORLD_ROUTES,
+}: {
+  model: ModelRecord;
+  models: ModelRecord[];
+  routes?: SiteRoutes;
+}) {
   const scores = allScoresOf(model).filter((s) => !isCodingBenchmark(s.league));
   if (scores.length === 0) return null;
 
@@ -65,7 +74,7 @@ export function ScoreLedger({ model, models }: { model: ModelRecord; models: Mod
   }
 
   return (
-    <section className="mt-6">
+    <section className="universe-ledger mt-6">
       <div className="pixel-panel-dark p-5">
         <h2 className="mb-1 text-sm text-[var(--color-parchment)]">全部成绩（按榜单分列）</h2>
         <p className="mb-3 text-[13px] leading-relaxed text-[var(--color-ghost)]">
@@ -86,7 +95,7 @@ export function ScoreLedger({ model, models }: { model: ModelRecord; models: Mod
                       <span className="text-[14px] text-[var(--color-parchment)]">
                         {trackId ? (
                           <Link
-                            href={`/leaderboard/?track=${encodeURIComponent(trackId)}`}
+                            href={`${routes.leaderboard}?track=${encodeURIComponent(trackId)}`}
                             className="hover:text-[var(--color-gold)]"
                             title="去排行榜看这个榜的完整名单"
                           >

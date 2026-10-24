@@ -9,6 +9,7 @@ import { filterFromParams, filterToParams, makePredicate, EMPTY_FILTER, type Fil
 import { ModelFilters } from './ModelFilters';
 import type { AllRow, AllTableData } from './types';
 import { useUrlQuery } from './useUrlQuery';
+import { modelHref, WORLD_ROUTES, type SiteRoutes } from '@/lib/routes';
 
 /**
  * 全部模型总表：查询能力的主入口。
@@ -52,7 +53,15 @@ const COLUMNS: Column[] = [
   { key: 'n', label: '参赛榜数', defaultDir: 'desc', secondary: true, align: 'right' },
 ];
 
-export function AllModelsTable({ data }: { data: AllTableData }) {
+export function AllModelsTable({
+  data,
+  routes = WORLD_ROUTES,
+  universe = false,
+}: {
+  data: AllTableData;
+  routes?: SiteRoutes;
+  universe?: boolean;
+}) {
   const [params, update] = useUrlQuery();
   const filter = useMemo(() => (params ? filterFromParams(params) : EMPTY_FILTER), [params]);
   const showAll = params?.get('all') === '1';
@@ -121,11 +130,11 @@ export function AllModelsTable({ data }: { data: AllTableData }) {
   };
 
   return (
-    <div>
+    <div className={`universe-explorer ${universe ? 'is-universe' : ''}`}>
       <ModelFilters value={filter} onChange={setFilter} vendors={data.vendors} models={data.models} matched={rows.length} />
 
-      <div className="pixel-panel-dark mt-3 overflow-x-auto">
-        <table className="w-full border-collapse text-[14px]">
+      <div className="universe-legacy-panel pixel-panel-dark mt-3 overflow-x-auto">
+        <table className="universe-all-models-table w-full border-collapse text-[14px]">
           <thead>
             <tr className="border-b-2 border-[var(--color-ink)] text-[13px] text-[var(--color-ghost)]">
               {COLUMNS.map((c) => {
@@ -135,7 +144,7 @@ export function AllModelsTable({ data }: { data: AllTableData }) {
                     key={c.key}
                     scope="col"
                     aria-sort={on ? (dir === 'asc' ? 'ascending' : 'descending') : 'none'}
-                    className={`whitespace-nowrap px-1.5 py-2 font-normal first:pl-2 sm:px-2 sm:first:pl-3 sm:last:pr-3 ${
+                    className={`universe-table-${c.key} whitespace-nowrap px-1.5 py-2 font-normal first:pl-2 sm:px-2 sm:first:pl-3 sm:last:pr-3 ${
                       c.secondary ? 'hidden md:table-cell' : ''
                     } ${c.align === 'right' ? 'text-right' : 'text-left'}`}
                   >
@@ -168,9 +177,9 @@ export function AllModelsTable({ data }: { data: AllTableData }) {
               const v = vendorMap.get(m.vendor);
               return (
                 <tr key={m.id} className="hover:bg-white/5">
-                  <td className="max-w-[8rem] px-1.5 py-1.5 pl-2 sm:max-w-[14rem] sm:px-2 sm:pl-3">
+                  <td className="universe-table-name max-w-[8rem] px-1.5 py-1.5 pl-2 sm:max-w-[14rem] sm:px-2 sm:pl-3">
                     <Link
-                      href={`/model/${m.slug}/`}
+                      href={modelHref(routes, m.slug)}
                       className="flex items-center gap-1.5 text-[var(--color-parchment)] hover:text-[var(--color-gold)]"
                     >
                       <VendorCrest motif={v?.motif ?? 'wanderer'} accentColor={v?.accent ?? '#8a8a8a'} size={12} />
@@ -248,7 +257,7 @@ export function AllModelsTable({ data }: { data: AllTableData }) {
           <button
             type="button"
             onClick={() => update({ all: showAll ? null : '1' })}
-            className="pixel-button px-4 py-1.5 text-[13px] text-[var(--color-ink)]"
+            className="universe-legacy-control pixel-button px-4 py-1.5 text-[13px] text-[var(--color-ink)]"
           >
             {showAll ? `只看前 ${DEFAULT_LIMIT} 个` : `展开全部 ${rows.length} 个`}
           </button>

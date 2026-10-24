@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useState } from 'react';
 import type { UniverseModel, UniverseVendor } from '@/lib/universe';
+import { modelHref, UNIVERSE_ROUTES } from '@/lib/routes';
 import { UniverseOrb } from './UniverseOrb';
 
 const UniverseGalaxyScene = dynamic(() => import('./UniverseGalaxyScene'), {
@@ -74,7 +75,7 @@ export function UniverseGalaxyView({ vendor }: { vendor: UniverseVendor }) {
             <div><dt>输出价</dt><dd>{selected.price == null ? '—' : `$${selected.price.toFixed(2)}`}</dd></div>
             <div><dt>上下文</dt><dd>{selected.contextWindow == null ? '—' : `${Math.round(selected.contextWindow / 1000)}K`}</dd></div>
           </dl>
-          <Link href={`/universe/model/${selected.slug}/`}>打开完整天体档案</Link>
+          <Link href={modelHref(UNIVERSE_ROUTES, selected.slug)}>打开完整天体档案</Link>
         </section>
       )}
     </>
