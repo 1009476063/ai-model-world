@@ -94,6 +94,18 @@ jobs:
           test -s "$model_page"
           test -s "$vendor_page"
 
+          # The home page must ship both district sections (国外 / 国内) built from
+          # the plaza roster, not just the star map. Counts are read off the HTML so a
+          # regression that drops the sections fails the build instead of the eye test.
+          grep -Fq 'universe-district is-west' out/universe/index.html
+          grep -Fq 'universe-district is-east' out/universe/index.html
+          headline_cards="$(grep -o '<article class="universe-district-card"' out/universe/index.html | wc -l | tr -d ' ')"
+          if [ "$headline_cards" -lt 40 ]; then
+            echo "::error::Universe home rendered only ${headline_cards} district cards; expected one per roster vendor"
+            exit 1
+          fi
+          echo "District cards in static export: ${headline_cards}"
+
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/index.html
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/universe/index.html
           grep -Fq "/${REPOSITORY_NAME}/sprites/" out/index.html
