@@ -107,8 +107,29 @@ function ExtLink({ href, children }: { href: string; children: React.ReactNode }
  * 署名做在每一页的页脚是最稳妥的履约方式——读者截任何一页的图，出处都在。
  * 角色形象借用了哪些社区设定放在 /credits/ 单页，这里只给入口。
  */
-export function SiteFooter() {
+export function SiteFooter({ variant = 'world' }: { variant?: 'world' | 'universe' }) {
   const dict = getDict(DEFAULT_LANG);
+  if (variant === 'universe') {
+    return (
+      <footer className="universe-global-footer">
+        <div>
+          <span>数据来源</span>
+          {DATA_SOURCES.map((source) => (
+            <a key={source.name} href={source.href} target="_blank" rel="noopener noreferrer">
+              {source.name} <small>{source.license}</small>
+            </a>
+          ))}
+        </div>
+        <div>
+          <span>代码与素材</span>
+          <a href={REPO.href} target="_blank" rel="noopener noreferrer">
+            {REPO.name} <small>MIT</small>
+          </a>
+          <Link href="/credits/">素材署名</Link>
+        </div>
+      </footer>
+    );
+  }
   return (
     <footer className="relative mt-12 border-t border-white/10 bg-black/40">
       <div className="mx-auto max-w-6xl px-4 py-5 text-[12px] leading-relaxed text-[var(--color-ghost)] sm:px-8">
