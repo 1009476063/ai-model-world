@@ -82,6 +82,80 @@ for (const width of [1440, 390]) {
   await expect(`${width} multimodal filter`, async () =>
     (await page.locator('.universe-map-filters select[aria-label="按能力筛选天体"] option[value="multimodal"]').count()) === 1);
 
+  /*
+   * Districts have to mirror the old plaza: 国外 + 国内, each split into
+   * 头部/主力/尚无评测, one headline object per vendor, and the same four
+   * aptitude bars with empty slots for unmeasured values.
+   */
+  await expect(`${width} district sections 2`, async () =>
+    (await page.locator('.universe-district').count()) === 2);
+  const districtFacts = await page.evaluate(() => {
+    const digits = (node) => Number((node?.textContent ?? '').replace(/\D/g, '')) || 0;
+    return [...document.querySelectorAll('.universe-district')].map((region) => {
+      const streets = [...region.querySelectorAll('.universe-street')];
+      const tail = region.querySelector('.universe-district-more-vendors');
+      return {
+        continent: region.className.includes('is-east') ? 'east' : 'west',
+        // The collapsed tail also lives in the DOM, so headline counts must be
+        // read from the streets themselves rather than the whole region.
+        streetCards: streets.reduce((n, s) => n + s.querySelectorAll('.universe-district-card').length, 0),
+        tailCards: tail ? tail.querySelectorAll('.universe-district-card').length : 0,
+        headerCount: digits(region.querySelector('.universe-district-header span')),
+        streetSum: streets.reduce((n, s) => n + digits(s.querySelector('.universe-street-head span')), 0),
+        streets: streets.length,
+      };
+    });
+  });
+  for (const district of districtFacts) {
+    check(`${width} district ${district.continent} streets 3`, district.streets === 3, JSON.stringify(district));
+    check(
+      `${width} district ${district.continent} counts agree`,
+      district.streetCards === district.headerCount
+        && district.headerCount === district.streetSum,
+      JSON.stringify(district),
+    );
+  }
+  const headlineTotal = districtFacts.reduce((n, d) => n + d.streetCards, 0);
+  const tailTotal = districtFacts.reduce((n, d) => n + d.tailCards, 0);
+  check(`${width} districts show 40 headline objects`, headlineTotal === 40, JSON.stringify(districtFacts.map((d) => [d.streetCards, d.tailCards])));
+  check(`${width} districts collapse 36 tail vendors`, tailTotal === 36, JSON.stringify(districtFacts.map((d) => d.tailCards)));
+  await expect(`${width} district cards show four bars`, async () => {
+    const first = page.locator('.universe-district-card').first();
+    return (await first.locator('svg').count()) >= 4;
+  });
+  check(
+    `${width} district bars keep empty-slot semantics`,
+    await page.evaluate(() => {
+      const paths = [...document.querySelectorAll('.universe-district-card svg path')];
+      const empty = paths.filter((p) => p.getAttribute('fill') === 'none').length;
+      const lit = paths.filter((p) => p.getAttribute('fill') !== 'none').length;
+      return empty > 0 && lit > 0;
+    }),
+  );
+  await expect(`${width} district traits rendered`, async () => {
+    const n = await page.locator('.universe-district-traits').filter({ hasText: /\S/ }).count();
+    return n > 0 ? n : false;
+  });
+  await expect(`${width} district newer notes`, async () => {
+    const n = await page.locator('.universe-district-newer').count();
+    return n > 0 ? n : false;
+  });
+  await expect(`${width} district personas present`, async () => {
+    const n = await page.locator('.universe-district-persona').filter({ hasText: /\S/ }).count();
+    return n > 0 ? n : false;
+  });
+  const collapsed = page.locator('.universe-district-more-vendors');
+  check(`${width} district collapsed tail exists`, (await collapsed.count()) >= 1, String(await collapsed.count()));
+  if (await collapsed.count()) {
+    await collapsed.first().locator('summary').click();
+    await expect(`${width} district tail expands`, async () => {
+      const n = await collapsed.first().locator('.universe-district-card').count();
+      return n > 0 ? n : false;
+    });
+  }
+  await page.locator('#universe-region-east').scrollIntoViewIfNeeded();
+  check(`${width} east district reachable by jump`, await page.locator('.universe-district.is-east').isVisible());
+
   const mapSearch = page.locator('#universe-search');
   await mapSearch.fill('Claude');
   await expect(`${width} map search results`, async () => {

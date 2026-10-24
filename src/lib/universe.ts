@@ -1,5 +1,15 @@
 import { canonicalVendorId, profileFor, VENDOR_REGISTRY } from '@/data/vendor-registry';
 import { buildChampions } from './champions';
+import { buildAptitudeScale, type AptitudeRow } from './aptitude';
+import { buildPersonaContext, personaFor } from './persona';
+import { assignTraits, buildTraitContext, type Trait } from './traits';
+import {
+  buildPlazaRoster,
+  newerThanFlagship,
+  type PlazaTier,
+  type RosterEntry,
+} from './roster';
+import type { Continent } from './types';
 import type { ModelKind } from './kind';
 import { kindOf } from './kind';
 import type { ModelRecord, Vendor, WorldSnapshot } from './types';
@@ -272,6 +282,124 @@ export function buildUniverseKindGroups(data: UniverseData): UniverseKindGroup[]
       kind,
       count: pool.length,
       representatives: pool.slice(0, 3),
+    }];
+  });
+}
+
+/**
+ * The district view ("国外 / 国内", each split into 头部 / 主力 / 尚无评测).
+ *
+ * It deliberately reuses `buildPlazaRoster` instead of re-deriving a selection.
+ * The old plaza already answers "which model represents this vendor" with a
+ * heavily debugged rule set (generational succession, service-tier aliases,
+ * vendor-level strength ranking), and the Universe must not quietly grow a
+ * second definition of "headliner" that disagrees with the first.
+ */
+export interface UniverseDistrictCard {
+  model: UniverseModel;
+  /** Full production record: the cards show the same four bars and persona as the old plaza. */
+  source: ModelRecord;
+  continent: Continent;
+  tier: PlazaTier;
+  aptitude: AptitudeRow;
+  traits: Trait[];
+  persona: string;
+  /** Flagship strength ranking for the vendor, kept for the card's sort hint. */
+  strengthRank: number | null;
+  /** Vendor brand colour, the same value that paints the old plaza's roof. */
+  vendorAccent: string;
+  vendorName: string;
+  vendorNameZh: string;
+  /** A newer model from the same vendor that has not earned the flagship slot yet. */
+  newer: UniverseModel | null;
+}
+
+export interface UniverseDistrictStreet {
+  tier: PlazaTier;
+  cards: UniverseDistrictCard[];
+}
+
+export interface UniverseDistrict {
+  continent: Continent;
+  vendorCount: number;
+  streets: UniverseDistrictStreet[];
+  /** Long-tail publishers, collapsed by default exactly like the old plaza. */
+  others: UniverseDistrictCard[];
+}
+
+const TIER_ORDER: PlazaTier[] = ['top', 'main', 'unscored'];
+
+export function buildUniverseDistricts(
+  snapshot: WorldSnapshot,
+  data: UniverseData,
+): UniverseDistrict[] {
+  const registryHas = (id: string) => canonicalVendorId(id) in VENDOR_REGISTRY;
+  const now = new Date(snapshot.generatedAt);
+  const rosters = buildPlazaRoster(snapshot.models, snapshot.vendors, now, registryHas);
+
+  const universeBySlug = new Map(data.models.map((model) => [model.slug, model]));
+  const aptitudes = buildAptitudeScale(snapshot.models);
+  const personaCtx = buildPersonaContext(snapshot.models, snapshot.vendors);
+
+  /*
+   * Same split as the plaza: persona and aptitude scales measure against the whole
+   * library, while trait rarity prunes against the headline set actually on screen.
+   */
+  const displayed = rosters.flatMap((roster) =>
+    [...roster.entries, ...roster.others].map((entry) => entry.model),
+  );
+  const traitMap = assignTraits(displayed, buildTraitContext(snapshot.models), now);
+
+  const byVendor = new Map<string, ModelRecord[]>();
+  for (const model of snapshot.models) {
+    const list = byVendor.get(model.vendorId);
+    if (list) list.push(model);
+    else byVendor.set(model.vendorId, [model]);
+  }
+
+  const toCard = (entry: RosterEntry): UniverseDistrictCard | null => {
+    const universeModel = universeBySlug.get(entry.model.slug);
+    if (!universeModel) return null;
+    const newer = newerThanFlagship(entry.model, byVendor.get(entry.model.vendorId) ?? []);
+    return {
+      model: universeModel,
+      source: entry.model,
+      continent: entry.vendor.continent,
+      tier: entry.tier,
+      aptitude: aptitudes.rowOf(entry.model),
+      traits: traitMap.get(entry.model.id) ?? [],
+      persona: personaFor(entry.model, personaCtx),
+      strengthRank: entry.strengthRank,
+      vendorAccent: entry.vendor.accentColor,
+      vendorName: entry.vendor.name,
+      vendorNameZh: entry.vendor.nameZh,
+      newer: newer ? (universeBySlug.get(newer.slug) ?? null) : null,
+    };
+  };
+
+  return rosters.flatMap((roster) => {
+    const cards = roster.entries.flatMap((entry) => {
+      const card = toCard(entry);
+      return card ? [card] : [];
+    });
+    if (cards.length === 0) return [];
+    const byTier = new Map<PlazaTier, UniverseDistrictCard[]>();
+    for (const card of cards) {
+      const list = byTier.get(card.tier);
+      if (list) list.push(card);
+      else byTier.set(card.tier, [card]);
+    }
+    return [{
+      continent: roster.continent,
+      vendorCount: cards.length,
+      streets: TIER_ORDER.flatMap((tier) => {
+        const street = byTier.get(tier);
+        return street && street.length > 0 ? [{ tier, cards: street }] : [];
+      }),
+      others: roster.others.flatMap((entry) => {
+        const card = toCard(entry);
+        return card ? [card] : [];
+      }),
     }];
   });
 }

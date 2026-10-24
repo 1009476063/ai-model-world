@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { UniverseNav } from '@/components/universe/UniverseNav';
 import { UniverseOverview } from '@/components/universe/UniverseOverview';
+import { UniverseDistricts } from '@/components/universe/UniverseDistricts';
 import { UniverseStarMap } from '@/components/universe/UniverseStarMap';
 import {
   buildUniverseChampions,
   buildUniverseData,
   buildUniverseKindGroups,
+  buildUniverseDistricts,
 } from '@/lib/universe';
 import { loadSnapshot } from '@/lib/snapshot';
 import { vendorHref, UNIVERSE_ROUTES } from '@/lib/routes';
@@ -16,6 +18,7 @@ export default function UniversePage() {
   const data = buildUniverseData(snapshot);
   const champions = buildUniverseChampions(snapshot, data);
   const kinds = buildUniverseKindGroups(data);
+  const districts = buildUniverseDistricts(snapshot, data);
   const date = new Date(snapshot.generatedAt);
 
   return (
@@ -44,6 +47,8 @@ export default function UniversePage() {
       </section>
 
       <UniverseOverview champions={champions} kinds={kinds} />
+
+      <UniverseDistricts districts={districts} />
 
       <section className="universe-map-section" aria-labelledby="universe-map-title">
         <div className="universe-section-head">
