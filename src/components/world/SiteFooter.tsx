@@ -206,6 +206,12 @@ export function SiteFooter({ variant = 'world' }: { variant?: 'world' | 'univers
           <span>{dict.footer.sourceCode}</span>
           <ExtLink href={REPO.href}>{REPO.name}</ExtLink>
           <span className="opacity-70">（MIT）</span>
+          <Link
+            href="/"
+            className="text-[var(--color-parchment)] underline decoration-dotted underline-offset-2 hover:text-[var(--color-gold)]"
+          >
+            切换到宇宙版
+          </Link>
         </div>
       </div>
     </footer>

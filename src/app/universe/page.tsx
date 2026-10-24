@@ -13,7 +13,7 @@ import { loadSnapshot } from '@/lib/snapshot';
 import { vendorHref, UNIVERSE_ROUTES } from '@/lib/routes';
 import './universe.css';
 
-export default function UniversePage() {
+export default function UniverseAliasPage() {
   const snapshot = loadSnapshot();
   const data = buildUniverseData(snapshot);
   const champions = buildUniverseChampions(snapshot, data);
@@ -97,11 +97,18 @@ export default function UniversePage() {
       </section>
 
       <footer className="universe-footer">
-        <span>大模型世界 · Universe Prototype</span>
+        <span>大模型世界 · Universe</span>
         <span>真实快照 · 全部厂商 · 程序化天体</span>
         <Link href={UNIVERSE_ROUTES.credits}>数据与素材署名</Link>
-        <Link href="/">返回旧版广场</Link>
+        <Link href="/legacy/">返回旧版广场</Link>
       </footer>
     </main>
   );
 }
+
+export const metadata = {
+  title: {
+    absolute: '模型星图 · 大模型世界',
+  },
+  description: '用星系与天体浏览 AI 模型格局。亮度对应 ECI 分位，大小对应综合影响力，环系对应能力类型。',
+};

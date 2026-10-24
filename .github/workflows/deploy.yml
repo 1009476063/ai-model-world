@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
           npm run build
           test -s .next-pages/index.html
+          test -s .next-pages/legacy/index.html
           test -s .next-pages/universe/index.html
           test -d .next-pages/_next
           if [ -e out ]; then
@@ -67,6 +68,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s out/index.html
+          test -s out/legacy/index.html
           test -s out/404.html
           test -s out/search-index.json
           test -s out/compare-data.json
@@ -74,6 +76,7 @@ jobs:
           test "$(find out/sprites -type f -name '*.png' | wc -l | tr -d ' ')" -gt 0
 
           for page in \
+            out/legacy/index.html \
             out/universe/index.html \
             out/universe/leaderboard/index.html \
             out/universe/models/index.html \
@@ -94,12 +97,20 @@ jobs:
           test -s "$model_page"
           test -s "$vendor_page"
 
+          # `/` is the public Universe experience. Keep the legacy plaza as an
+          # explicit second surface so neither route can silently replace the other.
+          grep -Fq 'class="universe-page"' out/index.html
+          grep -Fq 'universe-district is-west' out/index.html
+          grep -Fq 'universe-district is-east' out/index.html
+          grep -Fq 'class="universe-page"' out/universe/index.html
+          grep -Fq 'section-champions' out/legacy/index.html
+          grep -Fq 'region-west' out/legacy/index.html
+          grep -Fq 'region-east' out/legacy/index.html
+
           # The home page must ship both district sections (国外 / 国内) built from
           # the plaza roster, not just the star map. Counts are read off the HTML so a
           # regression that drops the sections fails the build instead of the eye test.
-          grep -Fq 'universe-district is-west' out/universe/index.html
-          grep -Fq 'universe-district is-east' out/universe/index.html
-          headline_cards="$(grep -o '<article class="universe-district-card"' out/universe/index.html | wc -l | tr -d ' ')"
+          headline_cards="$(grep -o '<article class="universe-district-card"' out/index.html | wc -l | tr -d ' ')"
           if [ "$headline_cards" -lt 40 ]; then
             echo "::error::Universe home rendered only ${headline_cards} district cards; expected one per roster vendor"
             exit 1
@@ -107,11 +118,12 @@ jobs:
           echo "District cards in static export: ${headline_cards}"
 
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/index.html
+          grep -Fq "/${REPOSITORY_NAME}/_next/" out/legacy/index.html
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/universe/index.html
-          grep -Fq "/${REPOSITORY_NAME}/sprites/" out/index.html
+          grep -Fq "/${REPOSITORY_NAME}/sprites/" out/legacy/index.html
 
           if grep -Eq 'href="/_next/|src="/_next/|url\(/sprites/' \
-            out/index.html out/universe/index.html out/universe/models/index.html
+            out/index.html out/legacy/index.html out/universe/index.html out/universe/models/index.html
           then
             echo "::error::Found root-absolute assets in a GitHub Pages build"
             exit 1

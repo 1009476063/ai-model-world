@@ -16,7 +16,7 @@ import { GlobalSearch } from './GlobalSearch';
 export type NavKey = 'plaza' | 'chronicle' | 'leaderboard' | 'compare';
 
 const ITEMS: { key: NavKey; href: string }[] = [
-  { key: 'plaza', href: '/' },
+  { key: 'plaza', href: '/legacy/' },
   { key: 'chronicle', href: '/chronicle/' },
   { key: 'leaderboard', href: '/leaderboard/' },
   { key: 'compare', href: '/compare/' },

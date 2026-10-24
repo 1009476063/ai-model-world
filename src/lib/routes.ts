@@ -19,7 +19,7 @@ export interface SiteRoutes {
 }
 
 export const WORLD_ROUTES: SiteRoutes = {
-  home: '/',
+  home: '/legacy/',
   leaderboard: '/leaderboard/',
   allModels: '/leaderboard/all/',
   compare: '/compare/',
@@ -30,7 +30,7 @@ export const WORLD_ROUTES: SiteRoutes = {
 };
 
 export const UNIVERSE_ROUTES: SiteRoutes = {
-  home: '/universe/',
+  home: '/',
   leaderboard: '/universe/leaderboard/',
   allModels: '/universe/models/',
   compare: '/universe/compare/',

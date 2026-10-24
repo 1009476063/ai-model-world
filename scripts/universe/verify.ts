@@ -131,10 +131,14 @@ for (const roster of rosters) {
   }
 }
 
-const districtHtml = readFileSync(join(process.cwd(), 'out', 'universe', 'index.html'), 'utf8');
+const districtHtml = readFileSync(join(process.cwd(), 'out', 'index.html'), 'utf8');
+const aliasHtml = readFileSync(join(process.cwd(), 'out', 'universe', 'index.html'), 'utf8');
 for (const continent of ['west', 'east'] as const) {
   if (!districtHtml.includes(`universe-district is-${continent}`)) {
-    fail(`Static export is missing the ${continent} district section`);
+    fail(`Static root export is missing the ${continent} district section`);
+  }
+  if (!aliasHtml.includes(`universe-district is-${continent}`)) {
+    fail(`Static /universe/ alias is missing the ${continent} district section`);
   }
 }
 const renderedCards =

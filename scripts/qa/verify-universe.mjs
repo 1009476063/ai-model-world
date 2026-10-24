@@ -3,6 +3,9 @@ import fs from 'node:fs';
 
 const BASE = (process.env.UNIVERSE_BASE_URL ?? 'http://127.0.0.1:4180').replace(/\/$/, '');
 const OUT = process.env.UNIVERSE_REPORT_DIR ?? '/tmp/universe-verify';
+const BASE_PATH = new URL(BASE).pathname.replace(/\/$/, '');
+const ROOT_PATH = BASE_PATH ? `${BASE_PATH}/` : '/';
+const LEGACY_PATH = `${BASE_PATH}/legacy/`;
 // Never let a previous run's report be mistaken for this one's result.
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
@@ -56,7 +59,7 @@ async function overflow(page) {
 for (const width of [1440, 390]) {
   const height = width === 1440 ? 1000 : 844;
   const page = await newPage(width, height);
-  const routes = ['/', '/universe/', '/universe/leaderboard/', '/universe/models/', '/universe/compare/', '/universe/chronicle/', '/universe/credits/', '/universe/vendor/openai/', '/universe/model/anthropic-claude-fable-5-1/'];
+  const routes = ['/', '/legacy/', '/universe/', '/universe/leaderboard/', '/universe/models/', '/universe/compare/', '/universe/chronicle/', '/universe/credits/', '/universe/vendor/openai/', '/universe/model/anthropic-claude-fable-5-1/'];
   for (const route of routes) {
     const response = await page.goto(BASE + route, { waitUntil: 'domcontentloaded' });
     await ready(page);
@@ -69,10 +72,16 @@ for (const width of [1440, 390]) {
     check(`${width} ${route} no horizontal overflow`, o.doc <= o.client + 1, JSON.stringify(o));
   }
 
-  await page.goto(BASE + '/universe/', { waitUntil: 'domcontentloaded' });
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
   await ready(page);
   await page.screenshot({ path: `${OUT}/home-${width}.png`, fullPage: true });
   report.screenshots.push(`${OUT}/home-${width}.png`);
+  check(`${width} root is Universe`, (await page.locator('.universe-page').count()) === 1);
+  check(
+    `${width} root has overseas and domestic districts`,
+    (await page.locator('.universe-district.is-west').count()) === 1
+      && (await page.locator('.universe-district.is-east').count()) === 1,
+  );
   await expect(`${width} home champions 8`, async () => (await page.locator('.universe-champion-card').count()) === 8);
   await expect(`${width} home kinds 6`, async () => (await page.locator('.universe-kind-card').count()) === 6);
   await expect(`${width} home map systems`, async () => {
@@ -241,8 +250,23 @@ for (const width of [1440, 390]) {
   await page.screenshot({ path: `${OUT}/vendor-${width}.png`, fullPage: true });
   report.screenshots.push(`${OUT}/vendor-${width}.png`);
 
+  await page.locator('.universe-links a').filter({ hasText: '旧版广场' }).click();
+  await page.waitForURL((url) => url.pathname === LEGACY_PATH, { timeout: 30000 });
+  await ready(page);
+  check(
+    `${width} legacy route is pixel plaza`,
+    (await page.locator('#section-champions').count()) === 1
+      && (await page.locator('#region-west').count()) === 1
+      && (await page.locator('#region-east').count()) === 1,
+  );
+  await page.getByRole('link', { name: '进入宇宙版', exact: true }).click();
+  await page.waitForURL((url) => url.pathname === ROOT_PATH, { timeout: 30000 });
+  await ready(page);
+  check(`${width} legacy returns to Universe`, (await page.locator('.universe-page').count()) === 1);
+
   await page.goto(BASE + '/universe/', { waitUntil: 'domcontentloaded' });
   await ready(page);
+  check(`${width} historical Universe URL still works`, (await page.locator('.universe-page').count()) === 1);
   const search = page.locator('.universe-global-search input');
   await search.fill('智谱 多模态');
   // The nav search fetches /search-index.json lazily, so on a remote host the

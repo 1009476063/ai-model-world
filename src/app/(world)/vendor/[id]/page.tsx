@@ -253,7 +253,7 @@ export default async function VendorPage({
           </ol>
 
           <Link
-            href="/"
+            href="/legacy/"
             className="mt-8 inline-block text-[12px] text-[var(--color-ghost)] hover:text-[var(--color-gold)]"
           >
             ← 回到{dict.nav.plaza}

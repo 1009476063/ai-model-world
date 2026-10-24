@@ -24,7 +24,7 @@ export function UniverseNav({ active }: { active?: string }) {
             <small>OBSERVATORY</small>
           </span>
         </Link>
-        <nav aria-label="宇宙预览导航" className="universe-links">
+        <nav aria-label="宇宙版主导航" className="universe-links">
           {ITEMS.map((item) => (
             <Link
               key={item.key}
@@ -34,7 +34,7 @@ export function UniverseNav({ active }: { active?: string }) {
               {item.label}
             </Link>
           ))}
-          <Link href="/">旧版广场</Link>
+          <Link href="/legacy/">旧版广场</Link>
         </nav>
         <UniverseSearch />
       </div>

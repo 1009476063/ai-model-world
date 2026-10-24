@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Sky } from '@/components/world/Sky';
 import { GroundBackdrop, HorizonEdge } from '@/components/world/Ground';
 import { Plaza } from '@/components/world/Plaza';
@@ -68,7 +69,15 @@ export default function Page() {
               {dict.hud.updatedAt(updated)} · {dict.hud.modelCount(alive, snapshot.vendors.length)}
             </p>
           </div>
-          <SiteNav current="plaza" lang={DEFAULT_LANG} />
+          <div className="flex flex-col items-end gap-2">
+            <Link
+              href="/"
+              className="pixel-button px-2.5 py-1 text-[12px] font-medium text-[var(--color-ink)]"
+            >
+              进入宇宙版
+            </Link>
+            <SiteNav current="plaza" lang={DEFAULT_LANG} />
+          </div>
         </div>
       </header>
 
