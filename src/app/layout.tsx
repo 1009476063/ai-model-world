@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { DEFAULT_LANG, getDict, htmlLang } from '@/lib/i18n';
-import { SiteFooter } from '@/components/world/SiteFooter';
 import { asset } from '@/lib/asset';
 
 const dict = getDict(DEFAULT_LANG);
@@ -38,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       </head>
       <body className="min-h-full">
         {children}
-        <SiteFooter />
       </body>
     </html>
   );

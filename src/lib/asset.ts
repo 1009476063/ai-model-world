@@ -14,7 +14,7 @@
  * 字体是唯一的例外：它写在 `globals.css` 的 `@font-face` 里，构建期拿不到环境变量，
  * 那边改用相对路径解决（CSS 产物固定落在 `_next/static/chunks/`，往上三级正好是站点根）。
  */
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? process.env.NEXT_BASE_PATH ?? '';
 
 /** 给以 `/` 开头的公共资源路径加上部署前缀 */
 export function asset(path: string): string {
