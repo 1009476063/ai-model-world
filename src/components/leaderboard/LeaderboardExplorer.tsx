@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { VendorCrest } from '@/components/character/VendorCrest';
+import { UniverseSigil } from '@/components/universe/UniverseSigil';
 import { readableOnDark } from '@/lib/color';
 import { filterFromParams, filterToParams, makePredicate, EMPTY_FILTER, type FilterState } from './filters';
 import { ModelFilters } from './ModelFilters';
@@ -202,6 +203,7 @@ export function LeaderboardExplorer({
           vendors={data.vendors}
           models={data.models}
           matched={eligible}
+          universe={universe}
         />
 
         <ol className="universe-leaderboard-list universe-legacy-panel pixel-panel-dark mt-3 divide-y divide-white/10 px-3 py-1 sm:px-4">
@@ -217,6 +219,7 @@ export function LeaderboardExplorer({
               entry={e}
               data={data}
               routes={routes}
+              universe={universe}
               fraction={barFraction(track, values, e.v)}
               accent={readableOnDark(vendorMap.get(data.models[e.m].vendor)?.accent ?? '#8a8a8a', 0.3)}
             />
@@ -244,6 +247,7 @@ function Row({
   entry,
   data,
   routes,
+  universe,
   fraction,
   accent,
 }: {
@@ -251,6 +255,7 @@ function Row({
   entry: LeanEntry;
   data: ExplorerData;
   routes: SiteRoutes;
+  universe: boolean;
   fraction: number;
   accent: string;
 }) {
@@ -268,12 +273,16 @@ function Row({
       >
         {rank}
       </span>
-      <VendorCrest
-        motif={vendor?.motif ?? 'wanderer'}
-        accentColor={vendor?.accent ?? '#8a8a8a'}
-        size={14}
-        title={vendor?.nameZh}
-      />
+      {universe ? (
+        <UniverseSigil seed={model.vendor} accent={vendor?.accent ?? '#8a8a8a'} size={14} title={vendor?.nameZh} />
+      ) : (
+        <VendorCrest
+          motif={vendor?.motif ?? 'wanderer'}
+          accentColor={vendor?.accent ?? '#8a8a8a'}
+          size={14}
+          title={vendor?.nameZh}
+        />
+      )}
       <div className="min-w-0 flex-1">
         <Link
           href={modelHref(routes, model.slug)}

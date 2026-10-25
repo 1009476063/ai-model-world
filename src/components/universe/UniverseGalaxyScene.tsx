@@ -1,10 +1,52 @@
 'use client';
 
+import { Component, type ReactNode, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import type { UniverseModel } from '@/lib/universe';
+
+/**
+ * WebGL 能力探测。
+ *
+ * 之前这里给 `<Canvas>` 传了一个 `onError`，但 react-three-fiber 9.8 的
+ * `CanvasProps` 根本没有这个属性——它继承了 div 的属性，于是 `onError`
+ * 变成了一个永远不会触发的 DOM 事件监听器，`webglFailed` 恒为 false，
+ * 降级分支是死代码（而 `tsc` 不报错，因为它确实是合法 prop）。
+ *
+ * 现在改成构建前主动探一次上下文，外加一层错误边界兜住场景内部抛出的异常：
+ * r3f 在渲染器创建失败时是把错误往外抛的。
+ */
+function supportsWebGL(): boolean {
+  if (typeof document === 'undefined') return true;
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl2') ?? canvas.getContext('webgl');
+    if (!gl) return false;
+    // 探测用的上下文要立刻释放，否则在部分移动浏览器上会占掉有限的上下文名额
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error: unknown) {
+    console.warn('[universe] 三维星系场景初始化失败，已回退到目录视图', error);
+    this.props.onError();
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
 
 function createBodyTexture(model: UniverseModel, accent: string) {
   if (typeof document === 'undefined') return null;
@@ -208,11 +250,9 @@ export default function UniverseGalaxyScene({
   selectedSlug: string | null;
   onSelect: (model: UniverseModel) => void;
 }) {
-  const reducedMotion = useMemo(
-    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-    [],
-  );
-  const [webglFailed, setWebglFailed] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
+  const [webglFailed, setWebglFailed] = useState(() => !supportsWebGL());
+
   if (webglFailed) {
     return (
       <div className="universe-scene-fallback">
@@ -221,21 +261,52 @@ export default function UniverseGalaxyScene({
       </div>
     );
   }
+
   return (
-    <Canvas
-      dpr={[1, 1.5]}
-      camera={{ position: [0, 3.3, 7], fov: 44 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
-      onError={() => setWebglFailed(true)}
-    >
-      <Scene
-        models={models}
-        accent={accent}
-        selectedSlug={selectedSlug}
-        onSelect={onSelect}
-        reducedMotion={reducedMotion}
-      />
-    </Canvas>
+    <SceneBoundary onError={() => setWebglFailed(true)}>
+      <Canvas
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 3.3, 7], fov: 44 }}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
+        /* 建不出上下文时 r3f 会把错误抛给上面的边界，这里不要再声明不存在的 prop */
+      >
+        <Scene
+          models={models}
+          accent={accent}
+          selectedSlug={selectedSlug}
+          onSelect={onSelect}
+          reducedMotion={reducedMotion}
+        />
+      </Canvas>
+    </SceneBoundary>
   );
+}
+
+/**
+ * `prefers-reduced-motion` 要跟着系统设置变，不能只在首次渲染读一次：
+ * 用户在系统设置里开关动效后，回到页面就该立刻停止自转。
+ *
+ * 用 `useSyncExternalStore` 而不是「effect 里 setState」：媒体查询是外部系统，
+ * 这个 hook 正是为这类订阅准备的，也顺手避免了首帧多一次渲染。
+ */
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
+
+function subscribeReducedMotion(onChange: () => void): () => void {
+  const query = window.matchMedia(REDUCED_MOTION);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+}
+
+function getReducedMotionSnapshot(): boolean {
+  return window.matchMedia(REDUCED_MOTION).matches;
+}
+
+/** 服务端渲染时假设「不减少动效」，客户端水合后立刻换成真实值。 */
+function getReducedMotionServerSnapshot(): boolean {
+  return false;
+}
+
+function usePrefersReducedMotion(): boolean {
+  return useSyncExternalStore(subscribeReducedMotion, getReducedMotionSnapshot, getReducedMotionServerSnapshot);
 }

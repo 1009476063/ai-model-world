@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import type { UniverseData, UniverseModel, UniverseStar, UniverseVendor } from '@/lib/universe';
+import type { UniverseMapData, UniverseMapModel, UniverseStar, UniverseMapVendor } from '@/lib/universe';
 import { modelHref, UNIVERSE_ROUTES, vendorHref } from '@/lib/routes';
 import { UniverseOrb } from './UniverseOrb';
 import { UniverseStarfield } from './UniverseStarfield';
@@ -10,7 +10,7 @@ import { UniverseStarfield } from './UniverseStarfield';
 const VIEW_W = 1000;
 const VIEW_H = 560;
 
-function modelPosition(model: UniverseModel, star: UniverseStar) {
+function modelPosition(model: UniverseMapModel, star: UniverseStar) {
   const orbit = model.orbit;
   const rad = (model.angle * Math.PI) / 180;
   return {
@@ -19,13 +19,27 @@ function modelPosition(model: UniverseModel, star: UniverseStar) {
   };
 }
 
+/**
+ * Node brightness from the ECI percentile. Unmeasured objects stay dim on purpose:
+ * the homepage legend says no-evaluation bodies must not read as strong ones.
+ */
+function nodeLight(model: UniverseMapModel): string {
+  if (model.eciPercentile == null) return '0.34';
+  return (0.44 + (model.eciPercentile / 100) * 0.56).toFixed(2);
+}
+
+/** Node radius from 综合影响力, the same 1–5 scale the 3D view uses. */
+function nodeScale(model: UniverseMapModel): string {
+  return (0.72 + model.influence * 0.14).toFixed(2);
+}
+
 function SearchResult({
   model,
   vendor,
   onSelect,
 }: {
-  model: UniverseModel;
-  vendor: UniverseVendor;
+  model: UniverseMapModel;
+  vendor: UniverseMapVendor;
   onSelect: () => void;
 }) {
   return (
@@ -41,7 +55,7 @@ function SearchResult({
   );
 }
 
-export function UniverseStarMap({ data }: { data: UniverseData }) {
+export function UniverseStarMap({ data }: { data: UniverseMapData }) {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
@@ -90,7 +104,7 @@ export function UniverseStarMap({ data }: { data: UniverseData }) {
   }, [data.models]);
 
   const modelFilter = useCallback(
-    (model: UniverseModel) => {
+    (model: UniverseMapModel) => {
       if (!showRetired && model.retired) return false;
       if (kind === 'multimodal' && model.kind === 'text') return false;
       if (kind !== 'all' && kind !== 'multimodal' && model.kind !== kind) return false;
@@ -102,17 +116,29 @@ export function UniverseStarMap({ data }: { data: UniverseData }) {
     [showRetired, kind, weights, year],
   );
 
+  /*
+   * Counts come from the flat model list, not from a per-vendor array: the star
+   * map payload keeps every model exactly once. Same numbers, far less JSON.
+   */
+  const matchesByVendor = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const model of data.models) {
+      if (modelFilter(model)) counts.set(model.vendorId, (counts.get(model.vendorId) ?? 0) + 1);
+    }
+    return counts;
+  }, [data.models, modelFilter]);
+
   const visibleVendors = useMemo(
     () =>
       data.vendors.filter((vendor) => {
         if (vendorFilter !== 'all' && vendor.id !== vendorFilter) return false;
         if (region !== 'all' && vendor.continent !== region) return false;
-        return vendor.models.some(modelFilter);
+        return (matchesByVendor.get(vendor.id) ?? 0) > 0;
       }),
-    [data.vendors, region, vendorFilter, modelFilter],
+    [data.vendors, region, vendorFilter, matchesByVendor],
   );
 
-  const choose = (model: UniverseModel) => {
+  const choose = (model: UniverseMapModel) => {
     setSelectedId(model.slug);
     setQuery('');
     setZoom(1.18);
@@ -132,7 +158,7 @@ export function UniverseStarMap({ data }: { data: UniverseData }) {
   };
 
   const visibleCount = visibleVendors.reduce(
-    (total, vendor) => total + vendor.models.filter(modelFilter).length,
+    (total, vendor) => total + (matchesByVendor.get(vendor.id) ?? 0),
     0,
   );
 
@@ -289,6 +315,9 @@ export function UniverseStarMap({ data }: { data: UniverseData }) {
                         left: `${position.x - star.x * 10}px`,
                         top: `${position.y - star.y * 5.6}px`,
                         ['--node-accent' as string]: vendor.accentColor,
+                        // 大小 = 综合影响力，亮度 = ECI 分位；没有第三方评测的天体发暗
+                        ['--node-scale' as string]: nodeScale(model),
+                        ['--node-light' as string]: nodeLight(model),
                       }}
                       onClick={() => choose(model)}
                       aria-label={`${model.name}，${vendor.name}`}

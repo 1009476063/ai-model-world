@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { VendorCrest } from '@/components/character/VendorCrest';
+import { UniverseSigil } from '@/components/universe/UniverseSigil';
 import type { CmpModel, CompareData } from './types';
 
 /**
@@ -128,7 +129,11 @@ export function ModelPicker({
                     i === active ? 'bg-white/10 text-[var(--color-gold)]' : 'text-[var(--color-parchment)]'
                   }`}
                 >
-                  {v && <VendorCrest motif={v.motif} accentColor={v.accent} size={14} />}
+                  {v && (universe ? (
+                    <UniverseSigil seed={m.vendor} accent={v.accent} size={14} />
+                  ) : (
+                    <VendorCrest motif={v.motif} accentColor={v.accent} size={14} />
+                  ))}
                   <span className="min-w-0 flex-1 truncate">{m.name}</span>
                   <span className="shrink-0 text-[12px] text-[var(--color-ghost)]">
                     {m.retired ? '已退役' : (m.date ?? '').slice(0, 7)}

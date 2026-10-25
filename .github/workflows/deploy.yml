@@ -110,12 +110,33 @@ jobs:
           # The home page must ship both district sections (国外 / 国内) built from
           # the plaza roster, not just the star map. Counts are read off the HTML so a
           # regression that drops the sections fails the build instead of the eye test.
+          #
+          # The authoritative count check lives in `npm run verify:universe`, which
+          # recomputes the plaza roster and compares it card by card. A fixed floor
+          # here (it was 40) would still pass if a whole district vanished and needs
+          # editing on every vendor sync, so this step only asserts what only the
+          # rendered HTML can prove: both sections exist, and the two home routes
+          # that share one component render exactly the same number of cards.
           headline_cards="$(grep -o '<article class="universe-district-card"' out/index.html | wc -l | tr -d ' ')"
-          if [ "$headline_cards" -lt 40 ]; then
-            echo "::error::Universe home rendered only ${headline_cards} district cards; expected one per roster vendor"
+          alias_cards="$(grep -o '<article class="universe-district-card"' out/universe/index.html | wc -l | tr -d ' ')"
+          if [ "$headline_cards" -lt 1 ]; then
+            echo "::error::Universe home rendered no district cards"
             exit 1
           fi
-          echo "District cards in static export: ${headline_cards}"
+          if [ "$headline_cards" -ne "$alias_cards" ]; then
+            echo "::error::/ rendered ${headline_cards} district cards but /universe/ rendered ${alias_cards}"
+            exit 1
+          fi
+          echo "District cards in static export: ${headline_cards} (root and /universe/ agree; roster parity asserted by verify:universe)"
+
+          # The attribution footer is a CC-BY obligation, and it must exist on the
+          # public home route too — it silently disappeared there once before.
+          for page in out/index.html out/universe/index.html; do
+            grep -Fq 'universe-global-footer' "$page" || {
+              echo "::error::$page is missing the attribution footer (CC-BY sources + 引流位)"
+              exit 1
+            }
+          done
 
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/index.html
           grep -Fq "/${REPOSITORY_NAME}/_next/" out/legacy/index.html

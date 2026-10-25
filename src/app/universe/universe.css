@@ -48,6 +48,20 @@
   outline-offset: 3px;
 }
 
+/*
+ * 共享组件（排行榜、总表、筛选条、对比）沿用旧版的 `font-pixel` / `pixel-outline`
+ * 类名。类名本身不动，宇宙版的外壳里换成天文台的等宽读数：
+ * Fusion Pixel 是像素字体，落在「高级大气的宇宙风」里就是走漏的旧版元素。
+ * 这么收口比逐个组件加条件分支稳——将来任何复用旧组件的宇宙页面都不会再漏。
+ */
+.universe-page :is(.font-pixel, .pixel-outline) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
 .universe-nav-shell {
   position: relative;
   z-index: 20;
@@ -1115,21 +1129,27 @@
   cursor: pointer;
 }
 
+/*
+ * 天体节点的编码与首页「四种读数」对齐：--node-scale 来自综合影响力，
+ * --node-light 来自 ECI 分位，颜色来自厂商。命中区仍是固定 17px，
+ * 缩放只作用在圆点本身，所以最小的天体也点得到。
+ */
 .universe-model-node::before {
   content: "";
   position: absolute;
   inset: 4px;
   border-radius: 50%;
   background: color-mix(in srgb, var(--node-accent) 74%, #eaf4fb);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--node-accent) 46%, transparent);
-  opacity: 0.7;
+  box-shadow: 0 0 calc(5px + var(--node-light, 0.7) * 7px) color-mix(in srgb, var(--node-accent) 46%, transparent);
+  opacity: var(--node-light, 0.7);
+  transform: scale(var(--node-scale, 1));
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .universe-model-node:hover::before,
 .universe-model-node.is-selected::before {
   opacity: 1;
-  transform: scale(1.8);
+  transform: scale(calc(var(--node-scale, 1) * 1.5));
 }
 
 .universe-model-dot {
@@ -1577,7 +1597,7 @@
 
 .universe-spec-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   margin-top: 24px;
   border-top: 1px solid var(--u-line-strong);
@@ -1585,12 +1605,12 @@
 
 .universe-spec-grid > div {
   min-height: 165px;
-  padding: 22px 30px 20px 0;
+  padding: 22px 24px 20px 0;
   border-right: 1px solid var(--u-line);
 }
 
 .universe-spec-grid > div:not(:first-child) {
-  padding-left: 30px;
+  padding-left: 24px;
 }
 
 .universe-spec-grid > div:last-child {

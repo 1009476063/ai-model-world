@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { VendorCrest } from '@/components/character/VendorCrest';
+import { UniverseSigil } from '@/components/universe/UniverseSigil';
 import { DEFAULT_LANG, getDict } from '@/lib/i18n';
 import { KINDS } from '@/lib/kind';
 import { filterFromParams, filterToParams, makePredicate, EMPTY_FILTER, type FilterState } from './filters';
@@ -131,7 +132,14 @@ export function AllModelsTable({
 
   return (
     <div className={`universe-explorer ${universe ? 'is-universe' : ''}`}>
-      <ModelFilters value={filter} onChange={setFilter} vendors={data.vendors} models={data.models} matched={rows.length} />
+      <ModelFilters
+        value={filter}
+        onChange={setFilter}
+        vendors={data.vendors}
+        models={data.models}
+        matched={rows.length}
+        universe={universe}
+      />
 
       <div className="universe-legacy-panel pixel-panel-dark mt-3 overflow-x-auto">
         <table className="universe-all-models-table w-full border-collapse text-[14px]">
@@ -182,7 +190,11 @@ export function AllModelsTable({
                       href={modelHref(routes, m.slug)}
                       className="flex items-center gap-1.5 text-[var(--color-parchment)] hover:text-[var(--color-gold)]"
                     >
-                      <VendorCrest motif={v?.motif ?? 'wanderer'} accentColor={v?.accent ?? '#8a8a8a'} size={12} />
+                      {universe ? (
+                        <UniverseSigil seed={m.vendor} accent={v?.accent ?? '#8a8a8a'} size={12} />
+                      ) : (
+                        <VendorCrest motif={v?.motif ?? 'wanderer'} accentColor={v?.accent ?? '#8a8a8a'} size={12} />
+                      )}
                       <span className="truncate">{m.name}</span>
                       {m.retired && <span className="shrink-0 text-[13px] text-[var(--color-ghost)]">已退役</span>}
                     </Link>

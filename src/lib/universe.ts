@@ -91,6 +91,102 @@ export interface UniverseData {
   stars: UniverseStar[];
 }
 
+/**
+ * Star-map payload.
+ *
+ * `UniverseData` serialises every model twice — once in the flat `models[]` and
+ * again inside its vendor's `models[]` — and carries a dozen fields only the
+ * detail page reads. The map is the only client component on the home page that
+ * receives the whole snapshot, so that duplication lands directly in the home
+ * page's RSC payload. Here every model appears exactly once, trimmed to the
+ * fields the map, its filters and its search box actually use.
+ */
+export interface UniverseMapModel {
+  slug: string;
+  name: string;
+  vendorId: string;
+  kind: ModelKind | 'unknown';
+  eci: number | null;
+  eciPercentile: number | null;
+  eciRank: number | null;
+  influence: 1 | 2 | 3 | 4 | 5;
+  price: number | null;
+  contextWindow: number | null;
+  retired: boolean;
+  orbit: number;
+  angle: number;
+  body: UniverseModel['body'];
+  ring: UniverseModel['ring'];
+  capabilities: string[];
+  releaseDate: string | null;
+  openWeights: boolean | null;
+}
+
+export interface UniverseMapVendor {
+  id: string;
+  name: string;
+  /** The map's search box matches on the Chinese vendor name too. */
+  nameZh: string;
+  accentColor: string;
+  continent: Vendor['continent'];
+  starName: string;
+  coordinates: string;
+  totalModels: number;
+  aliveModels: number;
+  /** Objects actually drawn on the map. Counts and search use the full `models[]`. */
+  representativeModels: UniverseMapModel[];
+}
+
+export interface UniverseMapData {
+  generatedAt: string;
+  vendors: UniverseMapVendor[];
+  models: UniverseMapModel[];
+  stars: UniverseStar[];
+}
+
+function toMapModel(model: UniverseModel): UniverseMapModel {
+  return {
+    slug: model.slug,
+    name: model.name,
+    vendorId: model.vendorId,
+    kind: model.kind,
+    eci: model.eci,
+    eciPercentile: model.eciPercentile,
+    eciRank: model.eciRank,
+    influence: model.influence,
+    price: model.price,
+    contextWindow: model.contextWindow,
+    retired: model.retired,
+    orbit: model.orbit,
+    angle: model.angle,
+    body: model.body,
+    ring: model.ring,
+    capabilities: model.capabilities,
+    releaseDate: model.releaseDate,
+    openWeights: model.openWeights,
+  };
+}
+
+export function buildUniverseMapData(data: UniverseData): UniverseMapData {
+  return {
+    generatedAt: data.generatedAt,
+    vendors: data.vendors.map((vendor) => ({
+      id: vendor.id,
+      name: vendor.name,
+      nameZh: vendor.nameZh,
+      accentColor: vendor.accentColor,
+      continent: vendor.continent,
+      starName: vendor.starName,
+      coordinates: vendor.coordinates,
+      totalModels: vendor.totalModels,
+      aliveModels: vendor.aliveModels,
+      representativeModels: vendor.representativeModels.map(toMapModel),
+    })),
+    models: data.models.map(toMapModel),
+    stars: data.stars,
+  };
+}
+
 export interface UniverseChampion {
   key: 'smart' | 'code' | 'value' | 'cheap' | 'memory' | 'newest' | 'east' | 'open';
   label: string;

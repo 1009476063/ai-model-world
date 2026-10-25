@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { VendorCrest } from '@/components/character/VendorCrest';
+import { UniverseSigil } from '@/components/universe/UniverseSigil';
 import { DEFAULT_LANG, getDict } from '@/lib/i18n';
 import { KINDS, type ModelKind } from '@/lib/kind';
 import type { FilterState, Kind, Region, Weights } from './filters';
@@ -22,6 +23,8 @@ interface ModelFiltersProps {
   models: LeanModel[];
   /** 当前筛选后剩多少个模型，显示在清空按钮旁 */
   matched?: number;
+  /** 宇宙版用星系徽记认厂商，不渲染像素家徽 */
+  universe?: boolean;
 }
 
 /** 一组互斥的小按钮，像老游戏菜单里的选项卡 */
@@ -84,7 +87,7 @@ const INPUT_CLASS =
 
 const dict = getDict(DEFAULT_LANG);
 
-export function ModelFilters({ value, onChange, vendors, models, matched }: ModelFiltersProps) {
+export function ModelFilters({ value, onChange, vendors, models, matched, universe = false }: ModelFiltersProps) {
   // 类型按钮只列快照里真有的类型，并带上数量：读者一眼知道「视频生成」是 5 个还是 50 个。
   // 数量按全库算而不按当前筛选算——否则点了「国内」之后「语音 0」会闪来闪去。
   // 只有「含已退役」这一项会影响它：退役模型默认不在任何名单里，数进去会对不上。
@@ -227,7 +230,11 @@ export function ModelFilters({ value, onChange, vendors, models, matched }: Mode
                           onChange={() => toggleVendor(v.id)}
                           className="accent-[var(--color-gold)]"
                         />
-                        <VendorCrest motif={v.motif} accentColor={v.accent} size={12} />
+                        {universe ? (
+                          <UniverseSigil seed={v.id} accent={v.accent} size={12} />
+                        ) : (
+                          <VendorCrest motif={v.motif} accentColor={v.accent} size={12} />
+                        )}
                         <span className="truncate" style={{ color: on ? 'var(--color-gold)' : undefined }}>
                           {v.nameZh}
                         </span>

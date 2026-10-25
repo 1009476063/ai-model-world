@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from
 import { AbilityBars } from '@/components/character/AbilityBars';
 import { VendorCrest } from '@/components/character/VendorCrest';
 import { UniverseOrb } from '@/components/universe/UniverseOrb';
+import { UniverseSigil } from '@/components/universe/UniverseSigil';
 import { useUrlQuery } from '@/components/leaderboard/useUrlQuery';
 import { APTITUDES, type AptitudeRow } from '@/lib/aptitude';
 import { getDict, DEFAULT_LANG } from '@/lib/i18n';
@@ -561,7 +562,11 @@ export function CompareView({
                   <div className="mt-1.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[13px]">
                     {v && (
                       <span className="flex items-center gap-1" style={{ color: v.accent }}>
-                        <VendorCrest motif={v.motif} accentColor={v.accent} size={14} />
+                        {universe ? (
+                          <UniverseSigil seed={m.vendor} accent={v.accent} size={14} />
+                        ) : (
+                          <VendorCrest motif={v.motif} accentColor={v.accent} size={14} />
+                        )}
                         {v.name}
                       </span>
                     )}

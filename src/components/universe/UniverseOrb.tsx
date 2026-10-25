@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import type { UniverseModel } from '@/lib/universe';
+import type { UniverseMapModel, UniverseModel } from '@/lib/universe';
 
 /**
  * A deterministic CSS-only celestial body. Keeping this as a DOM element makes
@@ -12,7 +12,8 @@ export function UniverseOrb({
   size = 72,
   selected = false,
 }: {
-  model: UniverseModel;
+  /** Only the visual encoding fields are needed, so the star map can pass its lean payload. */
+  model: Pick<UniverseModel, 'body' | 'ring' | 'retired' | 'influence'> | UniverseMapModel;
   accent: string;
   size?: number;
   selected?: boolean;
