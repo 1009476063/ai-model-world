@@ -2918,7 +2918,20 @@
 /* ─── Celestial objects ──────────────────────────────────────── */
 
 .universe-orb {
-  --orb-accent: #aec9de;
+  /*
+   * The component sets --orb-accent-raw inline; these rules derive --orb-accent
+   * from it. Two names, not one: a custom property cannot reference itself, so
+   * the retired state (which needs a desaturated brand colour) is expressed by
+   * overriding --orb-accent while only ever reading --orb-accent-raw.
+   *
+   * Retired used to be `filter: saturate(.38)` and the selected halo an inline
+   * `filter: drop-shadow(...)`. Both are gone. On the chronicle page every one
+   * of 722 models carried a filter, and those live blur layers are what froze
+   * mobile browsers; colour-mix, radial gradients and box-shadow read the same
+   * and cost a fraction of that. Do not reintroduce `filter` on this subtree.
+   */
+  --orb-accent-raw: #aec9de;
+  --orb-accent: var(--orb-accent-raw);
   --orb-size: 72px;
   position: relative;
   display: inline-block;
@@ -2937,9 +2950,24 @@
 .universe-orb-glow {
   inset: 11%;
   border-radius: 50%;
-  background: var(--orb-accent);
-  filter: blur(calc(var(--orb-size) * 0.15));
-  opacity: 0.25;
+  /* stands in for a blurred fill: one radial gradient, no filter layer */
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--orb-accent) 70%, transparent) 0%,
+    color-mix(in srgb, var(--orb-accent) 34%, transparent) 45%,
+    transparent 72%
+  );
+}
+
+/* selected halo: box-shadow rather than a subtree drop-shadow filter */
+.universe-orb.is-selected .universe-orb-glow {
+  inset: 4%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--orb-accent) 78%, transparent) 0%,
+    color-mix(in srgb, var(--orb-accent) 40%, transparent) 48%,
+    transparent 74%
+  );
 }
 
 .universe-orb-sphere {
@@ -3024,7 +3052,24 @@
 }
 
 .universe-orb.is-retired {
-  filter: saturate(0.38);
+  /* was `filter: saturate(.38)`; a desaturated colour + lower opacity reads the
+     same without putting a live filter on every retired body in the list. */
+  --orb-accent: color-mix(in oklab, var(--orb-accent-raw) 40%, #7b8794);
+  opacity: 0.5;
+}
+
+/*
+ * Dense lists (chronicle): one tinted disc. Keeps the two facts a chronicle row
+ * actually encodes — vendor colour and retired/active — and drops the rings,
+ * surface banding, shade and ember that were ~5 extra painted layers per row.
+ */
+.universe-orb-lite {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 31% 27%, #f4fafd 0, color-mix(in srgb, var(--orb-accent) 62%, #dfeaf2) 26%, color-mix(in srgb, var(--orb-accent) 78%, #16283a) 72%, #0b1622 100%);
+  box-shadow:
+    0 0 6px color-mix(in srgb, var(--orb-accent) 42%, transparent),
+    inset -14% -16% 30% rgb(0 0 0 / 0.45);
 }
 
 /* ─── Districts: 国外 / 国内, each split by vendor strength ─── */

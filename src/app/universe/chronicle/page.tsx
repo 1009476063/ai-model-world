@@ -73,10 +73,19 @@ export default function UniverseChroniclePage() {
                         style={{ ['--item-accent' as string]: vendor.accentColor }}
                         title={`${vendor.name} · ${kindOf(model) ?? '未知类型'}`}
                       >
+                        {/*
+                          lite by design. This page renders every model in the
+                          snapshot (722 at the time of writing) in one unbroken
+                          list — the full-size orb put 722 blur/ring/ember layer
+                          stacks on the compositor and froze mobile browsers.
+                          A chronicle row only needs "which vendor, retired or
+                          not", which the tinted disc answers at 28px.
+                        */}
                         <UniverseOrb
                           model={universeModel}
                           accent={vendor.accentColor}
                           size={28}
+                          lite
                         />
                         <span>
                           <strong>{model.name}</strong>
