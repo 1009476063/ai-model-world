@@ -126,8 +126,51 @@ for (const width of [1440, 390]) {
   }
   const headlineTotal = districtFacts.reduce((n, d) => n + d.streetCards, 0);
   const tailTotal = districtFacts.reduce((n, d) => n + d.tailCards, 0);
-  check(`${width} districts show 40 headline objects`, headlineTotal === 40, JSON.stringify(districtFacts.map((d) => [d.streetCards, d.tailCards])));
-  check(`${width} districts collapse 36 tail vendors`, tailTotal === 36, JSON.stringify(districtFacts.map((d) => d.tailCards)));
+  /*
+   * Parity with the old plaza, measured against the plaza itself rather than a
+   * hardcoded number. These two checks used to assert `headlineTotal === 40` and
+   * `tailTotal === 36`, i.e. the vendor split of whatever snapshot was current
+   * when they were written; the next 同步模型数据 commit (726 models / 80 vendors)
+   * moved the split to 28+37 and they failed on an unrelated build.
+   *
+   * The requirement is never "40 and 36" — it is "the two star domains show
+   * exactly the vendors the old plaza shows". So read the legacy plaza's own
+   * declared counts from /legacy/ and compare. Immune to data drift, and it now
+   * actually tests the thing the hardcoded numbers were standing in for.
+   */
+  await page.goto(BASE + LEGACY_PATH, { waitUntil: 'domcontentloaded' });
+  await ready(page);
+  const plazaFacts = await page.evaluate(() => {
+    const digits = (node) => Number((node?.textContent ?? '').replace(/\D/g, '')) || 0;
+    const out = {};
+    for (const cont of ['west', 'east']) {
+      // `#region-west` is the <h2> itself; the section that carries the counts
+      // is the one labelling itself with that id.
+      const region = document.querySelector(`section[aria-labelledby="region-${cont}"]`);
+      if (!region) continue;
+      out[cont] = {
+        headline: digits(region.querySelector('header span')),
+        tail: [...region.querySelectorAll('details summary')].reduce((n, s) => n + digits(s), 0),
+      };
+    }
+    return out;
+  });
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+  await ready(page);
+  for (const district of districtFacts) {
+    const plaza = plazaFacts[district.continent];
+    check(
+      `${width} ${district.continent} headline matches the plaza`,
+      !!plaza && district.streetCards === plaza.headline,
+      JSON.stringify({ universe: [district.streetCards, district.tailCards], plaza }),
+    );
+    check(
+      `${width} ${district.continent} collapsed tail matches the plaza`,
+      !!plaza && district.tailCards === plaza.tail,
+      JSON.stringify({ universe: [district.streetCards, district.tailCards], plaza }),
+    );
+  }
+  check(`${width} districts are non-empty`, headlineTotal > 0 && tailTotal > 0, `${headlineTotal}/${tailTotal}`);
   await expect(`${width} district cards show four bars`, async () => {
     const first = page.locator('.universe-district-card').first();
     return (await first.locator('svg').count()) >= 4;
