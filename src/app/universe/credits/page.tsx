@@ -38,8 +38,15 @@ export default function UniverseCreditsPage() {
         <article>
           <h2>项目与商标</h2>
           <p>
-            项目代码与数据来自 liyupi/ai-model-world。厂商名称、商标与品牌色归各自所有者，
-            仅用于识别与比较。
+            站点代码开源于{' '}
+            <a
+              href="https://github.com/1009476063/ai-model-world"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              1009476063/ai-model-world
+            </a>
+            。厂商名称、商标与品牌色归各自所有者，仅用于识别与比较。
           </p>
         </article>
       </section>

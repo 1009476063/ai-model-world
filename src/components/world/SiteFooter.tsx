@@ -39,7 +39,14 @@ const AUTHOR = { name: '程序员鱼皮', href: 'https://space.bilibili.com/1289
  * 那一排留给站长自己的站点。这里的三行本来就是在回答「这些东西都是哪来的」，
  * 「代码本身也是公开的」正好是同一个问题的最后一问。
  */
-const REPO = { name: 'liyupi/ai-model-world', href: 'https://github.com/liyupi/ai-model-world' };
+/*
+ * 指向这个站实际维护的 fork：读者从页脚点过去，看到的应该是这份代码，
+ * 而不是上游原仓库——两边的内容已经分岔（宇宙版只在本仓库）。
+ */
+const REPO = {
+  name: '1009476063/ai-model-world',
+  href: 'https://github.com/1009476063/ai-model-world',
+};
 
 /** 免费教程单独拎出来做主按钮：三个站点并列时它会被淹没，而它是这里最值得点的一个。 */
 const TUTORIAL = {

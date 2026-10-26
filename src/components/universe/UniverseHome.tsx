@@ -45,7 +45,7 @@ export function UniverseHome() {
             把厂商看作星系，把模型看作天体。亮度来自 ECI，大小来自综合影响力，颜色来自厂商，环系记录能力类型。
           </p>
           <div className="universe-hero-meta">
-            <span>{date.getUTCFullYear()}.{String(date.getUTCMonth() + 1).padStart(2, '0')}.{String(date.getUTCDate()).padStart(2, '0')}</span>
+            <span>数据更新于 {date.getUTCMonth() + 1} 月 {date.getUTCDate()} 日</span>
             <span>{data.vendors.length} 个星系</span>
             <span>{data.models.length} 个天体档案</span>
           </div>

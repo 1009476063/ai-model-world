@@ -67,7 +67,7 @@ export function UniverseOverview({
           <p className="universe-kicker">CURRENT CONSTELLATION</p>
           <h2>今日格局</h2>
         </div>
-        <p>八项结论直接取自旧版同一套数据判据；每张卡都能进入完整天体档案。</p>
+        <p>每张卡都能进入完整天体档案。</p>
       </div>
       <div className="universe-champion-grid">
         {champions.map((champion) => (

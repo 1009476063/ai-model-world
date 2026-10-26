@@ -164,7 +164,6 @@ export function UniverseDistricts({ districts }: { districts: UniverseDistrict[]
         </div>
         <p>
           每家厂商推一位当家天体，按厂商实力分成头部、主力与尚无评测三档。
-          选拔判据与旧版广场同源同值，两版不会出现互相矛盾的「谁是门面」。
         </p>
       </div>
       <DistrictJump districts={districts} />
