@@ -231,6 +231,23 @@ for (const width of [1440, 390]) {
     (await page.locator('.universe-model-persona').count()) === 1);
   await expect(`${width} detail ability band`, async () =>
     (await page.locator('.universe-ability-band').count()) === 1);
+  /*
+   * 「查看评测文章」 resolves its href from data/guide-articles.json, and when
+   * that file is missing the button disappears by design - right at runtime,
+   * but a silent build regression. Assert the button exists and resolves to a
+   * guide article path. Deliberately host-agnostic (it checks the /models/ path,
+   * not the current pages.dev host): the guide will move to a custom domain, and
+   * an assertion that hardcodes today's host would fail then for the wrong
+   * reason. The negative half is the actual regression guard: this button used to
+   * point every model at one fixed ai.codefather.cn collection page.
+   */
+  const articleHref =
+    (await page.getByRole('link', { name: '查看评测文章' }).first().getAttribute('href')) || '';
+  check(
+    `${width} detail article button resolves to a guide article`,
+    /^https?:\/\/[^/]+\/models\//.test(articleHref) && !/codefather\.cn\/library/.test(articleHref),
+    articleHref,
+  );
   await page.screenshot({ path: `${OUT}/model-${width}.png`, fullPage: true });
   report.screenshots.push(`${OUT}/model-${width}.png`);
 

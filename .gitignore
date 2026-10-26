@@ -26,6 +26,12 @@
 # 几次迭代就能把仓库撑爆。构建时由 prebuild 钩子生成。
 /public/sprites/
 
+# 部署前的静态产物快照（CI 与本地都会这样改名留档）。绝不入库：单份就有几百 MB。
+# 而且必须 ignore：Tailwind v4 扫源码时会尊重 .gitignore，留着这些目录被扫，
+# 里面的 RSC payload 文本会被当成 class 名写进 CSS（实测出现过
+# `.text-[var(--")]</script><script>self.__next_f.push([1,"color-gold)]` 这种选择器）。
+out.before-*/
+
 # npm run sprites:review 的中间产物。只提交那张总览 docs/samples/chibi-review.png 留档。
 /docs/samples/chibi-review.html
 /docs/samples/chibi/

@@ -1,11 +1,7 @@
 import { CompareButton } from '@/components/compare/CompareButton';
+import { guideLinkFor } from '@/lib/guide';
+import { loadGuideLibrary } from '@/lib/guide-library';
 import { getDict, type Lang } from '@/lib/i18n';
-
-/**
- * 鱼皮 AI 导航「模型动态」板块：新模型的实测与横向对比文章都汇总在这一页。
- * 固定地址，不随模型变化——那边是人工精选的合集，本站不去猜某个模型对应哪篇。
- */
-const ARTICLE_URL = 'https://ai.codefather.cn/library/2072330710215032834';
 
 /**
  * B 站搜索页。搜索词由模型名现算，所以新模型上线当天这个按钮就是通的，
@@ -42,10 +38,17 @@ function DocIcon() {
  * 两个站外深链接，跟在一句话定位后面。
  *
  * 不给它单开一节：那一节里除了按钮什么都没有，标题与免责声明加起来比按钮还长，
- * 等于用一整块版面说「这里没内容」。本站只出门、不搬运——中文的模型评价散在视频与
- * 个人博客里，既没有可复用的许可，也没有能自动核对的结构，抓过来会同时破坏
- * 「每个数字有出处」和「零人工维护」两条底线。做成深链接后，新模型无需任何同步
- * 就自带入口，读者点出去看的是原始出处。
+ * 等于用一整块版面说「这里没内容」。本站只出门、不搬运正文，读者点出去看的是原始出处。
+ *
+ * 「查看评测文章」按 slug 查 `data/guide-articles.json`（`npm run guide` 从模型动态
+ * 指南仓库拉回来）：有专文的直达那一篇，没有的落合集页，连数据都没拉过时**整个不出
+ * 这个按钮**。原先它对所有模型都跳同一个固定地址。
+ *
+ * 只查表、不按模型名猜文章：文件名是给人看的（「Claude Fable 5 编程能力实测 - 对比
+ * Opus 4.8 和 GPT-5.5」），按名匹配实测出两类错链——`GPT-5` 前缀溢出命中 GPT-5.6 那篇、
+ * `Claude Fable 5` 同时命中 5 与 5.1。给一个模型挂一篇讲别的模型的文章，在这个
+ * 「每个数字都要有出处」的站上比不挂更糟。所以认领关系写在指南仓库里由作者逐条核对
+ * （21 条，人工可核），这里只查不猜。
  */
 export function ReviewLinks({
   modelName,
@@ -59,6 +62,8 @@ export function ReviewLinks({
   compareBase?: string;
 }) {
   const dict = getDict(lang);
+  // 服务端渲染，直接读构建期落盘的映射，不必从两个 page 一路传 props 下来
+  const article = guideLinkFor(loadGuideLibrary(), slug);
   const cls =
     'pixel-button flex items-center gap-1.5 px-2 py-0.5 text-[12px] leading-tight text-[var(--color-ink)] hover:bg-[var(--color-gold)]';
   return (
@@ -75,16 +80,18 @@ export function ReviewLinks({
         <PlayIcon />
         {dict.reviews.video}
       </a>
-      <a
-        href={ARTICLE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        title={dict.reviews.articleHint}
-        className={cls}
-      >
-        <DocIcon />
-        {dict.reviews.article}
-      </a>
+      {article && (
+        <a
+          href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={dict.reviews.articleHint(article.title, !!article.article)}
+          className={cls}
+        >
+          <DocIcon />
+          {dict.reviews.article}
+        </a>
+      )}
     </div>
   );
 }

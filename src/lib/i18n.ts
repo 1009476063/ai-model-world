@@ -172,7 +172,8 @@ export interface Dict {
     video: string;
     article: string;
     videoHint: (name: string) => string;
-    articleHint: string;
+    /** 命中专文时说清是哪一篇；没有专文时说明进的是合集页 */
+    articleHint: (title: string, specific: boolean) => string;
   };
 }
 
@@ -331,7 +332,11 @@ const zh: Dict = {
     video: '查看评测视频',
     article: '查看评测文章',
     videoHint: (name) => `站外链接：到 B 站搜「${name} 测评」，看别人实测的视频`,
-    articleHint: '站外链接：鱼皮 AI 导航的「模型动态」，新模型的实测与横向对比文章',
+    articleHint: (title, specific) =>
+      // 指南是另一个部署（独立站点），所以仍按站外链接措辞，不含糊成「本站」
+      specific
+        ? `站外链接：模型动态指南的《${title}》，同一套提示词下的项目实测`
+        : `站外链接：模型动态指南的「${title}」。这个模型还没有专文，新模型的实测会陆续补进来`,
   },
 };
 

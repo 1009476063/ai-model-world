@@ -1,0 +1,116 @@
+{
+  "refreshedAt": "2026-10-26T04:31:54.717Z",
+  "generatedFrom": "ai-guide 15 模型动态 (migrated snapshot)",
+  "baseUrl": "https://ai-guide-418.pages.dev",
+  "collection": {
+    "url": "https://ai-guide-418.pages.dev/models/",
+    "title": "模型动态 · 全部实测文章"
+  },
+  "models": {
+    "anthropic-claude-fable-5": {
+      "url": "https://ai-guide-418.pages.dev/models/claude-fable-5/",
+      "title": "Claude Fable 5 编程能力实测",
+      "file": "Claude Fable 5 编程能力实测 - 对比 Opus 4.8 和 GPT-5.5.md"
+    },
+    "anthropic-claude-fable-5-1": {
+      "url": "https://ai-guide-418.pages.dev/models/claude-fable-5-1/",
+      "title": "Claude Fable 5.1 编程能力实测",
+      "file": "Claude Fable 5.1 编程能力实测 - 3 个项目案例.md"
+    },
+    "anthropic-claude-opus-5": {
+      "url": "https://ai-guide-418.pages.dev/models/claude-opus-5/",
+      "title": "Claude Opus 5 编程能力实测",
+      "file": "Claude Opus 5 编程能力实测 - 7 个项目案例.md"
+    },
+    "anthropic-claude-opus-5-5": {
+      "url": "https://ai-guide-418.pages.dev/models/claude-opus-5-5-vs-gpt-6-sol/",
+      "title": "Claude Opus 5.5 对比 GPT-6 Sol 双模型横评",
+      "file": "Claude Opus 5.5 双模型横评 - 对比 GPT-6 Sol 实测 5 个案例.md"
+    },
+    "openai-gpt-6-sol": {
+      "url": "https://ai-guide-418.pages.dev/models/claude-opus-5-5-vs-gpt-6-sol/",
+      "title": "Claude Opus 5.5 对比 GPT-6 Sol 双模型横评",
+      "file": "Claude Opus 5.5 双模型横评 - 对比 GPT-6 Sol 实测 5 个案例.md"
+    },
+    "deepseek-deepseek-v4-flash-vision-exp": {
+      "url": "https://ai-guide-418.pages.dev/models/deepseek-v4-flash-vision/",
+      "title": "DeepSeek V4 Flash Vision 视觉能力实测",
+      "file": "DeepSeek V4 Flash Vision 视觉能力实测 - 8 个场景.md"
+    },
+    "deepseek-deepseek-v4-pro": {
+      "url": "https://ai-guide-418.pages.dev/models/deepseek-v4-pro/",
+      "title": "DeepSeek V4 Pro 编程能力实测",
+      "file": "DeepSeek V4 Pro 编程能力实测 - 7 个项目案例.md"
+    },
+    "deepseek-deepseek-v4-1-flash-1017": {
+      "url": "https://ai-guide-418.pages.dev/models/deepseek-v4-1-flash-1017/",
+      "title": "DeepSeek V4.1 Flash 1017 编程能力实测",
+      "file": "DeepSeek V4.1 Flash 1017 编程能力实测 - 4 个项目案例.md"
+    },
+    "deepseek-deepseek-v4-1-flash": {
+      "url": "https://ai-guide-418.pages.dev/models/deepseek-v4-1-flash/",
+      "title": "DeepSeek V4.1 Flash 编程能力实测",
+      "file": "DeepSeek V4.1 Flash 编程能力实测 - 对比 V4 Pro 和 GLM-5.3-Flash.md"
+    },
+    "zhipuai-glm-5-3": {
+      "url": "https://ai-guide-418.pages.dev/models/glm-5-3-three-model/",
+      "title": "GLM-5.3 三模型横评",
+      "file": "GLM-5.3 三模型横评 - DeepSeek Harness 统一评测.md"
+    },
+    "zhipuai-glm-5-3-flash": {
+      "url": "https://ai-guide-418.pages.dev/models/glm-5-3-flash/",
+      "title": "GLM-5.3-Flash 编程能力实测",
+      "file": "GLM-5.3-Flash 编程能力实测 - 3 个项目案例.md"
+    },
+    "openai-gpt-5-6-sol": {
+      "url": "https://ai-guide-418.pages.dev/models/gpt-5-6-three-model/",
+      "title": "GPT-5.6 三模型横评",
+      "file": "GPT-5.6 三模型横评 - 全栈项目实测.md"
+    },
+    "openai-gpt-5-6-terra": {
+      "url": "https://ai-guide-418.pages.dev/models/gpt-5-6-three-model/",
+      "title": "GPT-5.6 三模型横评",
+      "file": "GPT-5.6 三模型横评 - 全栈项目实测.md"
+    },
+    "openai-gpt-5-6-luna": {
+      "url": "https://ai-guide-418.pages.dev/models/gpt-5-6-three-model/",
+      "title": "GPT-5.6 三模型横评",
+      "file": "GPT-5.6 三模型横评 - 全栈项目实测.md"
+    },
+    "openai-gpt-6-astra": {
+      "url": "https://ai-guide-418.pages.dev/models/gpt-6-astra/",
+      "title": "GPT-6 Astra 编程能力实测",
+      "file": "GPT-6 Astra 编程能力实测 - 4 个项目案例.md"
+    },
+    "google-gemini-3-8-flash": {
+      "url": "https://ai-guide-418.pages.dev/models/gemini-3-8-flash/",
+      "title": "Gemini 3.8 Flash 编程能力实测",
+      "file": "Gemini 3.8 Flash 编程能力实测 - 3 个项目案例.md"
+    },
+    "google-gemini-4-argon": {
+      "url": "https://ai-guide-418.pages.dev/models/gemini-4-argon/",
+      "title": "Gemini 4 Argon 编程能力实测",
+      "file": "Gemini 4 Argon 编程能力实测 - 3 个项目案例.md"
+    },
+    "typesafe-jev-latest": {
+      "url": "https://ai-guide-418.pages.dev/models/jev-decision-model/",
+      "title": "Jev 决策模型实测",
+      "file": "Jev 决策模型实测 - 从入门到实战.md"
+    },
+    "moonshotai-kimi-k3": {
+      "url": "https://ai-guide-418.pages.dev/models/kimi-k3/",
+      "title": "Kimi K3 编程能力实测",
+      "file": "Kimi K3 编程能力实测 - 7 个项目案例.md"
+    },
+    "anthropic-claude-opus-4-8": {
+      "url": "https://ai-guide-418.pages.dev/models/opus-4-8-four-model/",
+      "title": "Opus 4.8 四模型横评",
+      "file": "Opus 4.8 四模型横评 - 全栈项目实测.md"
+    },
+    "xiaomi-mimo-v2-5-pro": {
+      "url": "https://ai-guide-418.pages.dev/models/xiaomi-mimo/",
+      "title": "小米 MiMo 编程能力实测",
+      "file": "小米 MiMo 编程能力实测 - 4 个项目案例.md"
+    }
+  }
+}
