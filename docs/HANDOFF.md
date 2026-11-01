@@ -144,11 +144,12 @@ npx tsx scripts/sync/selftest.ts   # 数据管线的 224 项纯函数自检，�
 **B 站 Toy 也是自动发布的**（`.github/workflows/toy.yml`，每天北京时间 10:30）。每次送审都要人工过，
 所以每天最多一次，而且只在页面内容真有变化时才送：`scripts/toy/fingerprint.ts` 算内容指纹
 （剥掉时间戳、数据来源标注这些每次同步都在动的字段），打包时写进 `.toy-pkg/toy-release.json`，
-`scripts/toy/should-publish.ts` 拿它和线上包里那一份比。上一版还在审核就跳过；**上一版被驳回就失败开 issue，
-不自动重发**。本机手动发布同样会带上指纹，两边不会重复送审。
+`scripts/toy/should-publish.ts` 拿它和线上包里那一份比。上一版还在审核就跳过；**上一版被驳回就失败并在
+Actions Summary 留记录，不自动重发**。本机手动发布同样会带上指纹，两边不会重复送审。
 
 登录凭据在仓库 Secret `TOY_CLI_SESSION_TOKEN`（本机 `~/.toy/session.json` 的 `session_token`，
-CLI 认这个环境变量）。过期的表现是「判断要不要送审」那一步报「尚未登录」，更新方法写在 `toy.yml` 顶部。
+CLI 认这个环境变量）。未配置时任务会明确跳过；配置后如果过期，「判断要不要送审」那一步会报「尚未登录」。
+更新方法写在 `toy.yml` 顶部。
 手动触发：`gh workflow run toy.yml`，加 `-f force=true` 表示内容没变也送审。
 
 **平台限制 HTML 解压后不超过 1 MB**（2026-10-14 起，超了在「提交审核」一步直接拒收）。
@@ -895,9 +896,9 @@ SWE-bench Verified 的最高分。那张榜只有 25 个模型，Fable 5 / Opus 
 按优先级：
 
 1. **commit + push + 启用定时同步**。这是「零维护」承诺唯一还没验证过的一环，
-   也是「新模型出了主页还没有」这类抱怨的根因。Actions 需要 `contents: write`
-   与 `issues: write`（失败开 issue）；精灵图不提交进仓库，由部署平台的 `prebuild` 钩子生成。
-   首次运行后去 Actions 页确认：sync 成功、快照有 diff、issue 没被误开。
+   也是「新模型出了主页还没有」这类抱怨的根因。Actions 需要 `contents: write`；
+   失败记录写进 Actions Summary，不再依赖 Issues。精灵图不提交进仓库，由部署平台的
+   `prebuild` 钩子生成。首次运行后去 Actions 页确认：sync 成功、快照有 diff。
 2. **双端部署**：Vercel（海外）+ EdgeOne Pages（国内）。
 3. **对比入口再多一个**：排行榜总表的每一行可以加「加入对比」勾选框。
    对比页本身已完成（见第十二节），目前入口是导航栏、详情页按钮、对比页里的搜索框。

@@ -4,11 +4,12 @@ name: 发布到 B 站 Toy
 #
 # 每次送审都要平台人工过一遍，所以不跟着同步管线每 12 小时跑：
 # 每天最多一次，而且只在页面内容真有变化时才送（判据见 scripts/toy/should-publish.ts）。
-# 上一版被驳回时不自动重发，直接失败开 issue，等人看过再说。
+# 上一版被驳回时不自动重发，直接失败并在 Actions Summary 留记录，等人看过再说。
 #
 # 登录凭据放在仓库 Secret `TOY_CLI_SESSION_TOKEN`，就是本机 ~/.toy/session.json 里的 session_token。
 # 过期后「判断」那一步会报「尚未登录」：本机重新 `toy login`，再执行
 #   node -p 'require(process.env.HOME+"/.toy/session.json").session_token' | gh secret set TOY_CLI_SESSION_TOKEN
+# 未配置 Secret 时任务正常跳过，避免每天产生一条必然失败的运行；配置后自动恢复发布。
 # 这个工作流只响应定时与手动触发，外部 PR 拿不到这个 Secret。
 
 on:
@@ -24,7 +25,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 concurrency:
   group: toy
@@ -42,16 +42,39 @@ jobs:
     timeout-minutes: 30
 
     steps:
+      - name: 检查 Toy 凭据
+        id: credentials
+        env:
+          TOY_CLI_SESSION_TOKEN: ${{ secrets.TOY_CLI_SESSION_TOKEN }}
+        run: |
+          if [ -n "$TOY_CLI_SESSION_TOKEN" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "configured=false" >> "$GITHUB_OUTPUT"
+          {
+            echo "### B 站 Toy 自动发布未启用"
+            echo
+            echo "仓库尚未配置 \`TOY_CLI_SESSION_TOKEN\`，本次任务已正常跳过。"
+            echo
+            echo "配置方式见 \`.github/workflows/toy.yml\` 顶部；配置后下一次定时任务会自动恢复发布。"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - uses: actions/checkout@v7
+        if: steps.credentials.outputs.configured == 'true'
 
       - uses: actions/setup-node@v7
+        if: steps.credentials.outputs.configured == 'true'
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - name: 安装依赖
+        if: steps.credentials.outputs.configured == 'true'
+        run: npm ci
 
       - name: 安装 toy CLI
+        if: steps.credentials.outputs.configured == 'true'
         run: |
           curl -fsSL -o "$RUNNER_TEMP/toy" "https://boss.hdslb.com/toy-cli/toy/releases/${TOY_CLI_VERSION}/toy_linux_amd64"
           chmod +x "$RUNNER_TEMP/toy"
@@ -84,39 +107,13 @@ jobs:
           TOY_CLI_SESSION_TOKEN: ${{ secrets.TOY_CLI_SESSION_TOKEN }}
         run: '"$TOY_BIN" update "$TOY_ID" .toy-pkg --yes'
 
-      - name: 失败时开 issue
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const title = 'B 站 Toy 自动发布失败';
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const body = [
-              `### ${new Date().toISOString()}`,
-              '',
-              `运行链接：${runUrl}`,
-              '',
-              '常见原因：上一版被驳回（先人工处理再手动发布一次）、登录凭据过期（本机 `toy login` 后更新 Secret，命令见工作流文件顶部）、自检没过。',
-            ].join('\n');
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              per_page: 100,
-            });
-            const existing = issues.find((i) => i.title === title && !i.pull_request);
-            if (existing) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing.number,
-                body,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body: ['`.github/workflows/toy.yml` 运行失败，每次失败都会在这里追加评论，修好后手动关闭。', '', body].join('\n'),
-              });
-            }
+      - name: 记录失败摘要
+        if: failure() && steps.credentials.outputs.configured == 'true'
+        run: |
+          {
+            echo "### B 站 Toy 自动发布失败"
+            echo
+            echo "运行链接：${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo
+            echo "常见原因：上一版被驳回、登录凭据过期或自检未通过。"
+          } >> "$GITHUB_STEP_SUMMARY"
