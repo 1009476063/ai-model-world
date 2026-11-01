@@ -83,6 +83,7 @@ jobs:
 
       - name: 判断要不要送审
         id: decide
+        if: steps.credentials.outputs.configured == 'true'
         env:
           TOY_CLI_SESSION_TOKEN: ${{ secrets.TOY_CLI_SESSION_TOKEN }}
           FORCE: ${{ inputs.force }}
