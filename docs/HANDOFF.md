@@ -148,8 +148,8 @@ npx tsx scripts/sync/selftest.ts   # 数据管线的 224 项纯函数自检，�
 Actions Summary 留记录，不自动重发**。本机手动发布同样会带上指纹，两边不会重复送审。
 
 登录凭据在仓库 Secret `TOY_CLI_SESSION_TOKEN`（本机 `~/.toy/session.json` 的 `session_token`，
-CLI 认这个环境变量）。未配置时任务会明确跳过；配置后如果过期，「判断要不要送审」那一步会报「尚未登录」。
-更新方法写在 `toy.yml` 顶部。
+CLI 认这个环境变量）。发布总开关是仓库变量 `TOY_PUBLISH_ENABLED=true`；开关未打开时任务会明确跳过。
+开启后如果凭据过期，「判断要不要送审」那一步会报「尚未登录」。配置方法写在 `toy.yml` 顶部。
 手动触发：`gh workflow run toy.yml`，加 `-f force=true` 表示内容没变也送审。
 
 **平台限制 HTML 解压后不超过 1 MB**（2026-10-14 起，超了在「提交审核」一步直接拒收）。
